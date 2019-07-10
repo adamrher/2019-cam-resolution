@@ -1,0 +1,57 @@
+% qjrms4doc.tex V1.10, 4 October 2013
+
+\documentclass[times]{qjrms4}
+\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
+\usepackage{moreverb}
+
+%\def\volumeyear{2013}
+\def\volumenumber{00}
+
+\begin{document}
+
+\runningheads{A.~R.~Herrington and K.~A.~Reed}{CAM resolution sensitivity}
+
+\title{Parameterized convection, grid-scale clouds and resolution sensitivity in the Community Atmosphere Model}
+
+\author{Adam R. Herrington\corrauth, Kevin A. Reed}
+\address{School of Marine and Atmospheric Sciences, Stony Brook University, Stony Brook, NY 11794}
+
+\corraddr{\url{adam.herrington@stonybrook.edu}}
+
+\begin{abstract}
+This paper describes...
+\end{abstract}
+
+\keywords{Climate models, physical parameterizations, physics-dynamics coupling}
+
+\maketitle
+
+\section{Introduction}
+
+An increasing number of atmospheric dynamical cores are being developed to maximize efficiency on massively parallel systems, permitting regionally-refined high-resolution ($\Delta x = 50$ km or less), or even globally high-resolution weather and climate simulations \citep{MPASatm,Z2014QJRMS,HETAL2016JCLIM,DCMIP16,LetAl2018JAMES}. Incorporating these advances into Atmospheric General Circulation Models (AGCMs) requires the development of physical parameterizations ({\em{physics}}) appropriate for the diversity of grid configurations that these dynamical cores are now able to support, referred to as scale-aware physics. The most common approach towards developing scale-aware physics has been through the lens of limited area, cloud resolving simulations \citep[e.g.,][]{PC2008JAS,AW2013JAS,SZ2018JCLIM}. Through subsequently filtering large-eddy simulation solutions to lower-resolution grids, a relationship between resolved and unresolved moments may be understood and ultimately parameterized. While this approach is likely necessary for developing scale-aware physics, it is not sufficient. Since the equations of motions have inherent scale dependencies, resolved dynamical modes are a function of the native grid resolution \citep{O1981JAS,WETAL1997MWR,PG2006JAS,JR2016QJRMS,J2017JAMES}. Scale-aware physics should also recognize native grid dependencies.
+
+The sensitivity of the Community Atmosphere Model (CAM), and its predecessor, the Community Climate Model (CCM) to horizontal resolution is well documented. Despite thirty years of continual model development, there are robust sensitivities to resolution (hereafter {\em{resolution}} refers to {\em{horizontal resolution}}) which have persisted in all versions of the model. Total precipitable water decreases with resolution \citep{KW1991JGR,WETAL1995CD,W2008TELLUS,RETAL2013JCLIM,ZetAl2014JCb,HR2017JCLIM}, which typically, but not always \citep[see][]{WETAL1995CD,ZetAl2014JCb}, coincides with a reduction in cloud cover. \cite{KW1991JGR,WETAL1995CD} suggested that the drying of the atmosphere is consistent with the observed greater magnitude resolved vertical velocities with resolution, with greater subsiding motion increasing the export of dry air from the upper troposphere. This mechanism is consistent with an analysis of moisture budgets in CAM, version 4 (CAM4) across multiple resolutions \citep{YETAL2014JCLIM,HR2017JCLIM}.
+
+It is well known that the magnitude of vertical velocities increase with resolution in atmospheric models. While the cause of this sensitivity is established in the cloud-resolving and large-eddy simulation literature \citep[see][and references therein]{J2017JAMES}, only recently has the vertical velocity field in AGCMs and there sensitivity to resolution received attention, albeit with conflicting explanations \citep{DETALA2016ACP,RETAL2016CD,HR2018JAMES}. In this paper, it is shown that the vertical velocities in CAM, version 6 (CAM6) scale like $\Delta x^{-1}$, and that the inadequacy of this scaling to explain prior CAM behavior \citep{HR2017JCLIM} is due to time-truncation errors arising from too large a physics time-step ($\Delta t_{phys}$) at higher-resolutions \citep{HR2018JAMES,HETAL2019JAMES}. Furthermore, the $\Delta x^{-1}$ scaling is entirely consistent with the mechanism of resolution sensitivity in cloud-resolving and large-eddy models, i.e., the inherent sensitivities of resolved dynamical modes to native grid resolution.
+
+Another robust response of the CAM-lineage to resolution is an increase in grid-scale precipitation rates (also referred to as stratiform precipitation in the literature), at the expense of parameterized convective precipitation rates. This behavior is summarized in Figure~\ref{fig:cam-history}, which is a bar-graph of the climatological grid-scale and convective precipitation rates in prior CAM/CCM convergence studies. The studies of \cite{KW1991JGR,WETAL1995CD,W2013QJRMS} indicate that the tendency to reduce $\Delta t_{phys}$ with resolution would by itself reduce the convective precipitation rates, however Figure~\ref{fig:cam-history} (top row) indicates that convergence studies with fixed $\Delta t_{phys}$ still show a reduction in convection precipitation rates with resolution.
+
+\begin{figure}[t]
+\begin{center}
+\noindent\includegraphics[width=20pc,angle=0]{figs/cam-history.pdf}\\
+\end{center}
+\caption{Bar-graph of the convective (solid) and grid-scale (white) climatological precipitation rates in prior CAM/CCM convergence studies. Each window contains a single convergence study, with identical x-axis; the approximate grid resolution. Colors indicate the model configuration; January ensemble (black) and aqua-planet configurations with SST profiles $QOBS$ (blue) and $CNTL$ (red) after \cite{NH2000ASL}. Studies included in this figure are \cite{KW1991JGR} (CCM1), \cite{WETAL1995CD} (CCM2), \cite{W2008TELLUS} (CAM3), \cite{RETAL2013JCLIM,ZetAl2014JCb,HR2017JCLIM} (CAM4), \cite{ZetAl2014JCb} (CAM5) and this study (CAM6). CCM2* refers to the modified parameter experiment of \cite{WETAL1995CD}, where parameters vary with resolution to reduce the dependence of cloud fraction on resolution.}
+\label{fig:cam-history}
+\end{figure}
+
+In this study, the reduction in convective precipitation rates in CAM6 is shown to result from the greater subsiding motion with resolution, leading to a more stable atmosphere in which the criterion for parameterized convection occurs less often. The feedback of the resolved vertical motion on the physics indicates that the root cause of resolution sensitivity in CAM arises from the sensitivity of resolved dynamical modes to native grid resolution. Section 2 describes CAM6 and the simulations used in this study. Section 3 contains a thorough analysis of the CAM6 simulations and Section 4 provides some discussion and conclusions.
+
+%\input{results.tex}
+
+\ack This class file was developed by Sunrise Setting Ltd,
+Paignton, Devon, UK. Website:\\
+\href{http://www.sunrise-setting.co.uk}{\texttt{www.sunrise-setting.co.uk}}
+
+\bibliographystyle{wileyqj}
+\bibliography{bib}
+\end{document}
