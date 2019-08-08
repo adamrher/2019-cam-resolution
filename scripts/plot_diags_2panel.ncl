@@ -126,7 +126,7 @@ begin
   resf@tmXTMajorThicknessF = 1.
   resf@tmYLMajorThicknessF = 1.
 
-  resf@tmBorderThicknessF = 3.
+  resf@tmBorderThicknessF = 5.
   resf@tmXBMajorOutwardLengthF = 0.
   resf@tmYLMajorOutwardLengthF = 0.
   resf@tmXBMinorOutwardLengthF = 0.
@@ -147,7 +147,7 @@ begin
   ;resf@vpYF                = 0.4
 
   resf@tmXMajorGrid= True
-  resf@tmXMajorGridThicknessF      = 1.0
+  resf@tmXMajorGridThicknessF      = 2.0
   resf@tmXMajorGridLineDashPattern = 2
 
   resf@tmYMajorGrid= True
