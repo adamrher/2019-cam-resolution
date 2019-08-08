@@ -120,14 +120,14 @@ Changes to the vertical velocity field can be further understood through decompo
 \end{equation}
 where $\langle f_x \rangle$ and $\langle \omega_x \rangle$ refers to the vertical mass fraction $ \left( \frac{\int dp_x}{\int dp} \right)$ and the $x$ component of the mass weighted vertical mean of $\omega$ $ \left( \frac{\int \omega_x dp_x}{\int dp_x} \right)$, respectively, subscript $u$ refers to upward motion and $d$, downward motion.
 
-The global mean, climatological components $\langle f_{u} \rangle \, \langle \omega_{u} \rangle$ and $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ are provided in Figure~\ref{fig:4panel}a,b for the aqua-planet simulations. The magnitude of both $\langle f_{u} \rangle \, \langle \omega_{u} \rangle$ and $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ increase monotonically with resolution, and are both equal and opposite, which is a requirement of mass conservation in the model and a convenient check of the calculation. The individual component $\langle f_{x} \rangle$ varies by only few percent in the simulations, and so the monotonic behavior of $\langle f_{x} \rangle \, \langle \omega_{x} \rangle$ is primarily due to $ \langle \omega_{x} \rangle$ (not shown).
+The global mean, climatological components $\langle f_{u} \rangle \, \langle \omega_{u} \rangle$ and $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ are provided in Figure~\ref{fig:2panel}a,b for the aqua-planet simulations. The magnitude of both $\langle f_{u} \rangle \, \langle \omega_{u} \rangle$ and $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ increase monotonically with resolution, and are both equal and opposite, which is a requirement of mass conservation in the model and a convenient check of the calculation. The individual component $\langle f_{x} \rangle$ varies by only few percent in the simulations, and so the monotonic behavior of $\langle f_{x} \rangle \, \langle \omega_{x} \rangle$ is primarily due to $ \langle \omega_{x} \rangle$ (not shown).
 
 \begin{figure}[t]
 \begin{center}
-\noindent\includegraphics[width=20pc,angle=0]{figs/temp_diags_4panel.pdf}\\
+\noindent\includegraphics[width=20pc,angle=0]{figs/temp_diags_2panel.pdf}\\
 \end{center}
 \caption{(a,b,c,e,f,g) Components of the global mean vertical pressure velocity $\overline{\langle \omega \rangle}$ (d) ratio of global mean ZM precipitation rate to the total precipitation rate versus grid spacing $\Delta x$ and (e) scatter plot of $\overline{\langle f_{d} \rangle} \, \overline{\langle \omega_{d} \rangle}$ and FREQZM, and the fitted linear regression which has a Pearson's R-value = 0.99. (a) $\overline{\langle \omega_{u} \rangle}$ (b) $\overline{\langle f_{u} \rangle}$ (c) $\overline{\langle f_{u} \rangle} \, \overline{\langle \omega_{u} \rangle}$ (e) $\overline{\langle \omega_{d} \rangle}$ (f) $ \overline{\langle f_{d} \rangle}$ (g) $\overline{\langle f_{d} \rangle} \, \overline{\langle \omega_{d} \rangle}$. Colors are as in Figure~\ref{fig:2pdf}. Grey crosses are for the perturbed parameter runs.}
-\label{fig:4panel}
+\label{fig:2panel}
 \end{figure}
 
 \subsection{Convective Precipitation and Vertical Velocities}
@@ -137,6 +137,14 @@ The \cite{ZM1995AO} deep convection scheme (referred to as the $ZM$ scheme, here
 -R_d \int_{p_t}^{p_b} \frac{\partial T_{ve}}{\partial t} dlnp \label{eq:cape}
 \end{equation}
 where $T_{ve}$ is the virtual temperature of the environment, $R_d$ the gas constant for dry air and subscripts $b$ and $t$ refer to the parcel launch level (typically in the boundary layer) and the level of neutral buoyancy, respectively \citep{Z2002JGR}. Equation~\ref{eq:cape} contains a term, the vertical advection of potential energy, which simplifies to $w \frac{\partial gz}{\partial z} = gw$, and directly proportional to the vertical velocity $w$ by the factor $g$, the acceleration of gravity (F. Song, personal communication). In subsiding regions, $w$ is negative and opposes the generation of CAPE through adiabatic warming of the environment.
+
+\begin{figure}[t]
+\begin{center}
+\noindent\includegraphics[width=20pc,angle=0]{figs/temp_diags_corr.pdf}\\
+\end{center}
+\caption{Scatter plot of $\overline{\langle f_{d} \rangle} \, \overline{\langle \omega_{d} \rangle}$ and FREQZM, and the fitted linear regression which has a Pearson's R-value = 0.99. Colors are as in Figure~\ref{fig:2pdf}. Grey crosses are for the perturbed parameter ensemble.}
+\label{fig:corr}
+\end{figure}
 
 There is an excellent negative correlation (Pearson's R-value = 0.99) between the global mean, climatological $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ and a measure of the activity of the ZM scheme in the simulations, $FREQZM$ (Figure~\ref{fig:4panel}c). At any given grid-point and time-step, $FREQZM$ is a binary variable: one if the ZM scheme is active, zero if it is not. Time-mean $FREQZM$ therefore indicates the fraction of the model time that the ZM scheme is triggered, i.e., dilute CAPE exceeds $\geq 70$ J/kg. It is hypothesized that the greater subsiding motion with resolution opposes the generation of dilute CAPE through subsidence warming, reducing the frequency that the ZM scheme is triggered, and leading to the strong negative correlation in Figure~\ref{fig:4panel}c.
 
