@@ -84,29 +84,17 @@ begin
   MAX2  = 5.1
   nams2 = "f~B~d~N~~F33~w~F21~~B~d~N~ (~F34~4~F21~10~S~2~N~ Pa/s)"
 
-  VARS3 = "PRECC/PRECT"
-  MIN3 = 0.25
-  MAX3 = 0.63;;0.62
-  nams3 = "ZM Precip. / Total precip."
-
-  VARS4 = "FREQZMgl"
-  MIN4 = 0.31
-  MAX4 = 0.58
-  nams4 = "Space-time fraction of ZM trigger"
-
-  PCVAR = "PRECCgl"
-  PLVAR = "PRECLgl"
   OMGU  = "OMGUgl"
   FRACU = "FRACUgl"
   OMGD  = "OMGDgl"
   FRACD = "FRACDgl"
 
-  pltNam = "temp_diags_4panel"
+  pltNam = "temp_diags_2panel"
 
-  VARS = (/VARS1,VARS2,VARS3,VARS4/)
-  MAX =  (/ MAX1, MAX2, MAX3, MAX4/)
-  MIN =  (/ MIN1, MIN2, MIN3, MIN4/)
-  nams = (/nams1,nams2,nams3,nams4/)
+  VARS = (/VARS1,VARS2/)
+  MAX =  (/ MAX1, MAX2/)
+  MIN =  (/ MIN1, MIN2/)
+  nams = (/nams1,nams2/)
 
   nvars = dimsizes(VARS)
   xall = new( (/nvars,nfn/), "double")
@@ -181,23 +169,15 @@ begin
    resf@trYMaxF = MAX(n)
    resf@tiYAxisString = nams(n)
 
-   if (n.eq.nvars-1) then   
-     resf@tiXAxisString = "f~B~d~N~~F33~w~F21~~B~d~N~ (~F34~4~F21~10~S~2~N~ Pa/s)"
-     resf@trXReverse            = False
-     resf@trXMinF                = 2.85
-     resf@trXMaxF                = 5.05
-   else
-     resf@trXReverse            = False
-     resf@tiXAxisString = "~F33~D~F21~x~B~dyn~N~ (km)"
-     resf@trXMinF                = 10.
-     resf@trXMaxF                = 180.
-   end if
-
    if (n.eq.0) then
      resf@trYReverse            = True
    else
      resf@trYReverse            = False
    end if
+
+   resf@tiXAxisString = "~F33~D~F21~x~B~dyn~N~ (km)"
+   resf@trXMinF                = 10.
+   resf@trXMaxF                = 180.
 
    plot(n) = gsn_csm_blank_plot(wks,resf)
  end do
@@ -225,17 +205,8 @@ begin
    fracd = fo->$FRACD$
    var2 = omgd*fracd
 
-   pcvar= fg->$PCVAR$
-   plvar= fg->$PLVAR$
-   var3 = pcvar / (pcvar + plvar)
-
-   var4 = fg->$VARS(3)$
-   delete([/fo,fg/])
-
    xall(0,n) = var1
    xall(1,n) = var2
-   xall(2,n) = var3
-   xall(3,n) = var4
 
    res@gsMarkerColor = colors(type(n))
    if (type(n).ne.0) then
@@ -252,41 +223,15 @@ begin
    pNam = unique_string("tmp")
    plot@$pNam$ = gsn_add_polymarker(wks,plot(1),dx(n),var2,res)
 
-   pNam = unique_string("tmp")
-   plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),var3,res)
-
-   pNam = unique_string("tmp")
-   plot@$pNam$ = gsn_add_polymarker(wks,plot(3),var2,var4,res)
-
-   delete([/pcvar,plvar,var1,var2,var3,var4,omgu,fracu,omgd,fracd/])
+   delete([/var1,var2,omgu,fracu,omgd,fracd/])
 
  end do
-
- coef = regline(xall(1,:),xall(3,:))
- a0 = coef@yintercept
- a1 = coef
- print("a0: " + a0)
- print("a1: " + a1)
- xx = (/MIN2,MAX2/)
- yy = a0 + a1*xx
- pNam = unique_string("tmp")
- plot@$pNam$ = gsn_add_polyline(wks,plot(3),xx,yy,resln)
-
- print("stderr: " + coef@rstd)
- print("Pearson:" + escorc(xall(1,:),xall(3,:)))
- print("")
 
  print("max1: "+max(xall(0,:)))
  print("min1: "+min(xall(0,:)))
 
  print("max2: "+max(xall(1,:)))
  print("min2: "+min(xall(1,:)))
-
- print("max3: "+max(xall(2,:)))
- print("min3: "+min(xall(2,:)))
-
- print("max4: "+max(xall(3,:)))
- print("min4: "+min(xall(3,:)))
 
 ;*****************************************************
 ; Plot panel
@@ -297,12 +242,12 @@ begin
   ;resP@gsnPaperOrientation = "portrait"
   resP@gsnPanelBottom   = 0.05
   resP@gsnPanelFigureStringsFontHeightF = 0.02
-  resP@gsnPanelFigureStrings = (/ "a.","b.","c.","d."/)
+  resP@gsnPanelFigureStrings = (/ "a.","b."/)
   resP@gsnPanelFigureStringsPerimOn     = True
   resP@gsnPanelFigureStringsBackgroundFillColor = "white"
   resP@amJust           = "BottomLeft"
   ;resP@txString = pltTitle
-  gsn_panel(wks,plot,(/2,2/),resP)               ; now draw as one plot
+  gsn_panel(wks,plot,(/1,2/),resP)               ; now draw as one plot
 
 frame(wks)
 
