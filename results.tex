@@ -8,7 +8,7 @@ This study uses the spectral-element dynamical core option of Community Atmosphe
 
 The physics are evaluated on the finite-volume CSLAM grid, and the tendencies mapped back to the spectral element grid. The coupled system, referred to as CAM-SE-CSLAM, conserves energy, mass and preserves linear correlations between two reactive species to within machine precision \citep{HL2018MWR}. A coarser physics grid, containing $\frac{5}{9}$ fewer degrees of freedom than the dynamical core grid is also available as part of the CAM-SE-CSLAM package \citep{HETAL2019JAMES}. This lower-resolution physics grid is used in this study, but only as a member of a perturbed parameter ensemble and not in the default convergence experiment. The dynamics time-step is subcycled within a longer physics time-step $\Delta t_{phys}$, and the temperature and momentum increments from the physics are divided by the number of subcycles and added to the dynamical core at the beginning of each subcycle. The full moisture increment from the physics is applied only at the start of the first subcycle to conserve tracer mass \citep[$ftype=2$ option in][]{LetAl2018JAMES}.
 
-The simulations use the CAM6 physics package. The Cloud Layers Unified by Binormals \citep[CLUBB][]{GETAL2002JAS,BOG2013JCLIM} is an assumed PDF high-order closure model that handles shallow convection, planetary boundary layer mixing and cloud macrophysics. The macrophyiscs are coupled with a two-moment bulk cloud microphysics scheme with prognostic precipitation \citep{MG2}, and microphysics are coupled with a three mode Modular Aerosol Model \citep{MAM}. The combined macrophysics/microphysics routines generate grid-scale clouds with stratiform precipitation. Deep convection is parameterized using a quasi-equilibrium mass flux scheme \citep{ZM1995AO} and a dilute form of the convective available potential energy (CAPE) is computed to assess the convective trigger ($\geq 70$ J/kg), and for closing the mass fluxes in the cloud ensemble \citep{NRJ2008JC}. The deep convection scheme also parameterizes convective momentum transport \citep{RR2008JC}.
+The simulations use the CAM6 physics package. The Cloud Layers Unified by Binormals \citep[CLUBB][]{GETAL2002JAS,BOG2013JCLIM} is an assumed probability distribution function (PDF) high-order closure model that handles shallow convection, planetary boundary layer mixing and cloud macrophysics. The macrophyiscs are coupled with a two-moment bulk cloud microphysics scheme with prognostic precipitation \citep{MG2}, and microphysics are coupled with a three mode Modular Aerosol Model \citep{MAM}. The combined macrophysics/microphysics routines generate grid-scale clouds with stratiform precipitation. Deep convection is parameterized using a quasi-equilibrium mass flux scheme \citep{ZM1995AO} and a dilute form of the convective available potential energy (CAPE) is computed and used as the convective trigger (convection occurs if dilute CAPE $\geq 70$ J/kg), and for closing the mass fluxes in the cloud ensemble \citep{NRJ2008JC}. The deep convection scheme also parameterizes convective momentum transport \citep{RR2008JC}.
 
 \subsection{Experimental Design}
  
@@ -26,8 +26,9 @@ where $\Delta t_{phys,0}$ is taken to be the standard $1800 s$ used in CAM-SE-CS
  \scriptsize
  \begin{tabular}{lcccccc}
    \hline
-   Variable & $ne20$ & $ne30$ & $ne40$ & $ne60$ & $ne80$ & $ne120$ \\
+   Variable & $ne20$ & $ne30$ & $ne40$ & $ne60$ & $ne80$ & $ne120$ \\ 
    \hline
+   $\Delta x$ (km) & 166.8 & 111.2 & 83.4 & 55.6 & 41.7 & 27.8 \\
    $\nu$ ($m^4/s$) & $1.5 \times 10^{15}$ & $4.0 \times 10^{14}$ & $1.5 \times 10^{14}$ & $4.0 \times 10^{13}$  & $1.5 \times 10^{13}$ & $4.0 \times 10^{12}$\\
     $\Delta t_{phys}$ (s) & 2700 & 1800 & 1350 & 900 & 675 & 450 \\
    Total Cloud Fraction & 0.844 & 0.835 & 0.824 & 0.810 & 0.804 & 0.800 \\ 
@@ -39,33 +40,47 @@ where $\Delta t_{phys,0}$ is taken to be the standard $1800 s$ used in CAM-SE-CS
  \label{tbl:table1}
  \end{table}
 
-Table~\ref{tbl:table6-1} provides a list of some relevant globally averaged metrics that are typically published in CAM-lineage convergence studies. Total precipitable water, total cloud fraction and deep convective precipitation rate decreases, while stratiform precipitation increases, monotonically with resolution. Resolution sensitivity in CAM6 is similar to all prior model versions within the models' lineage. 
+Table~\ref{tbl:table1} provides globally averaged, climatological (omitting the first month) metrics for the CAM6 simulations which are typically published in CAM/CCM convergence studies. Total precipitable water, total cloud fraction and deep convective precipitation rate decreases, while stratiform precipitation increases, monotonically with resolution. Resolution sensitivity in CAM6 is similar to all prior versions of the model. 
 
-The probability density function (PDF) of negative, or upward vertical pressure velocities $\omega$ in the aqua-planets is shown in Figure~\ref{fig:2pdf}a. The magnitude of upward $\omega$ increases in a monotonic way with resolution, with positive, or downward $\omega$ behaving similarly (not shown). The PDF's may be scaled to the high-resolution $ne120$ resolution through $P(\omega)_s = \alpha P (\omega / \alpha)$, where $\alpha$ is the scale factor equation~\ref{eq:eq6-1}. In general, the scaled PDF's all line up on top of the high-resolution reference (Figure~\ref{fig:2pdf}b); equation~\ref{eq:eq6-1} explains the variation in vertical velocity across resolutions to first order. 
+\subsection{Vertical Velocities and Resolution}
 
 \begin{figure}[t]
 \begin{center}
 \noindent\includegraphics[width=20pc,angle=0]{figs/temp_2pdf.pdf}\\
 \end{center}
-\caption{Probability density distribution of the upward vertical pressure velocities $\omega$ computed everywhere in the model from 1 year of 6-hourly data (a) raw values (b) scaled to the $ne120$ resolution using $P(\omega)_s = \alpha P (\omega / \alpha)$, where $\alpha$ is from equation~\ref{eq:eq6-1}.}
+\caption{Probability density distribution of the upward vertical pressure velocities $\omega$ computed everywhere in the model from 1 year of 6-hourly data (a) raw values (solid) and values remapped to the $ne20$ grid (dotted), (b) values scaled to the $ne120$ resolution.}
 \label{fig:2pdf}
 \end{figure}
 
-Changes to the time-mean vertical velocity field can be understood through decomposing the global mean $\omega$ into upward and downward components,
-\begin{equation}
-\overline{\langle \omega \rangle} = \overline{\langle f_{u} \rangle} \, \overline{\langle \omega_{u} \rangle} + \overline{\langle f_{d} \rangle} \, \overline{\langle \omega_{d} \rangle}, \label{eq:eq6-2}
-\end{equation}
-where $\langle f_x \rangle$ and $\langle \omega_x \rangle$ refers to the vertical mass fraction and contribution to mass weighted vertical mean $\omega$, respectively, subscript $u$ refers to upward motion and $d$, downward motion; overbars indicate time-mean.
+The PDF of negative, or upward vertical pressure velocities $\omega$ in the aqua-planets is shown in Figure~\ref{fig:2pdf}a. The magnitude of upward $\omega$ increases monotonicaly with resolution, with positive, or downward $\omega$ behaving similarly (not shown). This monotonic increase in the magnitude of $\omega$ is evident even after remapping all the model output to a common grid ($ne20$; dotted curves Figure~\ref{fig:2pdf}a).
 
-The components of equation~\ref{eq:eq6-2} are shown in Figure~\ref{fig:8panel}a,b,e,f for the six aqua-planet simulations. The magnitude of both $\overline{\langle \omega_{u} \rangle}$ and $\overline{\langle \omega_{d} \rangle}$ increase monotonically with resolution, the upward component increasing more than the downward component. In contrast, $\overline{\langle f_{u} \rangle}$ decreases with resolution while $\overline{\langle f_{d} \rangle}$ increases, although in both cases there is a reversal in this trend in the highest resolution simulation, $ne120$. Note that the magnitude of the change in $\overline{\langle f_{u} \rangle}$ and $\overline{\langle f_{d} \rangle}$ is small, a range of about $0.015$ across all simulations. Figure~\ref{fig:8panel}c,g shows that the products  $\overline{\langle f_{u} \rangle} \, \overline{\langle \omega_{u} \rangle}$ and $\overline{\langle f_{d} \rangle} \, \overline{\langle \omega_{d} \rangle}$ are equal and opposite, which is a requirement of mass conservation in the model and a convenient check of the calculation. Besides the six aqua-planets described in Section 6.2, 23 additional year-long aqua-planet experiments were carried out at various resolutions, with modified parameters in the dynamical core and the physics. The spread in the components of equation~\ref{eq:eq6-2} in the simulations with perturbed parameters is relatively large for $\overline{\langle f_{x} \rangle}$, compared with $\overline{\langle \omega_{x} \rangle}$.
+The PDF's may be scaled to the highest-resolution resolution grid through $P(\omega)_s = \alpha P (\omega / \alpha)$, where $\alpha$ is the scale factor from equation~\ref{eq:alpha}, and setting $\Delta x_0$ to the $ne120$ grid-spacing. Figure~\ref{fig:2pdf}b shows the scaled PDFs using $n=-1$ in equation~\ref{eq:alpha}. The scaled PDF's all collapse onto the high-resolution reference, indicating the a power-law with $n=-1$ explains to first-order the variation in vertical velocity with resolution in the aqua-planet simulations. 
+
+Changes to the vertical velocity field can be further understood through decomposing the mass weighted vertical mean $\omega$ into upward and downward components,
+\begin{equation}
+\langle \omega \rangle =\langle f_{u} \rangle \, \langle \omega_{u} \rangle + \langle f_{d} \rangle \, \langle \omega_{d} \rangle, \label{eq:omega}
+\end{equation}
+where $\langle f_x \rangle$ and $\langle \omega_x \rangle$ refers to the vertical mass fraction $ \left( \frac{\int dp_x}{\int dp} \right)$ and the $x$ component of the mass weighted vertical mean of $\omega$ $ \left( \frac{\int \omega_x dp_x}{\int dp_x} \right)$, respectively, subscript $u$ refers to upward motion and $d$, downward motion.
+
+The global mean, climatological components $\langle f_{u} \rangle \, \langle \omega_{u} \rangle$ and $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ are provided in Figure~\ref{fig:4panel}a,b for the aqua-planet simulations. The magnitude of both $\langle f_{u} \rangle \, \langle \omega_{u} \rangle$ and $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ increase monotonically with resolution, and are both equal and opposite, which is a requirement of mass conservation in the model and a convenient check of the calculation. The individual component $\langle f_{x} \rangle$ varies by only few percent in the simulations, and so the monotonic behavior of $\langle f_{x} \rangle \, \langle \omega_{x} \rangle$ is primarily due to $ \langle \omega_{x} \rangle$ (not shown).
 
 \begin{figure}[t]
 \begin{center}
 \noindent\includegraphics[width=20pc,angle=0]{figs/temp_diags_4panel.pdf}\\
 \end{center}
 \caption{(a,b,c,e,f,g) Components of the global mean vertical pressure velocity $\overline{\langle \omega \rangle}$ (d) ratio of global mean ZM precipitation rate to the total precipitation rate versus grid spacing $\Delta x$ and (e) scatter plot of $\overline{\langle f_{d} \rangle} \, \overline{\langle \omega_{d} \rangle}$ and FREQZM, and the fitted linear regression which has a Pearson's R-value = 0.99. (a) $\overline{\langle \omega_{u} \rangle}$ (b) $\overline{\langle f_{u} \rangle}$ (c) $\overline{\langle f_{u} \rangle} \, \overline{\langle \omega_{u} \rangle}$ (e) $\overline{\langle \omega_{d} \rangle}$ (f) $ \overline{\langle f_{d} \rangle}$ (g) $\overline{\langle f_{d} \rangle} \, \overline{\langle \omega_{d} \rangle}$. Colors are as in Figure~\ref{fig:2pdf}. Grey crosses are for the perturbed parameter runs.}
-\label{fig:8panel}
+\label{fig:4panel}
 \end{figure}
+
+\subsection{Convective Precipitation and Vertical Velocities}
+
+The \cite{ZM1995AO} deep convection scheme (referred to as the $ZM$ scheme, hereafter) is modulated by the dilute CAPE calculation, which itself is intertwined with the vertical velocity field \citep{SZ2018JCLIM}. The CAPE budget can be separated into two components \citep{Z2002JGR}; instability due to the thermodynamic state of parcels in the boundary layer and the instability generated through advection of dry static energy and moisture by the environment, i.e., the resolved flow. The latter term is defined as, 
+\begin{equation}
+-R_d \int_{p_t}^{p_b} \frac{\partial T_{ve}}{\partial t} dlnp \label{eq:cape}
+\end{equation}
+where $T_{ve}$ is the virtual temperature of the environment, $R_d$ the gas constant for dry air and subscripts $b$ and $t$ refer to the parcel launch level (typically in the boundary layer) and the level of neutral buoyancy, respectively \citep{Z2002JGR}. Equation~\ref{eq:cape} contains a term, the vertical advection of potential energy, which simplifies to $w \frac{\partial gz}{\partial z} = gw$, and directly proportional to the vertical velocity $w$ by the factor $g$, the acceleration of gravity (F. Song, personal communication). In subsiding regions, $w$ is negative and opposes the generation of CAPE through adiabatic warming of the environment.
+
+There is an excellent negative correlation (Pearson's R-value = 0.99) between the global mean, climatological $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ and a measure of the activity of the ZM scheme in the simulations, $FREQZM$ (Figure~\ref{fig:4panel}c). At any given grid-point and time-step, $FREQZM$ is a binary variable: one if the ZM scheme is active, and zero if it is not. Time-mean $FREQZM$ therefore indicates the fraction of the model time that the ZM scheme is triggered, i.e., dilute CAPE exceeds $\geq 70$ J/kg. It is hypothesized that the greater subsiding motion with resolution opposes the generation of dilute CAPE through subsidence warming, reducing the frequency that the ZM scheme is triggered, and leading to the strong negative correlation in Figure~\ref{fig:4panel}c.
 
 The reduction in the \cite{ZM1995AO} deep convective precipitation rate (hereafter referred to as the {\em{ZM precipitation}}) is depicted in Figure~\ref{fig:8panel}d, which shows the global mean fraction of total precipitation arising from ZM precipitation decreasing from about $0.60$ at low resolution ($ne20$) to about $0.32$ at high resolution ($ne120$). This reduction in ZM precipitation manifest through triggering less frequently (not shown). The space-time fraction the ZM precipitation scheme is triggered (hereafter referred to as the {\em{FREQZM}}) is highly negatively correlated with $\overline{\langle f_{d} \rangle} \, \overline{\langle \omega_{d} \rangle}$ in the 29 simulations (Pearson's R-value = 0.99; Figure~\ref{fig:8panel}h), more then with any individual component of equation~\ref{eq:eq6-2}.
 
@@ -78,8 +93,6 @@ Figure~\ref{fig:vomg}a,b shows the time mean zonal mean $\langle f_{d} \rangle \
 \caption{Time mean zonal mean (a) $\langle f_{d} \rangle \langle \omega_{d} \rangle$, (b) FREQZM. Colors are as in Figure~\ref{fig:2pdf}.}
 \label{fig:vomg}
 \end{figure}
-
-The ZM trigger uses a dilute form of CAPE, which is consistent with the negative relation between $\overline{\langle f_{d} \rangle} \, \overline{\langle \omega_{d} \rangle}$ and FREQZM in space, and across resolutions. In the classical, non-dilute case, CAPE can be seperated into two components \citep{Z2002JGR}; instability due to the thermodynamic state of parcels in the boundary layer and the instability generated through advection of dry static energy and moisture by the environment, i.e., the resolved flow. The latter term generally contributes positively to CAPE in regions of ascent and negatively in regions of subsidence \citep{SZ2018JCLIM}, consistent with the negative correlation of $\langle f_{d} \rangle \langle \omega_{d} \rangle$ in space, and across resolutions.
 
 \begin{figure}[t]
 \begin{center}
