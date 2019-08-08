@@ -126,7 +126,7 @@ The global mean, climatological components $\langle f_{u} \rangle \, \langle \om
 \begin{center}
 \noindent\includegraphics[width=20pc,angle=0]{figs/temp_diags_2panel.pdf}\\
 \end{center}
-\caption{(a,b,c,e,f,g) Components of the global mean vertical pressure velocity $\overline{\langle \omega \rangle}$ (d) ratio of global mean ZM precipitation rate to the total precipitation rate versus grid spacing $\Delta x$ and (e) scatter plot of $\overline{\langle f_{d} \rangle} \, \overline{\langle \omega_{d} \rangle}$ and FREQZM, and the fitted linear regression which has a Pearson's R-value = 0.99. (a) $\overline{\langle \omega_{u} \rangle}$ (b) $\overline{\langle f_{u} \rangle}$ (c) $\overline{\langle f_{u} \rangle} \, \overline{\langle \omega_{u} \rangle}$ (e) $\overline{\langle \omega_{d} \rangle}$ (f) $ \overline{\langle f_{d} \rangle}$ (g) $\overline{\langle f_{d} \rangle} \, \overline{\langle \omega_{d} \rangle}$. Colors are as in Figure~\ref{fig:2pdf}. Grey crosses are for the perturbed parameter runs.}
+\caption{(a,b,c,e,f,g) Components of the global mean vertical pressure velocity, (a) $\overline{\langle f_{u} \rangle} \, \overline{\langle \omega_{u} \rangle}$ (b) $\overline{\langle f_{d} \rangle} \, \overline{\langle \omega_{d} \rangle}$. Colors are as in Figure~\ref{fig:2pdf}. Grey crosses are for the perturbed parameter runs.}
 \label{fig:2panel}
 \end{figure}
 
@@ -146,7 +146,45 @@ where $T_{ve}$ is the virtual temperature of the environment, $R_d$ the gas cons
 \label{fig:corr}
 \end{figure}
 
-There is an excellent negative correlation (Pearson's R-value = 0.99) between the global mean, climatological $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ and a measure of the activity of the ZM scheme in the simulations, $FREQZM$ (Figure~\ref{fig:4panel}c). At any given grid-point and time-step, $FREQZM$ is a binary variable: one if the ZM scheme is active, zero if it is not. Time-mean $FREQZM$ therefore indicates the fraction of the model time that the ZM scheme is triggered, i.e., dilute CAPE exceeds $\geq 70$ J/kg. It is hypothesized that the greater subsiding motion with resolution opposes the generation of dilute CAPE through subsidence warming, reducing the frequency that the ZM scheme is triggered, and leading to the strong negative correlation in Figure~\ref{fig:4panel}c.
+There is an excellent negative correlation (Pearson's R-value = 0.99) between the global mean, climatological $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ and a measure of the activity of the ZM scheme in the simulations, $FREQZM$ (Figure~\ref{fig:corr}). At any given grid-point and time-step, $FREQZM$ is a binary variable: one if the ZM scheme is active, zero if it is not. Time-mean $FREQZM$ therefore indicates the fraction of the model time that the ZM scheme is triggered, i.e., dilute CAPE exceeds $\geq 70$ J/kg. It is hypothesized that the greater subsiding motion with resolution opposes the generation of dilute CAPE through subsidence warming, reducing the frequency the ZM scheme is triggered, and creating the strong negative correlation in Figure~\ref{fig:corr}.
+
+\begin{figure}[t]
+\begin{center}
+\noindent\includegraphics[width=14pc,angle=0]{figs/temp_4zonal.pdf}\\
+\end{center}
+\caption{Zonal mean (a) R-values and (b) sensitivity parameter in the logistic regression, (d) time mean surface latent heat fluxes and (c) drizzle fraction. Colors are as in Figure~\ref{fig:2pdf}.}
+\label{fig:4zonal}
+\end{figure}
+
+To test the hypothesis, a logistic regression between subsiding motion and $FREQZM$ is performed for each grid column within each of the simulations. Logistic regression uses an iterative method to fit a continuous variable predictor, $x$ to a binary predictand $p$ \citep{WILKSBOOK},
+\begin{equation}
+p = \frac{exp{[b_0 + b_1 x]}}{1 + exp{[b_0 + b_1 x]}}, \label{eq:eq6-3}
+\end{equation}
+where $b_0$ and $b_1$ are the shape parameters of the exponential. The predictor is then the instantaneous $\langle f_{d} \rangle \langle \omega_{d} \rangle$ of a grid column, and the predictand the binary $FREQZM$. Since the aqua-planets have zonally symmetric boundary conditions, there is a zonally varying structure in the goodness of fit (R-value) and parameter $b_1$ (hereafter referred to as the sensitivity parameter; Figure~\ref{fig:4zonal}a,b).
+
+The zonal mean R-values indicates the greatest goodness of fit in the deep tropics ($\pm 10^{circ}$ latitude). Figure~\ref{fig:4zonal}c shows the time mean zonal mean latent heat flux in the simulations, which is expected to contribute positively to CAPE through the component associated with the thermodynamic state of boundary layer parcels. In the deep tropics, the latent heat flux is small, and the sensitivity parameter is large and negative (Figure~\ref{fig:4zonal}b), which is consistent with our hypothesis that the subsiding motion actively depresses CAPE and the activity of the ZM scheme in the simulations. The sensitivity parameter becomes less negative in the deep tropics with resolution, likely due to the greater magnitude $\langle f_{d} \rangle \langle \omega_{d} \rangle$ with resolution, which requires a lower sensitivity parameter to predict the binary of whether the ZM scheme is active. The R-values generally decrease with resolution indicating that there is degradation in the relationship with resolution. All values shown are statistically significant at the $95\%$ level using a log-likelihood test \citep{WILKSBOOK}.
+
+\begin{figure}[t]
+\begin{center}
+\noindent\includegraphics[width=20pc,angle=0]{figs/temp_cape.pdf}\\
+\end{center}
+\caption{(a) time mean fraction of the deep tropics in the simulations with upward $\langle \omega \rangle$ (red) and downward $\langle \omega \rangle$ (blue), (b) CAPE computed from the mean temperature and moisture profiles of upward regions and downward regions. Black is for CAPE computed from the mean temperature and moisture profiles for the entire deep tropics, grey is the approximate discussed in the text.}
+\label{fig:cape}
+\end{figure}
+
+To understand the degree to which atmospheric stability in the deep tropics is dependent on ascending and descending motion, temperature and moisture profiles are conditionally sampled based on whether $\langle \omega \rangle$ is positive or negative, indicating predominantly subsiding or ascending grid columns. The mean temperature and moisture profiles of subsiding and ascending regions in the deep tropics are used to compute the dilute-CAPE used by the ZM scheme, offline. Figure~\ref{fig:cape}a indicates that the mean profile of ascending regions are associated with large values of CAPE ($>170$ J/kg), and low values in subsiding regions ($<110$ J/kg). Figure~\ref{fig:profiles} shows the climatological temperature and specific humidity profiles of subsiding grid cells, averaged over the deep tropics and presented as anomalies from the mean temperature and specific humidity of the entire deep Tropics. The mean profiles of subsiding regions have an anomalous warming layer in the $600-800$ hPa layer and an anomalous moisture deficit throughout the entire column. This warming of the environment in subsiding regions opposes the generation of CAPE through equation~\ref{eq:cape}.
+
+\begin{figure}[t]
+\begin{center}
+\noindent\includegraphics[width=20pc,angle=0]{figs/temp_profiles.pdf}\\
+\end{center}
+\caption{}
+\label{fig:profiles}
+\end{figure}
+
+Figure~\ref{fig:cape}b shows that fractional area of air columns in the deep tropics that are predominantly subsiding (ascending) changes drastically with resolution, from $0.32$ ($0.68$) in the $ne20$ ($\Delta x = 166.8$ km) run, and monotonically increasing (decreasing) with resolution to $0.51$ ($0.49$) in the $ne120$ ($\Delta x = 27.8$ km) run. Interestingly, the sum of the product of the fractional areas with their corresponding CAPE values gives approximately the same CAPE values computed from the mean temperature and moisture profiles over the entire deep tropics (Figure~\ref{fig:cape}a). This provides strong evidence that CAPE values in the deep tropics are decreasing with resolution because a larger (smaller) space-time fraction of the deep tropics are made up of predominantly subsiding (ascending) grid columns with increasing resolution.
+
+Poleward of the deep tropics and within the subtropics, the logistic regression indicates that subsidence is a poor predictor of $FREQZM$ (Figure~\ref{fig:4reg}a,b). The R-value decreases to a local minimum between $15^{\circ} - 20^{\circ}$ latitude, and the magnitude of the sensitivity parameter steeply declines. The local minimum in the R-value corresponds with a local maximum in the latent heat fluxes (Figure~\ref{fig:4reg}c), indicating that the boundary layer is being driven unstable by large surface latent heat fluxes. The CAPE values in the $10^{\circ} - 15^{\circ}$ latitude region are likely to be small, since the ZM precipitation rate consists primarily of drizzle (Figure~\ref{fig:4reg}d). The predominance of drizzle in this region is probably a result of the large subsiding motion in the subtropics (not shown) constraining CAPE from becoming too large. AGCMs are known to suffer from an excess drizzle bias in precisely this region \citep{D2006JCLIM}, and this analysis indicates that this bias is due to the use of a CAPE trigger function.
 
 \ack This class file was developed by Sunrise Setting Ltd,
 Paignton, Devon, UK. Website:\\
