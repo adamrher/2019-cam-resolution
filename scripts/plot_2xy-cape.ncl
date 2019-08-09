@@ -116,7 +116,7 @@ begin
 
    do n = 0,ndx-1
 
-     fv  = addfile("../data/cape/" + fname_vomg(n),"r")
+     fv  = addfile("../data/vomg/" + fname_vomg(n),"r")
 
      fdtol = fv->FRACVDtol
      fd = fv->FRACVDtr
