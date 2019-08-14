@@ -106,15 +106,15 @@ begin
 
   ;;add legend
   txres = True
-  txres@txFontHeightF = 0.011
+  txres@txFontHeightF = 0.014
   txres@txJust = "CenterLeft"
 
   plres  = True                  ; polyline mods desired
   plres@gsLineDashPattern  = 0                    ; solid line
-  plres@gsLineThicknessF  = 2.                   ; line thicker
+  plres@gsLineThicknessF  = 3.                   ; line thicker
 
-  yy = (/ 0.66,0.645,0.63,0.615,0.60,0.585,0.57 /)+0.07
-  xx = (/ 0.13,0.15 /)
+  yy = (/ 0.51,0.49,0.47,0.45,0.43,0.41,0.39 /)
+  xx = (/ 0.62,0.64 /)
 
   ;;switch order of files
   fname1 = fname1(::-1)
