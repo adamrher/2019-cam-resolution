@@ -7,20 +7,21 @@ begin
 ;******************************************************
   tropics = True
 
-  fname_vomg= (/"physgrid_180607_QPC6_ne20pg3_ne20pg3_mg17_181020_dt2700.vomg-diags.tol.nc", \
-	        "physgrid_180607_QPC6_ne30pg3_ne30pg3_mg17_180617.vomg-diags.tol.nc", \
-		"physgrid_180607_QPC6_ne40pg3_ne40pg3_mg17_181020_dt1350.vomg-diags.tol.nc", \
-	        "physgrid_180515_QPC6_ne60pg3_ne60pg3_mg17_180528.vomg-diags.tol.nc", \
-	        "physgrid_180607_QPC6_ne80pg3_ne80pg3_mg17_181018.vomg-diags.tol.nc", \
-		"physgrid_180515_QPC6_ne120pg3_ne120pg3_mg17_180602.vomg-diags.tol.nc"/)
+  dir = "pm15deg/"
+  fname_vomg= (/"physgrid_180607_QPC6_ne20pg3_ne20pg3_mg17_181020_dt2700.vomg-diags.nc", \
+                "physgrid_180607_QPC6_ne30pg3_ne30pg3_mg17_180617.vomg-diags.nc", \
+                "physgrid_180607_QPC6_ne40pg3_ne40pg3_mg17_181020_dt1350.vomg-diags.nc", \
+                "physgrid_180515_QPC6_ne60pg3_ne60pg3_mg17_180528.vomg-diags.nc", \
+                "physgrid_180607_QPC6_ne80pg3_ne80pg3_mg17_181018.vomg-diags.nc", \
+                "physgrid_180515_QPC6_ne120pg3_ne120pg3_mg17_180602.vomg-diags.nc"/)
   nfiles = dimsizes(fname_vomg)
 
-  label = (/"  ne20  (166.8km)", \
-  	    "  ne30  (111.2km)", \
-	    "  ne40  (83.4km)", \
-	    "  ne60  (55.6km)", \
-	    "  ne80  (41.7km)", \
-	    "  ne120 (27.8km)"/)
+  label = (/"  ne20", \
+  	    "  ne30", \
+	    "  ne40", \
+	    "  ne60", \
+	    "  ne80", \
+	    "  ne120"/)
 
   colors = (/"blue","deepskyblue1","green","magenta","red","black"/)
 
@@ -83,21 +84,21 @@ begin
 
   ;;add legend
   txres = True
-  txres@txFontHeightF = 0.020
+  txres@txFontHeightF = 0.015
   txres@txJust = "CenterLeft"
 
   plres  = True                  ; polyline mods desired
   plres@gsLineDashPattern  = 0                    ; solid line
-  plres@gsLineThicknessF  = 5.                   ; line thicker
+  plres@gsLineThicknessF  = 4.                   ; line thicker
 
-  yy = (/ 0.90,0.87,0.84,0.81,0.78,0.75,0.72 /)
-  xx = (/ 0.20,0.24 /)
+  yy = (/ 0.72,0.70,0.68,0.66,0.64,0.62,0.60 /) + 0.014
+  xx = (/ 0.60,0.64 /)
 
 
 ;;;;set up plots
 
- resf@trXMinF =-0.5
- resf@trXMaxF = 0.5
+ resf@trXMinF =-0.7
+ resf@trXMaxF = 0.7
  resf@tiXAxisString = "T(descending) minus Tbar (K)"
  plot(0) = gsn_csm_blank_plot(wks,resf)
 
@@ -105,7 +106,6 @@ begin
  resf@trXMaxF = 0.01
  resf@tiXAxisString = "Q(descending) minus Qbar (g/kg)"
  plot(1) = gsn_csm_blank_plot(wks,resf)
-
 
 ;;;;;;;;;;need to generalize this to grab hyam,hybm from somewhere else
  vname = "physgrid_180607_QPC6_ne30pg3_ne30pg3_mg17_180617"
@@ -126,7 +126,7 @@ begin
  do n = 0,nfiles-1
  
    print("Begin case " + n)
-   fv  = addfile("../data/vomg/" + fname_vomg(n),"r")
+   fv  = addfile("../data/vomg/" + dir + fname_vomg(n),"r")
 
    fd = fv->FRACVDtr
    ta = fv->TAtr
@@ -135,12 +135,24 @@ begin
    qd = fv->QDtr
    psa= fv->PSAtr
    psd= fv->PSDtr
+
+   fu = fv->FRACVUtr
+   tu = fv->TUtr
+   qu = fv->QUtr
    delete(fv)
 
-   ta = ta;;*fd
-   td = td;;*fd
-   qa = qa*1000.;;*fd
-   qd = qd*1000.;;*fd 
+   print("check weights")
+   tderiv = fu*tu + fd*td
+   qderiv = fu*qu + fd*qd
+   tdiff = ta - tderiv
+   qdiff = qa - qderiv
+   print("max abs(tdiff) " + max(abs(tdiff)))
+   print("max abs(qdiff) " + max(abs(qdiff)))
+
+   ta = ta
+   td = td
+   qa = qa*1000.
+   qd = qd*1000.
 
    pmd = hyam*p0 + hybm*psd
    pma = hyam*p0 + hybm*psa
@@ -160,8 +172,13 @@ begin
    overlay(plot(1),pNam)
    delete(pNam)
 
+   plres@gsLineColor       = colors(n)
+   gsn_polyline_ndc(wks,xx,(/yy(n),yy(n)/),plres)
+   gsn_text_ndc(wks,label(n),xx(1),yy(n),txres)
+
  end do
 
+;;drawNDCGrid(wks)
 ;*****************************************************
 ; Plot panel
 ;*****************************************************
