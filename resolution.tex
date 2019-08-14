@@ -169,13 +169,18 @@ where $b_0$ and $b_1$ are the shape parameters of the exponential. The predictor
 The zonal mean R-values indicates the greatest goodness of fit in the deep tropics ($\pm 10^{\circ}$ latitude). Figure~\ref{fig:4zonal}c shows the climatological, zonal-mean latent heat flux in the simulations, which is expected to contribute positively to CAPE through the component associated with the thermodynamic state of boundary layer parcels. In the deep tropics, the latent heat flux is small, and the sensitivity parameter is large and negative (Figure~\ref{fig:4zonal}b), which is consistent with our hypothesis that the subsiding motion actively depresses CAPE and the activity of the ZM scheme in the simulations. The sensitivity parameter becomes less negative in the deep tropics with resolution, likely due to the greater magnitude $\langle f_{d} \rangle \langle \omega_{d} \rangle$ with resolution, which requires a lower sensitivity parameter to predict the binary of whether the ZM scheme is active. The R-values generally decrease with resolution indicating that there is degradation in the relationship with resolution. All values shown are statistically significant at the $95\%$ level using a log-likelihood test \citep{WILKSBOOK}.
 
  \begin{table}
- \caption{Fractional contribution of the deep Tropics ($\pm 15^{\circ}$) to changes in global mean precipitation with resolution. The deep Tropics accounts for a majority of the resolution sensitivity despite being only about $25\%$ of the area of the planet. The grid headers refer to differences with respect to the next lowest grid resolution, e.g., $ne30 = ne30-ne20$, $ne40=ne40-ne30$, etc..., which are computed through remapping all data to the $ne20$ grid.}
+ \caption{Fractional contribution of latitude bands $\pm 10^{\circ}$ and $\pm 15^{\circ}$ to changes in global mean precipitation with resolution. The grid headers refer to differences with respect to the next lowest grid resolution, e.g., $ne30 = ne30-ne20$, $ne40=ne40-ne30$, etc..., which are computed through remapping all data to the $ne20$ grid.}
  \centering
  \scriptsize
  \begin{tabular}{lcccccc}
    \hline
    Variable & $ne30$ & $ne40$ & $ne60$ & $ne80$ & $ne120$ \\ 
    \hline
+   $\pm 10^{\circ}$ ($17.6\%$ of global area) \\
+   Convective Precipitation & -0.58 & 0.62 & 0.66 & 0.72 & 0.70 \\
+   Stratiform Precipitation & 0.55 & 0.63 & 0.69 & 0.67 & 0.41 \\ 
+   \hline
+   $\pm 15^{\circ}$ ($25.8\%$ of global area) \\
    Convective Precipitation & 0.22 & 0.75 & 0.73 & 0.79 & 0.72 \\
    Stratiform Precipitation & 0.46 & 0.64 & 0.71 & 0.70 & 0.49 \\      
  \hline
