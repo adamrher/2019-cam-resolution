@@ -7,7 +7,7 @@ begin
 ;******************************************************
   tropics = True
 
-  dir = "pm15deg/"
+  dir = "pm10deg/"
   fname_vomg= (/"physgrid_180607_QPC6_ne20pg3_ne20pg3_mg17_181020_dt2700.vomg-diags.nc", \
                 "physgrid_180607_QPC6_ne30pg3_ne30pg3_mg17_180617.vomg-diags.nc", \
                 "physgrid_180607_QPC6_ne40pg3_ne40pg3_mg17_181020_dt1350.vomg-diags.nc", \
@@ -97,8 +97,8 @@ begin
 
 ;;;;set up plots
 
- resf@trXMinF =-0.7
- resf@trXMaxF = 0.7
+ resf@trXMinF =-0.5
+ resf@trXMaxF = 0.5
  resf@tiXAxisString = "T(descending) minus Tbar (K)"
  plot(0) = gsn_csm_blank_plot(wks,resf)
 
