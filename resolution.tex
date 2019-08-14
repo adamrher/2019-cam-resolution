@@ -70,15 +70,17 @@ The simulations use the CAM6 physics package. The Cloud Layers Unified by Binorm
 
 \subsection{Experimental Design}
  
-The convergence experiment is performed in an aqua-planet configuration \citep{NH2000ASL,MWO2016JAMES}, an all ocean planet with fixed, zonally symmetric sea surface temperatures modeled after present day Earth \citep[$QOBS$ in][]{NH2000ASL}. The aqua-planets are in a perpetual equinox, and aerosols are largely absent from the simulations. Each simulation is ran for one simulated year. Six different horizontal grids are used in this study, which are provided in Table~\ref{tbl:table1}. The horizontal hyper-viscosity operators $\nu$ vary with resolution after \cite{HETAL2019JAMES}, also provided in Table~\ref{tbl:table1}. The values of $\nu$ are a factor 2.5 greater for divergence damping and are not shown. $\Delta t_{phys}$ is chosen to scale with resolution, in proportion to the grid spacing,
+The convergence experiment is performed in an aqua-planet configuration \citep{NH2000ASL,MWO2016JAMES}, an all ocean planet with fixed, zonally symmetric sea surface temperatures modeled after present day Earth \citep[$QOBS$ in][]{NH2000ASL}. The aqua-planets are in a perpetual equinox, and aerosols are largely absent from the simulations. Each simulation is ran for one simulated year. Six different horizontal grids are used in this study, which are provided in Table~\ref{tbl:table1}. All analyses exclude the first month of the simulations, and are computed on their native grids unless otherwise stated.
+
+The horizontal hyper-viscosity operators $\nu$ vary with resolution after \cite{HETAL2019JAMES}, also provided in Table~\ref{tbl:table1}. The values of $\nu$ are a factor 2.5 greater for divergence damping and are not shown. $\Delta t_{phys}$ is chosen to scale with resolution, in proportion to the grid spacing,
 \begin{equation}
 \Delta t_{phys} = \Delta t_{phys,0} \times \frac{n_{e,0}}{n_e}~s,\label{eq:dt-scale}
 \end{equation}
 where $\Delta t_{phys,0}$ is taken to be the standard $1800$ s used in CAM-SE-CSLAM at the standard resolution, $n_{e,0} = ne30$ (equivalent to an average equatorial grid spacing $\Delta x = 111.2$km). This scaling was chosen to avoid large time-truncation errors in a rising moist bubble test \citep[Appendix A in][]{HETAL2019JAMES}, and it is understood that this choice of $\Delta t_{phys}$ will likely lead to greater resolution sensitivity \citep{W2008TELLUS}. The convective time-scale in the deep convection scheme is fixed at 3600 s in all simulations.
  
-\section{Results}
-
- \begin{table}
+ \section{Results}
+ 
+  \begin{table*}
  \caption{Experimental design and global means.}
  \centering
  \scriptsize
@@ -96,17 +98,17 @@ where $\Delta t_{phys,0}$ is taken to be the standard $1800$ s used in CAM-SE-CS
  \hline
  \end{tabular}
  \label{tbl:table1}
- \end{table}
+ \end{table*}
 
-Table~\ref{tbl:table1} provides globally averaged, climatological (omitting the first month) metrics for the CAM6 simulations which are typically published in CAM/CCM convergence studies. Total precipitable water, total cloud fraction and deep convective precipitation rate decreases, while stratiform precipitation increases, monotonically with resolution. Resolution sensitivity in CAM6 is similar to all prior versions of the model. 
+Table~\ref{tbl:table1} provides globally averaged, climatological metrics for the CAM6 simulations which are typically published in CAM/CCM convergence studies. Total precipitable water, total cloud fraction and deep convective precipitation rate decreases, while stratiform precipitation increases, monotonically with resolution. Resolution sensitivity in CAM6 is similar to all prior versions of the model. 
 
 \subsection{Vertical Velocities and Resolution}
 
-\begin{figure}[t]
+\begin{figure}
 \begin{center}
 \noindent\includegraphics[width=20pc,angle=0]{figs/temp_2pdf.pdf}\\
 \end{center}
-\caption{Probability density distribution of the upward vertical pressure velocities $\omega$ computed everywhere in the model from 1 year of 6-hourly data (a) raw values (solid) and values remapped to the $ne20$ grid (dotted), (b) values scaled to the $ne120$ resolution.}
+\caption{Probability density distribution of the upward vertical pressure velocities $\omega$ computed everywhere in the model from six-hourly output over the entirety of the year-long simulations. (a) Values on their native grid (solid) and values remapped to the $ne20$ grid (dotted), (b) values on their native grid, scaled to the $ne120$ resolution.}
 \label{fig:2pdf}
 \end{figure}
 
@@ -122,7 +124,7 @@ where $\langle f_x \rangle$ and $\langle \omega_x \rangle$ refers to the vertica
 
 The global mean, climatological components $\langle f_{u} \rangle \, \langle \omega_{u} \rangle$ and $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ are provided in Figure~\ref{fig:2panel}a,b for the aqua-planet simulations. The magnitude of both $\langle f_{u} \rangle \, \langle \omega_{u} \rangle$ and $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ increase monotonically with resolution, and are equal and opposite, which is a requirement of mass conservation in the model and a convenient check of the calculation. While $\langle f_{d} \rangle$ is about 25\% larger than $\langle f_{u} \rangle$ in all simulations, the vertical mass fractions varies by only few percent with resolution, and so the monotonic behavior of $\langle f_{x} \rangle \, \langle \omega_{x} \rangle$ with resolution is primarily from variations in $ \langle \omega_{x} \rangle$ (not shown).
 
-\begin{figure}[t]
+\begin{figure}
 \begin{center}
 \noindent\includegraphics[width=20pc,angle=0]{figs/temp_diags_2panel.pdf}\\
 \end{center}
@@ -138,7 +140,7 @@ The \cite{ZM1995AO} deep convection scheme (referred to as the $ZM$ scheme, here
 \end{equation}
 where $T_{ve}$ is the virtual temperature of the environment, $R_d$ the gas constant for dry air and subscripts $b$ and $t$ refer to the parcel launch level (typically in the boundary layer) and the level of neutral buoyancy, respectively \citep{Z2002JGR}. Equation~\ref{eq:cape} shows that warming the environment reduces CAPE though reducing the buoyancy of lifted air parcels. The $T_{ve}$ budget contains a term; the vertical advection of potential energy, which simplifies to $\frac{w}{c_{pd}} \frac{\partial gz}{\partial z} = \frac{g}{c_{pd}} w$, and directly proportional to the vertical velocity $w$ by the factor $\frac{g}{c_{pd}}$, with $g$ the acceleration of gravity and $c_{pd}$ the specific heat capacity of dry air (F. Song, personal communication). In subsiding regions, $w$ is negative and opposes the generation of CAPE through adiabatic warming of the environment.
 
-\begin{figure}[t]
+\begin{figure}
 \begin{center}
 \noindent\includegraphics[width=20pc,angle=0]{figs/temp_diags_corr.pdf}\\
 \end{center}
@@ -150,7 +152,7 @@ There is an excellent negative correlation (Pearson's R-value = 0.99) between th
 
 \subsection{Convection Activity and Atmospheric Stability}
 
-\begin{figure}[t]
+\begin{figure}
 \begin{center}
 \noindent\includegraphics[width=14pc,angle=0]{figs/temp_4zonal.pdf}\\
 \end{center}
@@ -167,7 +169,7 @@ where $b_0$ and $b_1$ are the shape parameters of the exponential. The predictor
 The zonal mean R-values indicates the greatest goodness of fit in the deep tropics ($\pm 10^{\circ}$ latitude). Figure~\ref{fig:4zonal}c shows the climatological, zonal-mean latent heat flux in the simulations, which is expected to contribute positively to CAPE through the component associated with the thermodynamic state of boundary layer parcels. In the deep tropics, the latent heat flux is small, and the sensitivity parameter is large and negative (Figure~\ref{fig:4zonal}b), which is consistent with our hypothesis that the subsiding motion actively depresses CAPE and the activity of the ZM scheme in the simulations. The sensitivity parameter becomes less negative in the deep tropics with resolution, likely due to the greater magnitude $\langle f_{d} \rangle \langle \omega_{d} \rangle$ with resolution, which requires a lower sensitivity parameter to predict the binary of whether the ZM scheme is active. The R-values generally decrease with resolution indicating that there is degradation in the relationship with resolution. All values shown are statistically significant at the $95\%$ level using a log-likelihood test \citep{WILKSBOOK}.
 
  \begin{table}
- \caption{Fractional contribution of the deep Tropics ($\pm 15^{\circ}$) to changes in global mean precipitation with resolution. The deep Tropics accounts for a majority of the resolution sensitivity despite being only about $25\%$ of the area of the planet. The grid headers refer to differences with respect to the next lowest grid resolution, e.g., $ne30 = ne30-ne20$, $ne40=ne40-ne30$, etc...}
+ \caption{Fractional contribution of the deep Tropics ($\pm 15^{\circ}$) to changes in global mean precipitation with resolution. The deep Tropics accounts for a majority of the resolution sensitivity despite being only about $25\%$ of the area of the planet. The grid headers refer to differences with respect to the next lowest grid resolution, e.g., $ne30 = ne30-ne20$, $ne40=ne40-ne30$, etc..., which are computed through remapping all data to the $ne20$ grid.}
  \centering
  \scriptsize
  \begin{tabular}{lcccccc}
