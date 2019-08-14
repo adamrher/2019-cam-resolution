@@ -32,12 +32,12 @@ begin
 
   colors = (/"blue","deepskyblue1","green","magenta","red","black"/)
 
-  label = (/"  ne20  (166.8km)", \
-            "  ne30  (111.2km)", \
-            "  ne40  (  83.4km)", \
-            "  ne60  (  55.6km)", \
-            "  ne80  (  41.7km)", \
-            "  ne120(  27.8km)"/)
+  label = (/"  ne20", \
+            "  ne30", \
+            "  ne40", \
+            "  ne60", \
+            "  ne80", \
+            "  ne120"/)
 
   pltNam = "temp_2pdf"
   secpday = 60.*60.*24.

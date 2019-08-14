@@ -77,12 +77,12 @@ begin
   VARS1 = "FRACUgl*OMGUgl"
   MIN1  = -5.1
   MAX1  = -2.8
-  nams1 = "f~B~u~N~~F33~w~F21~~B~u~N~ (~F34~4~F21~10~S~2~N~ Pa/s)"
+  nams1 = "~F34~a~F21~f~B~u~N~~F34~qa~F33~w~F21~~B~u~N~~F34~q~F21~ (~F34~4~F21~10~S~2~N~ Pa/s)"
 
   VARS2 = "FRACDgl*OMGDgl"
   MIN2  = 2.8
   MAX2  = 5.1
-  nams2 = "f~B~d~N~~F33~w~F21~~B~d~N~ (~F34~4~F21~10~S~2~N~ Pa/s)"
+  nams2 = "~F34~a~F21~f~B~d~N~~F34~qa~F33~w~F21~~B~d~N~~F34~q~F21~ (~F34~4~F21~10~S~2~N~ Pa/s)"
 
   OMGU  = "OMGUgl"
   FRACU = "FRACUgl"
@@ -175,7 +175,7 @@ begin
      resf@trYReverse            = False
    end if
 
-   resf@tiXAxisString = "~F33~D~F21~x~B~dyn~N~ (km)"
+   resf@tiXAxisString = "~F33~D~F21~x (km)"
    resf@trXMinF                = 10.
    resf@trXMaxF                = 180.
 
@@ -210,11 +210,13 @@ begin
 
    res@gsMarkerColor = colors(type(n))
    if (type(n).ne.0) then
+     res@tfPolyDrawOrder = "PreDraw"
      res@gsMarkerSizeF = 46
      res@gsMarkerThicknessF = 14
    else
-     res@gsMarkerSizeF = 28
-     res@gsMarkerThicknessF = 8
+     res@tfPolyDrawOrder = "PostDraw"
+     res@gsMarkerSizeF = 24
+     res@gsMarkerThicknessF = 6
    end if
 
    pNam = unique_string("tmp")
@@ -233,6 +235,32 @@ begin
  print("max2: "+max(xall(1,:)))
  print("min2: "+min(xall(1,:)))
 
+;*****************************************************
+; Add legend
+;*****************************************************
+ txres = True
+ txres@txFontHeightF = 0.015
+ txres@txJust = "CenterLeft"
+
+ res@gsMarkerSizeF = 12
+ res@gsMarkerThicknessF = 3
+ label = (/"   ne20", \
+           "   ne30", \
+           "   ne40", \
+           "   ne60", \
+           "   ne80", \
+           "   ne120"/)
+ nlabels = dimsizes(label)
+
+ yy = (/0.72,0.70,0.68,0.66,0.64,0.62,0.60/)+0.01
+ xx = 0.402
+ do n = 0,nlabels-1
+   res@gsMarkerColor = colors(n+1)
+   gsn_polymarker_ndc(wks,(/xx,xx/),(/yy(n),yy(n)/),res)
+   gsn_text_ndc(wks,label(n),xx,yy(n),txres)
+ end do
+
+;;drawNDCGrid(wks)
 ;*****************************************************
 ; Plot panel
 ;*****************************************************

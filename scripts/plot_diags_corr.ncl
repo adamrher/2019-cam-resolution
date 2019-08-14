@@ -77,7 +77,7 @@ begin
   VARS1 = "FRACDgl*OMGDgl"
   MIN1  = 2.8
   MAX1  = 5.1
-  nams1 = "f~B~d~N~~F33~w~F21~~B~d~N~ (~F34~4~F21~10~S~2~N~ Pa/s)"
+  nams1 = "~F34~a~F21~f~B~d~N~~F34~qa~F33~w~F21~~B~d~N~~F34~q~F21~ (~F34~4~F21~10~S~2~N~ Pa/s)"
 
   VARS2 = "FREQZMgl"
   MIN2 = 0.31
@@ -232,6 +232,33 @@ begin
  print("max2: "+max(xall(1,:)))
  print("min2: "+min(xall(1,:)))
 
+ delete([/xx,yy/])
+;*****************************************************
+; Add legend
+;*****************************************************
+ txres = True
+ txres@txFontHeightF = 0.023
+ txres@txJust = "CenterLeft"
+
+ res@gsMarkerSizeF = 20
+ res@gsMarkerThicknessF = 5
+ label = (/"   ne20", \
+           "   ne30", \
+           "   ne40", \
+           "   ne60", \
+           "   ne80", \
+           "   ne120"/)
+ nlabels = dimsizes(label)
+
+ yy = (/0.43,0.395,0.36,0.325,0.29,0.255,0.22/)-0.01
+ xx = 0.245
+ do n = 0,nlabels-1
+   res@gsMarkerColor = colors(n+1)
+   gsn_polymarker_ndc(wks,(/xx,xx/),(/yy(n),yy(n)/),res)
+   gsn_text_ndc(wks,label(n),xx,yy(n),txres)
+ end do
+
+;;drawNDCGrid(wks)
 ;*****************************************************
 ; Plot panel
 ;*****************************************************

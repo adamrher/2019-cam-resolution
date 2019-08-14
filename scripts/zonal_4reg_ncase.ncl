@@ -24,12 +24,6 @@ begin
              "physgrid_180515_QPC6_ne60pg3_ne60pg3_mg17_180528.pearsons-dwn-all.nc", \
              "physgrid_180607_QPC6_ne80pg3_ne80pg3_mg17_181018.pearsons-dwn-all.nc", \
              "physgrid_180515_QPC6_ne120pg3_ne120pg3_mg17_180602.pearsons-dwn-all.nc"/)
-;  fname1 = (/"physgrid_180607_QPC6_ne20pg3_ne20pg3_mg17_181020_dt2700.pearsons-up-all.nc", \
-;             "physgrid_180607_QPC6_ne30pg3_ne30pg3_mg17_180617.pearsons-up-all.nc", \
-;             "physgrid_180607_QPC6_ne40pg3_ne40pg3_mg17_181020_dt1350.pearsons-up-all.nc", \
-;             "physgrid_180515_QPC6_ne60pg3_ne60pg3_mg17_180528.pearsons-up-all.nc", \
-;             "physgrid_180607_QPC6_ne80pg3_ne80pg3_mg17_181018.pearsons-up-all.nc", \
-;	     "physgrid_180515_QPC6_ne120pg3_ne120pg3_mg17_180602.pearsons-up-all.nc"/)
 
   nfiles = dimsizes(fname1)
   VAR1 = "Rlog"
@@ -121,6 +115,13 @@ begin
 
   plotNam = "temp_4zonal"
 
+  label = (/"  ne20", \
+            "  ne30", \
+            "  ne40", \
+            "  ne60", \
+            "  ne80", \
+            "  ne120"/)
+
 ;************** 
 ;graphics stuff
 ;**************
@@ -159,6 +160,18 @@ begin
   res@tmXBValues      = xticks
   res@tmXBLabels      = (/"","-80","","-60","","-40","","-20","","0","","20","","40","","60","","80",""/)
   delete(tmp)
+
+  ;;add legend
+  txres = True
+  txres@txFontHeightF = 0.013
+  txres@txJust = "CenterLeft"
+
+  plres  = True       
+  plres@gsLineDashPattern  = 0
+  plres@gsLineThicknessF  = 5.
+
+  yy = (/ 0.70,0.68,0.66,0.64,0.62,0.60,0.58 /) + 0.02
+  xx = (/ 0.37,0.39 /)
 
 ;************
 ;Main Loop
@@ -454,9 +467,13 @@ end if
  end if
  delete([/zbar,LLbar,B1bar,lat/])
 
+ plres@gsLineColor       = colors(n)
+ gsn_polyline_ndc(wks,xx,(/yy(n),yy(n)/),plres)
+ gsn_text_ndc(wks,label(n),xx(1),yy(n),txres)
+
 end do ;nfiles
 
-
+;;drawNDCGrid(wks)
 ;************************************************
 ; create panel
 ;************************************************
