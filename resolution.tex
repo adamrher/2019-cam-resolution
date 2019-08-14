@@ -148,6 +148,8 @@ where $T_{ve}$ is the virtual temperature of the environment, $R_d$ the gas cons
 
 There is an excellent negative correlation (Pearson's R-value = 0.99) between the global mean, climatological $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ and a measure of the activity of the ZM scheme in the simulations, global mean, climatological $FREQZM$ (Figure~\ref{fig:corr}). At any given grid-point and time-step, $FREQZM$ is a binary variable: one if the ZM scheme is active, zero if it is not. Time-mean $FREQZM$ therefore indicates the fraction of the model time that the ZM scheme is triggered, i.e., dilute CAPE exceeds $\geq 70$ J/kg. It is hypothesized that the greater subsiding motion with resolution opposes the generation of dilute CAPE through subsidence warming, reducing the frequency the ZM scheme is triggered, and creating the strong negative correlation in Figure~\ref{fig:corr}.
 
+\subsection{Convection Activity and Atmospheric Stability}
+
 \begin{figure}[t]
 \begin{center}
 \noindent\includegraphics[width=14pc,angle=0]{figs/temp_4zonal.pdf}\\
@@ -164,6 +166,21 @@ where $b_0$ and $b_1$ are the shape parameters of the exponential. The predictor
 
 The zonal mean R-values indicates the greatest goodness of fit in the deep tropics ($\pm 10^{\circ}$ latitude). Figure~\ref{fig:4zonal}c shows the climatological, zonal-mean latent heat flux in the simulations, which is expected to contribute positively to CAPE through the component associated with the thermodynamic state of boundary layer parcels. In the deep tropics, the latent heat flux is small, and the sensitivity parameter is large and negative (Figure~\ref{fig:4zonal}b), which is consistent with our hypothesis that the subsiding motion actively depresses CAPE and the activity of the ZM scheme in the simulations. The sensitivity parameter becomes less negative in the deep tropics with resolution, likely due to the greater magnitude $\langle f_{d} \rangle \langle \omega_{d} \rangle$ with resolution, which requires a lower sensitivity parameter to predict the binary of whether the ZM scheme is active. The R-values generally decrease with resolution indicating that there is degradation in the relationship with resolution. All values shown are statistically significant at the $95\%$ level using a log-likelihood test \citep{WILKSBOOK}.
 
+ \begin{table}
+ \caption{Fractional contribution of the deep Tropics ($\pm 15^{\circ}$) to changes in global mean precipitation with resolution. The deep Tropics accounts for a majority of the resolution sensitivity despite being only about $25\%$ of the area of the planet. The grid headers refer to differences with respect to the next lowest grid resolution, e.g., $ne30 = ne30-ne20$, $ne40=ne40-ne30$, etc...}
+ \centering
+ \scriptsize
+ \begin{tabular}{lcccccc}
+   \hline
+   Variable & $ne30$ & $ne40$ & $ne60$ & $ne80$ & $ne120$ \\ 
+   \hline
+   Convective Precipitation & 0.22 & 0.75 & 0.73 & 0.79 & 0.72 \\
+   Stratiform Precipitation & 0.46 & 0.64 & 0.71 & 0.70 & 0.49 \\      
+ \hline
+ \end{tabular}
+ \label{tbl:table2}
+ \end{table}
+
 \begin{figure}[t]
 \begin{center}
 \noindent\includegraphics[width=20pc,angle=0]{figs/temp_cape.pdf}\\
@@ -172,7 +189,7 @@ The zonal mean R-values indicates the greatest goodness of fit in the deep tropi
 \label{fig:cape}
 \end{figure}
 
-To understand the degree to which atmospheric stability in the deep tropics is dependent on ascending and descending motion, temperature and moisture profiles are conditionally sampled based on whether $\langle \omega \rangle$ is positive or negative, indicating predominantly subsiding or ascending grid columns. The mean temperature and moisture profiles of subsiding and ascending regions in the deep tropics are used to compute the dilute-CAPE used by the ZM scheme, offline. Figure~\ref{fig:cape}a indicates that the mean profile of ascending regions are associated with large values of CAPE ($>170$ J/kg), and low values in subsiding regions ($<110$ J/kg). Figure~\ref{fig:profiles} shows the climatological temperature and specific humidity profiles of subsiding grid cells, averaged over the deep tropics and presented as anomalies from the mean temperature and specific humidity of the entire deep Tropics. The mean profiles of subsiding regions have an anomalous warming layer in the $600-800$ hPa layer and an anomalous moisture deficit throughout the entire column. This warming of the environment in subsiding regions opposes the generation of CAPE through equation~\ref{eq:cape}.
+To understand the degree to which atmospheric stability in the deep tropics is dependent on ascending and descending motion, temperature and moisture profiles are conditionally sampled based on whether $\langle \omega \rangle$ is positive or negative, indicating predominantly subsiding or ascending grid columns. The mean temperature and moisture profiles of subsiding and ascending regions in the deep tropics are used to compute the dilute-CAPE used by the ZM scheme, offline. Figure~\ref{fig:cape}a indicates that the mean profile of ascending regions are associated with large values of CAPE ($>180$ J/kg), and low values in subsiding regions ($<110$ J/kg). Figure~\ref{fig:profiles} shows the climatological temperature and specific humidity profiles of subsiding grid cells, averaged over the deep tropics and presented as anomalies from the mean temperature and specific humidity of the entire deep Tropics. The mean profiles of subsiding regions have an anomalous warming layer in the $600-800$ hPa layer and an anomalous moisture deficit throughout the entire column. This warming of the environment in subsiding regions opposes the generation of CAPE through equation~\ref{eq:cape}.
 
 \begin{figure}[t]
 \begin{center}
@@ -183,6 +200,10 @@ To understand the degree to which atmospheric stability in the deep tropics is d
 \end{figure}
 
 Figure~\ref{fig:cape}b shows that fractional area of air columns in the deep tropics that are predominantly subsiding (ascending) changes drastically with resolution, from $0.32$ ($0.68$) in the $ne20$ ($\Delta x = 166.8$ km) run, and monotonically increasing (decreasing) with resolution to $0.51$ ($0.49$) in the $ne120$ ($\Delta x = 27.8$ km) run. Interestingly, the sum of the product of the fractional areas with their corresponding CAPE values gives approximately the same CAPE values computed from the mean temperature and moisture profiles over the entire deep tropics (Figure~\ref{fig:cape}a). This provides strong evidence that CAPE values in the deep tropics are decreasing with resolution because a larger (smaller) space-time fraction of the deep tropics are made up of predominantly subsiding (ascending) grid columns with increasing resolution.
+
+\subsection{Vertical Velocities and Stratiform Precipitation}
+
+\subsection{Biases Unrelated to Resolution}
 
 Poleward of the deep tropics and within the subtropics, the logistic regression indicates that subsidence is a poor predictor of $FREQZM$ (Figure~\ref{fig:4zonal}a,b). The R-value decreases to a local minimum between $15^{\circ} - 20^{\circ}$ latitude, and the magnitude of the sensitivity parameter steeply declines. The local minimum in the R-value corresponds with a local maximum in the latent heat fluxes (Figure~\ref{fig:4zonal}c), indicating that the boundary layer is being driven unstable by large surface latent heat fluxes. The CAPE values in the $10^{\circ} - 15^{\circ}$ latitude region are likely to be small, since the ZM precipitation rate consists primarily of drizzle (Figure~\ref{fig:4zonal}d). The predominance of drizzle in this region is probably a result of the large subsiding motion in the subtropics (not shown) constraining CAPE from becoming too large. AGCMs are known to suffer from an excess drizzle bias in precisely this region \citep{D2006JCLIM}, and this analysis indicates that this bias is due to the use of a CAPE trigger function.
 
