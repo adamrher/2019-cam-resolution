@@ -20,8 +20,6 @@ begin
 
   pltNam = "temp_cape"
 
-  xall = new( (/4,ndx/), "double")
-
   secpday = 60.*60.*24.
 
 ;******************************************************
@@ -29,7 +27,7 @@ begin
 ;******************************************************
   wkstype = "pdf"
   wks = gsn_open_wks(wkstype,pltNam)               ; open workstation
-  plot = new( (/4/), "graphic")
+  plot = new( (/6/), "graphic")
 
   resf                        = True
 
@@ -99,9 +97,12 @@ begin
   resf@tiYAxisString = "Dilute-CAPE (J/kg)"
   plot(0) = gsn_csm_blank_plot(wks,resf)
 
-  resf@tiXAxisString = "~F33~D~F21~x (km)"
   plot(2) = gsn_csm_blank_plot(wks,resf)
   plot(3) = gsn_csm_blank_plot(wks,resf)
+
+  resf@tiXAxisString = "~F33~D~F21~x (km)"
+  plot(4) = gsn_csm_blank_plot(wks,resf)
+  plot(5) = gsn_csm_blank_plot(wks,resf)
 
 ;;;load files
 
@@ -145,6 +146,13 @@ begin
 ;  fqall      = (/ 218.8903, 193.2785, 186.3937, 176.2634, 163.0533, 168.7717/)
 ;  fqltz      = (/ 268.6044, 243.0824, 237.2185, 228.0795, 214.3127, 227.1629/)
 
+   ;;+/- 10 deg latitude - moisture/temperature with mean swap
+
+   mtgtz      = (/ 117.3641, 100.0977,  90.3692,  83.5074,  72.5883,  71.1939/)
+   mtltz      = (/ 233.6848, 236.7795, 230.2356, 217.8735, 201.3416, 180.9860/)
+
+   mqgtz      = (/ 184.5795, 180.4862, 164.4374, 147.6592, 125.2140, 116.3727/)
+   mqltz      = (/ 222.2921, 199.3760, 183.1405, 164.2170, 140.5762, 128.5355/)
 
 ;;---begin loop----;;
 
@@ -160,8 +168,7 @@ begin
      fu = fv->FRACVUtr
      delete(fv)
 
-     xall(1,n) = fd
-     xall(2,n) = fu
+;--------------------------------------------------------------------
 
      deriv = fu*ltzero(n) + fd*gtzero(n) 
 
@@ -187,42 +194,75 @@ begin
      pNam = unique_string("tmp")
      plot@$pNam$ = gsn_add_polymarker(wks,plot(0),dx(n),ltzero(n),res)
 
+;--------------------------------------------------------------------
+
+     res@gsMarkerColor = "grey"
+
+     pNam = unique_string("tmp")
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),gtzero(n),res)
+
+     pNam = unique_string("tmp")
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),gtzero(n),res)
+
+     pNam = unique_string("tmp")
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),ltzero(n),res)
+
+     pNam = unique_string("tmp")
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),ltzero(n),res)
+
+     res@gsMarkerColor = "red"
+
+     pNam = unique_string("tmp")
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),mtltz(n),res)
+
+     pNam = unique_string("tmp")
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),mqltz(n),res)
+
+     res@gsMarkerColor = "blue"
+     
+     pNam = unique_string("tmp")
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),mtgtz(n),res)
+
+     pNam = unique_string("tmp")
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),mqgtz(n),res)
+
+;--------------------------------------------------------------------
      deriv = fu*ftltz(n) + fd*ftgtz(n)
 
      res@gsMarkerColor = "blue"
      pNam = unique_string("tmp")
-     plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),ftgtz(n),res)
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(4),dx(n),ftgtz(n),res)
 
      res@gsMarkerColor = "grey"
      pNam = unique_string("grey")
-     plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),deriv,res)
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(4),dx(n),deriv,res)
 
      res@gsMarkerColor = "black"
      pNam = unique_string("tmp")
-     plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),ftall(n),res)
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(4),dx(n),ftall(n),res)
 
      res@gsMarkerColor = "red"
      pNam = unique_string("tmp")
-     plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),ftltz(n),res)
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(4),dx(n),ftltz(n),res)
 
      deriv = fu*fqltz(n) + fd*fqgtz(n)
 
      res@gsMarkerColor = "blue"
      pNam = unique_string("tmp")
-     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),fqgtz(n),res)
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(5),dx(n),fqgtz(n),res)
 
      res@gsMarkerColor = "grey"
      pNam = unique_string("grey")
-     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),deriv,res)
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(5),dx(n),deriv,res)
      
      res@gsMarkerColor = "black"
      pNam = unique_string("tmp")
-     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),fqall(n),res)
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(5),dx(n),fqall(n),res)
      
      res@gsMarkerColor = "red"
      pNam = unique_string("tmp")
-     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),fqltz(n),res)
-
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(5),dx(n),fqltz(n),res)
+;--------------------------------------------------------------------
    end do
 
 ;;drawNDCGrid(wks)
@@ -236,12 +276,12 @@ begin
   resP@gsnPanelBottom   = 0.05
   resPgsnPanelXWhiteSpacePercent = 5
   resP@gsnPanelFigureStringsFontHeightF = 0.015
-  resP@gsnPanelFigureStrings = (/"a.","b.","c.","d."/)
+  resP@gsnPanelFigureStrings = (/"a.","b.","c.","d.","e.","f."/)
   resP@gsnPanelFigureStringsPerimOn     = True
   resP@gsnPanelFigureStringsBackgroundFillColor = "white"
   resP@amJust           = "TopLeft"
   ;resP@txString = pltTitle
-  gsn_panel(wks,plot,(/2,2/),resP)               ; now draw as one plot
+  gsn_panel(wks,plot,(/3,2/),resP)               ; now draw as one plot
 
 frame(wks)
 
