@@ -196,20 +196,6 @@ begin
 
 ;--------------------------------------------------------------------
 
-     res@gsMarkerColor = "grey"
-
-     pNam = unique_string("tmp")
-     plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),gtzero(n),res)
-
-     pNam = unique_string("tmp")
-     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),gtzero(n),res)
-
-     pNam = unique_string("tmp")
-     plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),ltzero(n),res)
-
-     pNam = unique_string("tmp")
-     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),ltzero(n),res)
-
      res@gsMarkerColor = "red"
 
      pNam = unique_string("tmp")
