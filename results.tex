@@ -74,6 +74,12 @@ The global mean, climatological components $\langle f_{u} \rangle \, \langle \om
 
 \subsection{Convective Precipitation and Vertical Velocities}
 
+%The dilute CAPE calculation is a modified form of the traditional CAPE, which is shown to be sensitive to the vertical velocity field in an analysis of a large eddy simulation \citep{SZ2018JCLIM}. A relationship between vertical velocities and CAPE falls out of the CAPE equation itself (F. Song, personal communication). The CAPE budget can be separated into two components \citep{Z2002JGR}; instability due to the thermodynamic state of parcels in the boundary layer and the instability generated through radiative cooling and advection of dry static energy and moisture by the environment, i.e., the resolved flow. The latter term is defined as, 
+%\begin{equation}
+%-R_d \int_{p_t}^{p_b} \frac{\partial T_{ve}}{\partial t} dlnp \label{eq:cape}
+%\end{equation}
+%where $T_{ve}$ is the virtual temperature of the environment, $R_d$ the gas constant for dry air and subscripts $b$ and $t$ refer to the parcel launch level (typically in the boundary layer) and the level of neutral buoyancy, respectively \citep{Z2002JGR}. Equation~\ref{eq:cape} shows that warming the environment reduces CAPE though reducing the buoyancy of lifted air parcels. The $T_{ve}$ budget contains a term; the vertical advection of potential energy, which simplifies to $\frac{w}{c_{pd}} \frac{\partial gz}{\partial z} = \frac{g}{c_{pd}} w$, and directly proportional to the vertical velocity $w$ by the factor $\frac{g}{c_{pd}}$, with $g$ the acceleration of gravity and $c_{pd}$ the specific heat capacity of dry air. In subsiding regions, $w$ is negative and opposes the generation of CAPE through adiabatic warming of the environment.
+
 The \cite{ZM1995AO} deep convection scheme (referred to as the $ZM$ scheme, hereafter) is modulated by the dilute CAPE calculation, which itself is intertwined with the vertical velocity field \citep{SZ2018JCLIM}. The CAPE budget can be separated into two components \citep{Z2002JGR}; instability due to the thermodynamic state of parcels in the boundary layer and the instability generated through advection of dry static energy and moisture by the environment, i.e., the resolved flow. The latter term is defined as, 
 \begin{equation}
 -R_d \int_{p_t}^{p_b} \frac{\partial T_{ve}}{\partial t} dlnp \label{eq:cape}
