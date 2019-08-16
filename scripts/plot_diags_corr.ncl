@@ -237,11 +237,11 @@ begin
 ; Add legend
 ;*****************************************************
  txres = True
- txres@txFontHeightF = 0.023
+ txres@txFontHeightF = 0.03
  txres@txJust = "CenterLeft"
 
- res@gsMarkerSizeF = 20
- res@gsMarkerThicknessF = 5
+ res@gsMarkerSizeF = 30
+ res@gsMarkerThicknessF = 6
  label = (/"   ne20", \
            "   ne30", \
            "   ne40", \
@@ -250,8 +250,8 @@ begin
            "   ne120"/)
  nlabels = dimsizes(label)
 
- yy = (/0.43,0.395,0.36,0.325,0.29,0.255,0.22/)-0.01
- xx = 0.245
+ yy = (/0.95,0.91,0.87,0.83,0.79,0.75,0.71/) + 0.006
+ xx = 0.735
  do n = 0,nlabels-1
    res@gsMarkerColor = colors(n+1)
    gsn_polymarker_ndc(wks,(/xx,xx/),(/yy(n),yy(n)/),res)
