@@ -47,7 +47,7 @@ begin
   resf@tmXTMajorThicknessF = 1.
   resf@tmYLMajorThicknessF = 1.
 
-  resf@tmBorderThicknessF = 3.
+  resf@tmBorderThicknessF = 4.
   resf@tmXBMajorOutwardLengthF = 0.
   resf@tmYLMajorOutwardLengthF = 0.
   resf@tmXBMinorOutwardLengthF = 0.
