@@ -54,7 +54,7 @@ begin
   ;res@vpWidthF = 0.7
   ;res@vpHeightF = 0.35
 
-  res@tmBorderThicknessF = 4 ;axes thickness
+  res@tmBorderThicknessF = 5 ;axes thickness
   res@tmXBMajorOutwardLengthF = 0.
   res@tmYLMajorOutwardLengthF = 0.
   res@tmXBMinorOutwardLengthF = 0.
@@ -65,7 +65,7 @@ begin
   res@tmYRMinorOutwardLengthF = 0.
 
   res@xyMonoLineThickness = True
-  res@xyLineThicknessF   = 4.
+  res@xyLineThicknessF   = 5.
 
   resline = True
   resline@gsLineThicknessF = 2.
