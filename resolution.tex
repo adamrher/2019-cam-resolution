@@ -214,19 +214,33 @@ AGCMs are known to suffer from producing too much light rain, or drizzle, relati
 
 \subsection{Vertical Velocities and Stratiform Precipitation}
 
+In contrast to the impact of vertical motion on the ZM scheme, stratiform precipitation rates are more intuitively connected to vertical velocities. \cite{RETAL2016CD} proposed that total precipitation rates in models ($R$, sum of convective and stratiform precipitation rates) are determined by the upward moisture flux through cloud base,
+\begin{equation}
+R \approx -\frac{1}{g\rho_{w}} \omega^+ q^+ \label{eq:mflux}
+\end{equation}
+where $\omega^+$ and $q^+$ are the upward vertical pressure velocity and specific humidity at cloud base, respectively, and $\rho_w$ is the density of rainwater. 
+
+Through approximating the cloud base as the $850$ hPa level, equation~\ref{eq:mflux} was found to be a good approximation to total precipitation rates in a regional model \citep{RETAL2016CD} and in the CAM-SE AGCM with CAM5 physics \citep{OETAL2016JAMES}. Figure~\ref{fig:mflux} shows the moisture flux at the $850$ hPa level conditionally sampled in $1$ mm/day bins of precipitation rate, and separated into the components of total precipitation, stratiform and convective precipitation, in the CAM6 $ne30$ simulation. The figure shows that the increase in precipitation rates with moisture flux is due primarily to the stratiform precipitation rates. The increase in stratiform precipitation rates with resolution is likely due to the increase in magnitude of $\omega$ with resolution.
+
 \begin{figure}
 \begin{center}
 \noindent\includegraphics[width=20pc,angle=0]{figs/temp_mflux.pdf}\\
 \end{center}
-\caption{}
+\caption{Precipitation rates vs. upward moisture flux at the 850 hPa level. Solid lines refer to median moisture flux conditioned on the corresponding stratiform (green), convective (blue) and total (magenta) precipitation rates, and shaded regions refer to the conditional interquartile ranges.}
 \label{fig:mflux}
 \end{figure}
+
+To unravel the contributions of $\omega$ and $q$ at the 850 hPa level, $\omega_{850}$ and $q_{850}$ to the increase in climatological stratiform precipitation with resolution, the area averaged, climatological stratiform precipitation rate $\overline{R_{s}}$ is decomposed into a time mean magnitude term $M$ and space-time frequency term $f$,
+\begin{equation}
+\overline{R_{s}} = \sum_i \sum_j f \left( \omega_i , q_j \right) M \left( \omega_i , q_j \right) \label{eq:pdecomp}
+\end{equation}
+after \cite{TETAL2018CD}, and the subscript $850$ is dropped from $\omega$ and $q$ for brevity. Table~\ref{tbl:table2} indicates that the $\pm 15^{\circ}$ latitude band accounts for most of the change in global mean stratiform precipitation with resolution, and so Figure~\ref{fig:pdecomp} is a plot of the terms $M\left( \omega_i , q_j \right)$ and $f\left( \omega_i , q_j \right) \times M\left( \omega_i , q_j \right)$ for all resolutions, and in the $\pm 15^{\circ}$ latitude region. The plots are computed using 6-hourly instantaneous output of $\omega_{i}$ and $q_{j}$, with 0.05 Pa/s and 0.4 g/kg bins. Values in  $\left( \omega_{i} , q_{j} \right)$ space are only shown for bins with $f \geq1 \times 10^{-5}$, a reasonable cut-off to a bins' contribution to $\overline{R_s}$. Larger $\omega$ values correspond to larger magnitude stratiform precipitation rates, which have larger space-time frequencies $f\left( \omega_i , q_j \right)$ at higher resolutions, explaining the increase in $\overline{R_{s}}$ with resolution in Table~\ref{tbl:table2}. Changes in the space-time frequency of the $q$ field contributes comparatively less to changes in stratiform precipitation.
 
 \begin{figure}
 \begin{center}
 \noindent\includegraphics[width=20pc,angle=0]{figs/temp_pdecomp.pdf}\\
 \end{center}
-\caption{}
+\caption{Decomposition of the climatological stratiform precipitation rates, averaged over the $\pm 15^{\circ}$ latitude band into $\omega_{850}$ and $q_{850}$ environmental conditions. Left column shows the time mean magnitude term $M\left( \omega_i , q_j \right)$ and the right column is the magnitude term multiplied by the space-time frequency term $f\left( \omega_i , q_j \right) \times M\left( \omega_i , q_j \right)$. Integrals over $f \times M$ gives the climatological, area averaged stratiform precipitation rate. Panel labels denote the grid resolution of the model run.}
 \label{fig:pdecomp}
 \end{figure}
 
