@@ -112,7 +112,7 @@ begin
    res@trYMinF                = ymin
    res@trYMaxF                = ymax
 
-   labels(2*n) = "~F10~M~F21~(" + dx(n) + ")"
+   labels(2*n) = "~F10~M~B~s~N~~F21~ (" + dx(n) + ")"
 
    res@cnLevelSelectionMode = "ManualLevels"
    res@cnMinLevelValF  =   0.
@@ -127,7 +127,7 @@ begin
    Ptot!1 = "omega"
    Ptot&omega = omg
 
-   labels(2*n+1) = "~F10~f ~F34~4 ~F10~M~F21~(" + dx(n) + ")"
+   labels(2*n+1) = "~F10~f~B~s~N~~F10~M~B~s~N~~F21~ (" + dx(n) + ")"
 
    res@cnMinLevelValF  =   0.
    res@cnMaxLevelValF  =   0.045;0.50
