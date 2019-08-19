@@ -92,7 +92,7 @@ begin
   resf@tiYAxisString = "A~B~x~N~ (unitless)"
   plot(1) = gsn_csm_blank_plot(wks,resf)
 
-  resf@trYMinF = 60.
+  resf@trYMinF = 40.
   resf@trYMaxF = 260.
   resf@tiYAxisString = "Dilute-CAPE (J/kg)"
   plot(0) = gsn_csm_blank_plot(wks,resf)
@@ -199,7 +199,7 @@ begin
      plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),mtltz(n),res)
 
      pNam = unique_string("tmp")
-     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),mqltz(n),res)
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),fqltz(n),res)
 
      res@gsMarkerColor = "blue"
      
@@ -207,7 +207,7 @@ begin
      plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),mtgtz(n),res)
 
      pNam = unique_string("tmp")
-     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),mqgtz(n),res)
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),fqgtz(n),res)
 
 ;--------------------------------------------------------------------
    end do
