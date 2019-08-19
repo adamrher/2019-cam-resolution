@@ -47,7 +47,7 @@ begin
   resf@tmXTMajorThicknessF = 1.
   resf@tmYLMajorThicknessF = 1.
 
-  resf@tmBorderThicknessF = 3.
+  resf@tmBorderThicknessF = 5.
   resf@tmXBMajorOutwardLengthF = 0.
   resf@tmYLMajorOutwardLengthF = 0.
   resf@tmXBMinorOutwardLengthF = 0.
@@ -142,8 +142,8 @@ begin
 ;;---begin loop----;;
 
    res@gsMarkerIndex = 2 
-   res@gsMarkerSizeF = 26
-   res@gsMarkerThicknessF = 6
+   res@gsMarkerSizeF = 20
+   res@gsMarkerThicknessF = 5
 
    do n = 0,ndx-1
 
