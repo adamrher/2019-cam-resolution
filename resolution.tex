@@ -114,7 +114,7 @@ Table~\ref{tbl:table1} provides some globally averaged, climatological metrics f
 
 The probability density function (PDF) of negative, or upward vertical pressure velocities $\omega$ in the aqua-planets is provided in Figure~\ref{fig:2pdf}a. The magnitude of upward $\omega$ increases monotonically with resolution, with positive, or downward $\omega$ behaving similarly (not shown). This monotonic increase in the magnitude of $\omega$ is evident even after remapping all model output to a common grid ($ne20$; dotted curves in Figure~\ref{fig:2pdf}a).
 
-The PDF's may be scaled to the highest-resolution resolution grid through $ \alpha P (\omega / \alpha)$, where $\alpha$ is the scale factor from equation~\ref{eq:alpha}, $P$ the original PDF and setting $\Delta x_0$ to the $ne120$ grid-spacing. Figure~\ref{fig:2pdf}b shows the scaled PDF's for a power law exponent $n=-1$ in $\Delta x$. The scaled PDF's all collapse onto the high-resolution reference, indicating that the power-law exponent $n=-1$ explains to first-order the variation in vertical velocity with resolution in the aqua-planet simulations. 
+The PDF's may be scaled to the highest-resolution resolution grid through $ \alpha P (\omega / \alpha)$, where $P$ the original PDF, $\alpha$ is the scale factor from equation~\ref{eq:alpha} and setting $\Delta x_0$ to the $ne120$ grid-spacing. Figure~\ref{fig:2pdf}b shows the scaled PDF's for a power law exponent $n=-1$ in $\Delta x$. The scaled PDF's all collapse onto the high-resolution reference, indicating that the power-law exponent $n=-1$ explains to first-order the variation in vertical velocity with resolution in the aqua-planet simulations. 
 
 Changes to the vertical velocity field can be further understood through decomposing the mass weighted vertical mean $ \langle \omega \rangle$ into upward and downward components,
 \begin{equation}
@@ -236,7 +236,7 @@ AGCMs are known to suffer from a drizzle bias, producing too much light rain rel
 
 \subsection{Vertical Velocities and Stratiform Precipitation}
 
-In contrast to the impact of vertical motion on the ZM scheme, the stratiform scheme is more intuitively connected to vertical velocities. \cite{RETAL2016CD} proposed that total precipitation rates in models ($R$, sum of convective and stratiform precipitation rates) are determined by the upward moisture flux through cloud base,
+In contrast to the impact of vertical motion on the ZM scheme, the stratiform scheme is more intuitively connected to vertical velocities. \cite{RETAL2016CD} proposed that total precipitation rates in models ($R$, sum of convective and stratiform precipitation rates) can be approximated by the upward moisture flux through cloud base,
 \begin{equation}
 R \approx -\frac{1}{g\rho_{w}} \omega^+ q^+ \label{eq:mflux}
 \end{equation}
