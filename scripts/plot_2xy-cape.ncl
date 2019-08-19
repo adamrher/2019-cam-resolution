@@ -93,8 +93,8 @@ begin
   resf@tiYAxisString = "A~B~x~N~ (unitless)"
   plot(1) = gsn_csm_blank_plot(wks,resf)
 
-  resf@trYMinF =  20.
-  resf@trYMaxF = 100.
+  resf@trYMinF =   0.
+  resf@trYMaxF = 120.
   resf@tiYAxisString = "Dilute-CAPE (J/kg)"
   plot(0) = gsn_csm_blank_plot(wks,resf)
 
