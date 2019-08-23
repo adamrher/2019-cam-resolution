@@ -82,7 +82,7 @@ begin
   VARS2 = "FREQZMgl"
   MIN2 = 0.31
   MAX2 = 0.58
-  nams2 = "FREQZM"
+  nams2 = "~F14~FREQZM"
 
   OMGD  = "OMGDgl"
   FRACD = "FRACDgl"
