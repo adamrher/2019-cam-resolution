@@ -20,8 +20,8 @@ begin
 
   nfiles   = dimsizes(fname_in)
 
-  xtitle = "~F33~w~F21~~B~850~N~ (hPa/day)"
-  ytitle = "q~B~850~N~ (g/kg)"
+  xtitle = "~F8~w~F10~~B~850~N~~F21~ (hPa/day)"
+  ytitle = "~F10~q~B~850~N~~F21~ (g/kg)"
 
   xmin     = -4.
   xmax     =  1.
@@ -62,7 +62,7 @@ begin
 
   res@cnFillMode = "CellFill"
 
-  res@tmBorderThicknessF = 2 ;axes thickness
+  res@tmBorderThicknessF = 1.5 ;axes thickness
   res@tmXBMajorOutwardLengthF = 0.
   res@tmYLMajorOutwardLengthF = 0.
   res@tmXBMinorOutwardLengthF = 0.
@@ -71,6 +71,16 @@ begin
   res@tmYRMajorOutwardLengthF = 0.
   res@tmXTMinorOutwardLengthF = 0.
   res@tmYRMinorOutwardLengthF = 0.
+
+  res@tmXTMajorThicknessF = 1.5
+  res@tmXBMajorThicknessF = 1.5
+  res@tmYLMajorThicknessF = 1.5
+  res@tmYRMajorThicknessF = 1.5
+
+  res@tiXAxisFontHeightF = 0.030
+  res@tiYAxisFontHeightF = 0.030
+  res@tmXBLabelFontHeightF = 0.022
+  res@tmYLLabelFontHeightF = 0.022
 
   res@vpWidthF            = 0.5           ; change aspect ratio of plot
   res@vpHeightF           = 0.5
@@ -98,11 +108,12 @@ begin
 
    res@lbLabelBarOn         = False
    if (n.eq.nfiles-1)
+     ;;res@tmXBLabelsOn         = True
      res@lbLabelBarOn         = True
      res@lbBoxSeparatorLinesOn= False
      res@lbTitleString = xtitle
      res@lbTitlePosition      = "Top"
-     res@lbTitleFontHeightF   = 0.02
+     res@lbTitleFontHeightF   = res@tiYAxisFontHeightF
    end if
 
    res@trXMinF                = xmin
@@ -114,6 +125,8 @@ begin
 
    labels(2*n) = "~F10~M~B~s~N~~F21~ (" + dx(n) + ")"
 
+
+   ;;res@tmYLLabelsOn         = True
    res@cnLevelSelectionMode = "ManualLevels"
    res@cnMinLevelValF  =   0.
    res@cnMaxLevelValF  = 350.
@@ -129,6 +142,7 @@ begin
 
    labels(2*n+1) = "~F10~f~B~s~N~~F10~M~B~s~N~~F21~ (" + dx(n) + ")"
 
+   ;;res@tmYLLabelsOn         = False
    res@cnMinLevelValF  =   0.
    res@cnMaxLevelValF  =   0.045;0.50
    res@cnLevelSpacingF =   0.00025;0.025
@@ -152,7 +166,8 @@ begin
   resP@amJust           = "BottomLeft"
 
   resP@gsnPanelBottom   = 0.05
-
+  resP@gsnPanelXWhiteSpacePercent = 1.
+  resP@gsnPanelYWhiteSpacePercent = 1.
   gsn_panel(wks,plot,(/nfiles,2/),resP)               ; now draw as one plot
 
 frame(wks) 
