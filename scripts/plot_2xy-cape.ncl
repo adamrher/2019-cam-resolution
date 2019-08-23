@@ -22,12 +22,19 @@ begin
 
   secpday = 60.*60.*24.
 
+  ;;do additional panels where T/q fixed to ne20
+  senstest = False
+
 ;******************************************************
 ; create plot
 ;******************************************************
   wkstype = "pdf"
   wks = gsn_open_wks(wkstype,pltNam)               ; open workstation
-  plot = new( (/2/), "graphic")
+  if (senstest) then
+    plot = new( (/4/), "graphic")
+  else
+    plot = new( (/2/), "graphic")
+  end if
 
   resf                        = True
 
@@ -98,6 +105,11 @@ begin
   resf@tiYAxisString = "Dilute-CAPE (J/kg)"
   plot(0) = gsn_csm_blank_plot(wks,resf)
 
+  if (senstest) then
+    plot(2) = gsn_csm_blank_plot(wks,resf)
+    plot(3) = gsn_csm_blank_plot(wks,resf)
+  end if
+
 ;;;load files
 
    ;;10-20 deg latitude
@@ -110,6 +122,16 @@ begin
    gtzero     = (/  54.4207,  52.8203,  50.6630,  46.3680,  42.5683,  32.5088/)
    alls       = (/  60.2494,  57.6075,  55.4193,  51.1499,  47.6363,  39.3129/)
    ltzero     = (/  81.0734,  69.8895,  67.5836,  63.1350,  59.4726,  53.5618/)
+
+   ;;10-30 deg latitude fix to ne20 q profile
+   fqgtz      = (/  54.4207,  47.6159,  47.9118,  42.7834,  41.1963,  38.3850/)
+   fqalls     = (/  60.2494,  58.6018,  58.7836,  54.3978,  52.5390,  46.5009/)
+   fqltz      = (/  81.0734,  90.9758,  89.8299,  85.1896,  82.5334,  66.8545/)
+
+   ;;10-30 deg latitude fix to ne20 T profile
+   ftgtz      = (/  54.4207,  59.7078,  57.2560,  58.0277,  55.7975,  48.3512/)
+   ftalls     = (/  60.2494,  59.4268,  57.0559,  57.1198,  55.4486,  52.8894/)
+   ftltz      = (/  81.0734,  59.8075,  57.2028,  55.1835,  54.0333,  60.5971/)
 
 ;;---begin loop----;;
 
@@ -152,6 +174,49 @@ begin
      plot@$pNam$ = gsn_add_polymarker(wks,plot(0),dx(n),ltzero(n),res)
 
 ;--------------------------------------------------------------------
+
+if (senstest) then
+
+     deriv = fu*fqltz(n) + fd*fqgtz(n)
+
+     res@gsMarkerColor = "blue"
+     pNam = unique_string("tmp")
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),fqgtz(n),res)
+
+     res@gsMarkerColor = "grey"
+     pNam = unique_string("grey")
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),deriv,res)
+
+     res@gsMarkerColor = "black"
+     pNam = unique_string("tmp")
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),fqalls(n),res)
+
+     res@gsMarkerColor = "red"
+     pNam = unique_string("tmp")
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(2),dx(n),fqltz(n),res)
+
+     deriv = fu*ftltz(n) + fd*ftgtz(n)
+
+     res@gsMarkerColor = "blue"
+     pNam = unique_string("tmp")
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),ftgtz(n),res)
+
+     res@gsMarkerColor = "grey"
+     pNam = unique_string("grey")
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),deriv,res)
+
+     res@gsMarkerColor = "black"
+     pNam = unique_string("tmp")
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),ftalls(n),res)
+
+     res@gsMarkerColor = "red"
+     pNam = unique_string("tmp")
+     plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),ftltz(n),res)
+
+end if
+;--------------------------------------------------------------------
+
+
    end do
 
 ;;drawNDCGrid(wks)
@@ -170,7 +235,12 @@ begin
   resP@gsnPanelFigureStringsBackgroundFillColor = "white"
   resP@amJust           = "TopLeft"
   ;resP@txString = pltTitle
-  gsn_panel(wks,plot,(/1,2/),resP)               ; now draw as one plot
+
+  if (senstest) then
+    gsn_panel(wks,plot,(/2,2/),resP)
+  else
+    gsn_panel(wks,plot,(/1,2/),resP)               ; now draw as one plot
+  end if
 
 frame(wks)
 
