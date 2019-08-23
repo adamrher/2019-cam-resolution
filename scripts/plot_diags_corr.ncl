@@ -251,7 +251,7 @@ begin
  nlabels = dimsizes(label)
 
  yy = (/0.95,0.91,0.87,0.83,0.79,0.75,0.71/) + 0.006
- xx = 0.735
+ xx = 0.8165
  do n = 0,nlabels-1
    res@gsMarkerColor = colors(n+1)
    gsn_polymarker_ndc(wks,(/xx,xx/),(/yy(n),yy(n)/),res)
