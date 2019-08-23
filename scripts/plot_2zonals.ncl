@@ -94,11 +94,11 @@ begin
   res@gsnDraw     = False      ; Will draw later, after overlaying
   res@gsnFrame    = False      ; all plots
 
-  res@xyLineThicknesses = 6
-  res@vpWidthF    = 0.8        ; Make plots wider
-  res@vpHeightF   = 0.5
+  res@xyLineThicknesses = 8
+  res@vpWidthF    = 0.9        ; Make plots wider
+  res@vpHeightF   = 0.4
 
-  res@tmBorderThicknessF = 4 ;axes thickness
+  res@tmBorderThicknessF = 6 ;axes thickness
   res@tmXBMajorOutwardLengthF = 0.
   res@tmYLMajorOutwardLengthF = 0.
   res@tmXBMinorOutwardLengthF = 0.
@@ -127,10 +127,10 @@ begin
 
   plres  = True       
   plres@gsLineDashPattern  = 0
-  plres@gsLineThicknessF  = res@xyLineThicknesses
+  plres@gsLineThicknessF  = res@xyLineThicknesses - 1
 
-  yy = (/ 0.70,0.68,0.66,0.64,0.62,0.60,0.58 /) - 0.19
-  xx = (/ 0.27,0.29 /)
+  yy = (/ 0.70,0.68,0.66,0.64,0.62,0.60,0.58 /) - 0.22
+  xx = (/ 0.20,0.23 /)
 
 ;************
 ;Main Loop
