@@ -37,62 +37,60 @@ begin
   YMAX2 =  10.
   yaxis2 = "b~B~1~N~, slope (s/Pa)"
 
+  dir2 = "/gpfs/fs1/work/aherring/matlab/logistic/"
+  fname2 = (/"physgrid_180607_QPC6_ne20pg3_ne20pg3_mg17_181020_dt2700.vomg-updwn.nc", \
+             "physgrid_180607_QPC6_ne30pg3_ne30pg3_mg17_180617.vomg-updwn.nc", \
+             "physgrid_180607_QPC6_ne40pg3_ne40pg3_mg17_181020_dt1350.vomg-updwn.nc", \
+             "physgrid_180515_QPC6_ne60pg3_ne60pg3_mg17_180528.vomg-updwn.nc", \
+             "physgrid_180607_QPC6_ne80pg3_ne80pg3_mg17_181018.vomg-updwn.nc", \
+             "physgrid_180515_QPC6_ne120pg3_ne120pg3_mg17_180602.vomg-updwn.nc"/)
+  VAR3 = "FRACVDgl"
+  YMIN3 = 0.6
+  YMAX3 = 7.0
+  yaxis3 = "~F34~a~F21~f~B~d~N~~F34~qa~F33~w~F21~~B~d~N~~F34~q~F21~ (~F34~4~F21~10~S~2~N~ Pa/s)"
+
   onemnth = False
   nstart = 0
-  dir3 = dir1
+  dir3 = "/glade/scratch/aherring/"
   fname3 = (/"physgrid_180607_QPC6_ne20pg3_ne20pg3_mg17_181020_dt2700", \
 	     "physgrid_180607_QPC6_ne30pg3_ne30pg3_mg17_180617", \
 	     "physgrid_180607_QPC6_ne40pg3_ne40pg3_mg17_181020_dt1350", \
 	     "physgrid_180515_QPC6_ne60pg3_ne60pg3_mg17_180528", \
 	     "physgrid_180607_QPC6_ne80pg3_ne80pg3_mg17_181018", \
 	     "physgrid_180515_QPC6_ne120pg3_ne120pg3_mg17_180602"/)
-  fdate3 = (/".cam.h3.*", \
-             ".cam.h4.*", \ 
-             ".cam.h3.*", \
-             ".cam.h4.*", \
-             ".cam.h3.*", \
-             ".cam.h4.*"/)
-  VAR3 = "PRECC"
-  YMIN3 = 0.0;;0.3
-  YMAX3 = 1.0;
-  yaxis3 = "Drizzle Fraction (~F34~#~F21~ 5 mm/day)"
-  dlim = 5.
-
-  dir4 = dir3
-  fname4 = fname3
-  fdate4 = ".cam.h1.*"
-  VAR4 = "LHFLX"
-  YMIN4 = 20.
-  YMAX4 = 175.
-  yaxis4 = "Latent Heat Flux (W/m~S~2~N~)"
+  fdate3 = ".cam.h1.*"
+  VAR4 = "FREQZM"
+  YMIN4 = 0.1
+  YMAX4 = 1.
+  yaxis4 = "~F10~FREQZM"
 
   colors = (/"blue","deepskyblue1","green","magenta","red","black"/)
 
   writencdf = False
-  fname_out = "QPC6_neXXpg3.zonal-drizzle-5mmd.nc"
+  fname_out = "QPC6_neXXpg3_FREQZM.nc"
+  loadncdf = True
+  fname_in = fname_out
   VARNAM1= (/"DFRAC1", \
 	     "DFRAC2", \
              "DFRAC3", \
              "DFRAC4", \
              "DFRAC5", \
              "DFRAC6"/)
-  VARNAM2= (/"LHFLX1", \
-             "LHFLX2", \
-             "LHFLX3", \
-             "LHFLX4", \
-             "LHFLX5", \
-             "LHFLX6"/)
+  VARNAM2= (/"FREQZM1", \
+             "FREQZM2", \
+             "FREQZM3", \
+             "FREQZM4", \
+             "FREQZM5", \
+             "FREQZM6"/)
   LATNAM = (/"lat1", \
 	     "lat2", \
 	     "lat3", \
 	     "lat4", \
 	     "lat5", \
 	     "lat6"/)
-  loadncdf = True
-  fname_in = fname_out
 
   genwgts = False
-  wgtpath = "/glade/work/aherring/grids/grid_files/bilin/"
+  wgtpathlog = "/glade/work/aherring/grids/grid_files/bilin/"
   griddir= "/gpfs/fs1/work/aherring/grids/"
   wgtNam = (/"ne20pg3_2_09375deg-bilin.nc", \ 
 	     "ne30pg3_2_0703125deg-bilin.nc", \
@@ -135,7 +133,7 @@ begin
   res@gsnDraw     = False      ; Will draw later, after overlaying
   res@gsnFrame    = False      ; all plots
 
-  res@xyLineThicknesses = 6
+  res@xyLineThicknesses = 5
   res@vpWidthF    = 0.9        ; Make plots wider
   res@vpHeightF   = 0.4
 
@@ -168,7 +166,7 @@ begin
 
   plres  = True       
   plres@gsLineDashPattern  = 0
-  plres@gsLineThicknessF  = 5.
+  plres@gsLineThicknessF  = res@xyLineThicknesses
 
   yy = (/ 0.70,0.68,0.66,0.64,0.62,0.60,0.58 /) + 0.02
   xx = (/ 0.37,0.39 /)
@@ -182,12 +180,14 @@ begin
  print("-----") 
  print("begin case "+n)
 
- print("Grab var3...")
+ print("Grab vars 3,4...")
 
 if (.not.loadncdf) then
 
+;----------------------------------------------------------
+
  ;load all files
- files = systemfunc ("ls " + dir3 + fname3(n) + "/run/" + fname3(n) + fdate3(n))
+ files = systemfunc ("ls " + dir3 + fname3(n) + "/run/" + fname3(n) + fdate3)
  nf = dimsizes(files)
  if (onemnth) then
    nfinish = nstart
@@ -196,125 +196,26 @@ if (.not.loadncdf) then
  end if
 
  print("load files...")
+ print(""+files(nstart:nfinish))
 
  f  = addfiles (files(nstart:nfinish),"r")
  ListSetType(f,"cat")
  delete(files)
 
- if (isfilevardim(f[0],VAR3,"ncol")) then
-   print("*history fields are on unstructured grid1")
-   latlon = False
-   rank = 2
-
-   dims = getfilevardimsizes(f[0],VAR3)
-   ncol = dims(1)
-   delete(dims)
-
-   dims = getfilevardimsizes(f[0],"FT")
-   ncol_d = dims(2)
-   delete(dims)
-
-   wgtpath = get_wgt_path(ncol,ncol_d,0)
- else
-   print("*history fields are on lat-lon grid")
-   latlon = True
-   rank = 3
- end if
-
- var = f[:]->$VAR3$
- var = var*secpday*1000.
- delete(f)
-
- print("Compute Drizzel Fraction...")
- bar = var(0,:);
- do i = 0,ncol-1
-   print("i = "+i+"/"+(ncol-1))
-   indx = ind(var(:,i).gt.0. .and. var(:,i).le.dlim)
-   bar(i) = sum(var(indx,i))/sum(var(:,i))
-   delete(indx)
- end do
- delete(var)
-
- print("Regrid...")
- bar_regrid = ESMF_regrid_with_weights(bar,wgtpath,False)
- lat = bar_regrid&lat
- delete(bar)
-
- zbar = dim_avg(bar_regrid)
- delete(bar_regrid)
-
-else
- ;;;load from netcdf
- if (n.eq.0) then
-   ncdf = addfile("../data/logistic/" + fname_in,"r")
- end if
-   zbar = ncdf->$VARNAM2(n)$
-   lat  = ncdf->$LATNAM(n)$
-end if
-
- print("Plotting...")
- print("max var4 " + max(zbar))
- print("min var4 " + min(zbar))
-
- res@xyLineColors           = colors(n)
- if (n.eq.0) then
-   res@tiYAxisString          = yaxis4
-   res@trYMinF     = YMIN4
-   res@trYMaxF     = YMAX4
-   res@tmYLOn = True
-   plot(2) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar,res)
-   res@tmYLOn = True
- else
-   tmp = gsn_csm_xy(wks,sin(lat*pi/180.),zbar,res)
-   overlay(plot(2),tmp)
-   delete(tmp)
- end if
-
- if (writencdf) then
-   if (n.eq.0) then
-     system("/bin/rm -f "+fname_out)
-     ncdf = addfile(fname_out,"c")
-   end if
-   zbar!0 = LATNAM(n)
-   zbar&$LATNAM(n)$ = lat
-   ncdf->$VARNAM1(n)$ = zbar
- end if
- delete(zbar)
-
- print("Grab var4...")
-
-if (.not.loadncdf) then
-
- ;load all files
- files = systemfunc ("ls " + dir4 + fname4(n) + "/run/" + fname4(n) + fdate4)
- nf = dimsizes(files)
- if (onemnth) then
-   nfinish = nstart
- else
-   nfinish = nf-1
- end if
- 
- print("load files...")
- 
- f  = addfiles (files(nstart:nfinish),"r")
- ListSetType(f,"cat")
- delete(files)
- 
  if (isfilevardim(f[0],VAR4,"ncol")) then
    print("*history fields are on unstructured grid1")
    latlon = False
    rank = 2
-   
+
    dims = getfilevardimsizes(f[0],VAR4)
    ncol = dims(1)
    delete(dims)
-   
+
    dims = getfilevardimsizes(f[0],"PSDRY_gll")
    ncol_d = dims(1)
    delete(dims)
-   
+
    wgtpath = get_wgt_path(ncol,ncol_d,0)
-   delete(ncol_d)
  else
    print("*history fields are on lat-lon grid")
    latlon = True
@@ -324,6 +225,31 @@ if (.not.loadncdf) then
  var = f[:]->$VAR4$
  delete(f)
 
+ print("Averaging...")
+ bar = dim_avg_0_lowmem(var,rank)
+ delete(var)
+
+ print("Regrid...")
+ bar_regrid = ESMF_regrid_with_weights(bar,wgtpath,False)
+ lat = bar_regrid&lat
+ delete(bar)
+
+ zbar2 = dim_avg(bar_regrid)
+ delete(bar_regrid)
+
+;----------------------------------------------------------
+
+ f  = addfile(dir2 + fname2(n),"r")
+
+ print("file: " + fname2(n))
+ var = f->VOMGD
+ tmp = f->FRACD
+ var = var*tmp
+ delete(tmp)
+
+ var = var*100.
+ delete(f)
+
  bar = dim_avg_0_lowmem(var,2)
  delete(var)
 
@@ -331,33 +257,65 @@ if (.not.loadncdf) then
  bar_regrid = ESMF_regrid_with_weights(bar,wgtpath,False)
  delete(bar)
 
- zbar = dim_avg(bar_regrid)
+ zbar1 = dim_avg(bar_regrid)
  delete(bar_regrid)
 
+ print("max var3 " + max(zbar1))
+ print("min var3 " + min(zbar1))
+
+;----------------------------------------------------------
+delete(wgtpath)
+
 else
-   zbar = ncdf->$VARNAM1(n)$
+ ;;;load from netcdf
+ if (n.eq.0) then
+   ncdf = addfile("../data/logistic/" + fname_in,"r")
+ end if
+   zbar1 = ncdf->$VARNAM1(n)$
+   zbar2 = ncdf->$VARNAM2(n)$
    lat  = ncdf->$LATNAM(n)$
 end if
 
+ print("Plotting...")
+ print("max var4 " + max(zbar2))
+ print("min var4 " + min(zbar2))
+
+ res@xyLineColors           = colors(n)
  if (n.eq.0) then
    res@tiYAxisString          = yaxis3
-   res@tiXAxisString          = "Latitude"
    res@trYMinF     = YMIN3
    res@trYMaxF     = YMAX3
-   plot(3) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar,res)
+   plot(2) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar1,res)
+
+   res@tiYAxisString          = yaxis4
+   res@tiXAxisString          = "Latitude"
+   res@trYMinF     = YMIN4
+   res@trYMaxF     = YMAX4
+   plot(3) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar2,res)
    delete(res@tiXAxisString)
  else
-   tmp = gsn_csm_xy(wks,sin(lat*pi/180.),zbar,res)
+   tmp = gsn_csm_xy(wks,sin(lat*pi/180.),zbar1,res)
+   overlay(plot(2),tmp)
+   delete(tmp)
+
+   tmp = gsn_csm_xy(wks,sin(lat*pi/180.),zbar2,res)
    overlay(plot(3),tmp)
    delete(tmp)
  end if
 
  if (writencdf) then
-   zbar!0 = LATNAM(n)
-   zbar&$LATNAM(n)$ = lat
-   ncdf->$VARNAM2(n)$ = zbar
+   if (n.eq.0) then
+     system("/bin/rm -f "+fname_out)
+     ncdf = addfile(fname_out,"c")
+   end if
+   zbar1!0 = LATNAM(n)
+   zbar2!0 = LATNAM(n)
+   zbar1&$LATNAM(n)$ = lat
+   zbar2&$LATNAM(n)$ = lat
+   ncdf->$VARNAM1(n)$ = zbar1
+   ncdf->$VARNAM2(n)$ = zbar2
  end if
- delete([/zbar,lat/])
+ delete([/zbar1,zbar2,lat/])
 
  print("Grab var1,var2...")
 
@@ -391,6 +349,7 @@ end if
  print("missing src " + fracmiss )
  print("total src " + dims )
  print("fraction of missing src " + fracmiss )
+ delete(dims)
 
  print("Regrid...")
  ;;;there are missing values, 
@@ -414,10 +373,10 @@ end if
    ;---done
  end if
 
- print("wgtpath: " + wgtpath + wgtNam(n))
- var_regrid = ESMF_regrid_with_weights(var,wgtpath + wgtNam(n),False)
- LL_regrid = ESMF_regrid_with_weights(LL,wgtpath + wgtNam(n),False)
- B1_regrid = ESMF_regrid_with_weights(B1,wgtpath + wgtNam(n),False)
+ print("wgtpath: " + wgtpathlog + wgtNam(n))
+ var_regrid = ESMF_regrid_with_weights(var,wgtpathlog + wgtNam(n),False)
+ LL_regrid = ESMF_regrid_with_weights(LL,wgtpathlog + wgtNam(n),False)
+ B1_regrid = ESMF_regrid_with_weights(B1,wgtpathlog + wgtNam(n),False)
  lat = var_regrid&lat
  delete([/var,LL,B1/])
 
