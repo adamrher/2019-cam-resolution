@@ -129,9 +129,8 @@ begin
   plres@gsLineDashPattern  = 0
   plres@gsLineThicknessF  = res@xyLineThicknesses - 2
 
-  yy = (/ 0.70,0.68,0.66,0.64,0.62,0.60,0.58 /)
-  yy = (/ 0.70,0.67,0.64,0.61,0.58,0.55,0.52 /) + 0.26
-  xx = (/ 0.17,0.20 /)
+  yy = (/ 0.70,0.67,0.64,0.61,0.58,0.55,0.52 /) - 0.22
+  xx = (/ 0.19,0.22 /)
 
 ;************
 ;Main Loop
@@ -265,24 +264,24 @@ end if
 
  res@xyLineColors           = colors(n)
  if (n.eq.0) then
-   res@tiXAxisString          = "Latitude"
    res@tiYAxisString          = yaxis1
    res@trYMinF     = YMIN1
    res@trYMaxF     = YMAX1
-   plot(1) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar1,res)
-   delete(res@tiXAxisString)
+   plot(0) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar1,res)
 
+   res@tiXAxisString          = "Latitude"
    res@tiYAxisString          = yaxis2
    res@trYMinF     = YMIN2
    res@trYMaxF     = YMAX2
-   plot(0) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar2,res)
+   plot(1) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar2,res)
+   delete(res@tiXAxisString)
  else
    tmp = gsn_csm_xy(wks,sin(lat*pi/180.),zbar1,res)
-   overlay(plot(1),tmp)
+   overlay(plot(0),tmp)
    delete(tmp)
 
    tmp = gsn_csm_xy(wks,sin(lat*pi/180.),zbar2,res)
-   overlay(plot(0),tmp)
+   overlay(plot(1),tmp)
    delete(tmp)
  end if
 
