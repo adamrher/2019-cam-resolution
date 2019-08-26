@@ -29,13 +29,13 @@ begin
   VAR1 = "Rlog"
   YMIN1 =0.
   YMAX1 =0.5
-  yaxis1 = "R, Logistic Regression"
+  yaxis1 = "~F10~R~F21~, Logistic Regression"
   stat95 = 3.841
 
   VAR2 = "Beta1"
   YMIN2 =-160.
   YMAX2 =  10.
-  yaxis2 = "b~B~1~N~, slope (s/Pa)"
+  yaxis2 = "~F10~b~B~1~N~~F21~, slope (s/Pa)"
 
   dir2 = "/gpfs/fs1/work/aherring/matlab/logistic/"
   fname2 = (/"physgrid_180607_QPC6_ne20pg3_ne20pg3_mg17_181020_dt2700.vomg-updwn.nc", \
@@ -168,7 +168,7 @@ begin
   plres@gsLineDashPattern  = 0
   plres@gsLineThicknessF  = res@xyLineThicknesses
 
-  yy = (/ 0.70,0.68,0.66,0.64,0.62,0.60,0.58 /) + 0.02
+  yy = (/ 0.70,0.68,0.66,0.64,0.62,0.60,0.58 /) - 0.43
   xx = (/ 0.37,0.39 /)
 
 ;************
@@ -285,21 +285,19 @@ end if
    res@tiYAxisString          = yaxis3
    res@trYMinF     = YMIN3
    res@trYMaxF     = YMAX3
-   plot(2) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar1,res)
+   plot(0) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar1,res)
 
    res@tiYAxisString          = yaxis4
-   res@tiXAxisString          = "Latitude"
    res@trYMinF     = YMIN4
    res@trYMaxF     = YMAX4
-   plot(3) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar2,res)
-   delete(res@tiXAxisString)
+   plot(1) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar2,res)
  else
    tmp = gsn_csm_xy(wks,sin(lat*pi/180.),zbar1,res)
-   overlay(plot(2),tmp)
+   overlay(plot(0),tmp)
    delete(tmp)
 
    tmp = gsn_csm_xy(wks,sin(lat*pi/180.),zbar2,res)
-   overlay(plot(3),tmp)
+   overlay(plot(1),tmp)
    delete(tmp)
  end if
 
@@ -406,22 +404,23 @@ end if
    res@tiYAxisString          = yaxis1
    res@trYMinF     = YMIN1
    res@trYMaxF     = YMAX1
-   plot(0) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar,res)
+   plot(2) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar,res)
 
-   ;res@tiXAxisString          = "Latitude"
+   res@tiXAxisString          = "Latitude"
    res@gsnYRefLine = 0.
    res@tiYAxisString          = yaxis2
    res@trYMinF     = YMIN2
    res@trYMaxF     = YMAX2
-   plot(1) = gsn_csm_xy(wks,sin(lat*pi/180.),B1bar,res)
+   plot(3) = gsn_csm_xy(wks,sin(lat*pi/180.),B1bar,res)
    delete(res@gsnYRefLine)
+   delete(res@tiXAxisString)
  else
    tmp = gsn_csm_xy(wks,sin(lat*pi/180.),zbar,res)
-   overlay(plot(0),tmp)
+   overlay(plot(2),tmp)
    delete(tmp)
 
    tmp = gsn_csm_xy(wks,sin(lat*pi/180.),B1bar,res)
-   overlay(plot(1),tmp)
+   overlay(plot(3),tmp)
    delete(tmp)
  end if
  delete([/zbar,LLbar,B1bar,lat/])

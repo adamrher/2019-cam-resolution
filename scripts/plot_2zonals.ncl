@@ -94,11 +94,11 @@ begin
   res@gsnDraw     = False      ; Will draw later, after overlaying
   res@gsnFrame    = False      ; all plots
 
-  res@xyLineThicknesses = 8
+  res@xyLineThicknesses = 10
   res@vpWidthF    = 0.9        ; Make plots wider
   res@vpHeightF   = 0.4
 
-  res@tmBorderThicknessF = 6 ;axes thickness
+  res@tmBorderThicknessF = 7 ;axes thickness
   res@tmXBMajorOutwardLengthF = 0.
   res@tmYLMajorOutwardLengthF = 0.
   res@tmXBMinorOutwardLengthF = 0.
@@ -122,15 +122,16 @@ begin
 
   ;;add legend
   txres = True
-  txres@txFontHeightF = 0.016
+  txres@txFontHeightF = 0.02
   txres@txJust = "CenterLeft"
 
   plres  = True       
   plres@gsLineDashPattern  = 0
-  plres@gsLineThicknessF  = res@xyLineThicknesses - 1
+  plres@gsLineThicknessF  = res@xyLineThicknesses - 2
 
-  yy = (/ 0.70,0.68,0.66,0.64,0.62,0.60,0.58 /) - 0.22
-  xx = (/ 0.20,0.23 /)
+  yy = (/ 0.70,0.68,0.66,0.64,0.62,0.60,0.58 /)
+  yy = (/ 0.70,0.67,0.64,0.61,0.58,0.55,0.52 /) + 0.26
+  xx = (/ 0.17,0.20 /)
 
 ;************
 ;Main Loop
@@ -264,24 +265,24 @@ end if
 
  res@xyLineColors           = colors(n)
  if (n.eq.0) then
+   res@tiXAxisString          = "Latitude"
    res@tiYAxisString          = yaxis1
    res@trYMinF     = YMIN1
    res@trYMaxF     = YMAX1
-   plot(0) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar1,res)
+   plot(1) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar1,res)
+   delete(res@tiXAxisString)
 
    res@tiYAxisString          = yaxis2
-   res@tiXAxisString          = "Latitude"
    res@trYMinF     = YMIN2
    res@trYMaxF     = YMAX2
-   plot(1) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar2,res)
-   delete(res@tiXAxisString)
+   plot(0) = gsn_csm_xy(wks,sin(lat*pi/180.),zbar2,res)
  else
    tmp = gsn_csm_xy(wks,sin(lat*pi/180.),zbar1,res)
-   overlay(plot(0),tmp)
+   overlay(plot(1),tmp)
    delete(tmp)
 
    tmp = gsn_csm_xy(wks,sin(lat*pi/180.),zbar2,res)
-   overlay(plot(1),tmp)
+   overlay(plot(0),tmp)
    delete(tmp)
  end if
 
