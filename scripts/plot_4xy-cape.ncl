@@ -87,8 +87,8 @@ begin
   ;resf@trXReverse = True
   resf@trXMinF = 10.
   resf@trXMaxF = 180.
-  resf@trYMinF = 0.28;1 
-  resf@trYMaxF = 0.72
+  resf@trYMinF = 0.24 
+  resf@trYMaxF = 0.76
   resf@tiYAxisString = "A~B~x~N~ (unitless)"
   plot(1) = gsn_csm_blank_plot(wks,resf)
 

@@ -6,19 +6,19 @@ begin
 ;
 ;******************************************************
 
-  dir = "../data/vomg/ten-30deg/"
-  fname_vomg= (/"physgrid_180607_QPC6_ne20pg3_ne20pg3_mg17_181020_dt2700.vomg-diags.subt.nc", \
-                "physgrid_180607_QPC6_ne30pg3_ne30pg3_mg17_180617.vomg-diags.subt.nc", \
-                "physgrid_180607_QPC6_ne40pg3_ne40pg3_mg17_181020_dt1350.vomg-diags.subt.nc", \
-                "physgrid_180515_QPC6_ne60pg3_ne60pg3_mg17_180528.vomg-diags.subt.nc", \
-                "physgrid_180607_QPC6_ne80pg3_ne80pg3_mg17_181018.vomg-diags.subt.nc", \
-                "physgrid_180515_QPC6_ne120pg3_ne120pg3_mg17_180602.vomg-diags.subt.nc"/)
+  dir = "../data/vomg/global/"
+  fname_vomg= (/"physgrid_180607_QPC6_ne20pg3_ne20pg3_mg17_181020_dt2700.vomg-diags.nc", \
+                "physgrid_180607_QPC6_ne30pg3_ne30pg3_mg17_180617.vomg-diags.nc", \
+                "physgrid_180607_QPC6_ne40pg3_ne40pg3_mg17_181020_dt1350.vomg-diags.nc", \
+                "physgrid_180515_QPC6_ne60pg3_ne60pg3_mg17_180528.vomg-diags.nc", \
+                "physgrid_180607_QPC6_ne80pg3_ne80pg3_mg17_181018.vomg-diags.nc", \
+                "physgrid_180515_QPC6_ne120pg3_ne120pg3_mg17_180602.vomg-diags.nc"/)
   dx   = (/166.8,111.2,83.4,55.6,41.7,27.8/)
   ndx  = dimsizes(dx)
 
 ;;;define VARS
 
-  pltNam = "temp_cape"
+  pltNam = "temp_cape-global"
 
   secpday = 60.*60.*24.
 
@@ -100,8 +100,8 @@ begin
   resf@tiYAxisString = "A~B~x~N~ (unitless)"
   plot(1) = gsn_csm_blank_plot(wks,resf)
 
-  resf@trYMinF =  10.
-  resf@trYMaxF = 110.
+  resf@trYMinF =  80.
+  resf@trYMaxF = 180.
   resf@tiYAxisString = "Dilute-CAPE (J/kg)"
   plot(0) = gsn_csm_blank_plot(wks,resf)
 
@@ -112,20 +112,20 @@ begin
 
 ;;;load files
 
-   ;;10-30 deg latitude
-   gtzero     = (/  54.4207,  52.8203,  50.6630,  46.3680,  42.5683,  32.5088/)
-   alls       = (/  60.2494,  57.6075,  55.4193,  51.1499,  47.6363,  39.3129/)
-   ltzero     = (/  81.0734,  69.8895,  67.5836,  63.1350,  59.4726,  53.5618/)
+   ;;Global
+   gtzero     = (/ 115.4410, 107.0787, 105.2508, 103.9897, 102.3260,  96.8863/) 
+   alls       = (/ 136.8129, 128.6919, 122.4316, 118.0736, 113.5634, 105.2225/)
+   ltzero     = (/ 152.9946, 140.5817, 133.5915, 130.1699, 127.6181, 121.2224/)
 
-   ;;10-30 deg latitude fix to ne20 q profile
-   fqgtz      = (/  54.4207,  47.6159,  47.9118,  42.7834,  41.1963,  38.3850/)
-   fqalls     = (/  60.2494,  58.6018,  58.7836,  54.3978,  52.5390,  46.5009/)
-   fqltz      = (/  81.0734,  90.9758,  89.8299,  85.1896,  82.5334,  66.8545/)
+   ;;Global fix to ne20 q profile
+   fqgtz      = (/ 115.4410, 102.5552,  96.6254,  89.5074,  84.9700,  81.1945/)
+   fqalls     = (/ 136.8129, 129.1042, 124.8481, 121.6074, 119.0617, 113.7587/)
+   fqltz      = (/ 152.9946, 139.9395, 131.0080, 125.9432, 122.4036, 120.4127/)
 
-   ;;10-30 deg latitude fix to ne20 T profile
-   ftgtz      = (/  54.4207,  59.7078,  57.2560,  58.0277,  55.7975,  48.3512/)
-   ftalls     = (/  60.2494,  59.4268,  57.0559,  57.1198,  55.4486,  52.8894/)
-   ftltz      = (/  81.0734,  59.8075,  57.2028,  55.1835,  54.0333,  60.5971/)
+   ;;Global fix to ne20 T profile
+   ftgtz      = (/ 115.4410, 120.1555, 126.2949, 133.2078, 136.1240, 133.9282/)
+   ftalls     = (/ 136.8129, 136.3942, 134.3806, 133.2513, 131.6211, 129.5828/)
+   ftltz      = (/ 152.9946, 153.6650, 150.5478, 135.9981, 128.4808, 126.7252/)
 
 ;;---begin loop----;;
 
@@ -137,8 +137,8 @@ begin
 
      fv  = addfile(dir + fname_vomg(n),"r")
 
-     fd = fv->FRACVDtr
-     fu = fv->FRACVUtr
+     fd = fv->FRACVDgl
+     fu = fv->FRACVUgl
      delete(fv)
 
 ;--------------------------------------------------------------------
