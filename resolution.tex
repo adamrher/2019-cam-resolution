@@ -115,6 +115,14 @@ Table~\ref{tbl:table1} provides some globally averaged, climatological metrics f
 \label{fig:2pdf}
 \end{figure}
 
+\begin{figure}
+\begin{center}
+\noindent\includegraphics[width=20pc,angle=0]{figs/temp_diags_2panel.pdf}\\
+\end{center}
+\caption{Components of the climatological, global mean vertical pressure velocity, (a) $\langle f_{u} \rangle \langle \omega_{u} \rangle$ and (b) $\langle f_{d} \rangle \langle \omega_{d} \rangle$. Grey crosses are for the 24 member perturbed parameter ensemble.}
+\label{fig:2panel}
+\end{figure}
+
 The probability density function (PDF) of negative, or upward vertical pressure velocities $\omega$ in the aqua-planets is provided in Figure~\ref{fig:2pdf}a. The magnitude of upward $\omega$ increases monotonically with resolution, with positive, or downward $\omega$ behaving similarly (not shown). This monotonic increase in the magnitude of $\omega$ is evident even after remapping all model output to a common grid ($ne20$; dotted curves in Figure~\ref{fig:2pdf}a).
 
 The PDF's may be scaled to the highest-resolution resolution grid through $ \alpha P (\omega / \alpha)$, where $P(x)$ is the PDF, and $\alpha$ the scale factor from equation~\ref{eq:alpha} with $\Delta x_0$ set to the $ne120$ grid-spacing. Figure~\ref{fig:2pdf}b shows the scaled PDF's for a power law exponent $n=-1$ in $\Delta x$. The scaled PDF's all collapse onto the high-resolution reference, indicating that the power-law exponent $n=-1$ explains to first-order the variation in vertical velocity with resolution as shown by the aqua-planet simulations. 
@@ -127,49 +135,23 @@ where $\langle f_x \rangle$ and $\langle \omega_x \rangle$ refers to the vertica
 
 The global mean, climatological components $\langle f_{u} \rangle \, \langle \omega_{u} \rangle$ and $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ are provided in Figure~\ref{fig:2panel}a,b for the aqua-planet simulations. The magnitude of both $\langle f_{u} \rangle \, \langle \omega_{u} \rangle$ and $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ increase monotonically with resolution, and are equal and opposite, which is a requirement of mass conservation in the model and a convenient check of the calculation. While $\langle f_{d} \rangle$ is about 25\% larger than $\langle f_{u} \rangle$ in all simulations, the vertical mass fractions vary by only few percent with resolution, and so the monotonic behavior of $\langle f_{x} \rangle \, \langle \omega_{x} \rangle$ with resolution is primarily from variations in $ \langle \omega_{x} \rangle$ (not shown).
 
-\begin{figure}
-\begin{center}
-\noindent\includegraphics[width=20pc,angle=0]{figs/temp_diags_2panel.pdf}\\
-\end{center}
-\caption{Components of the climatological, global mean vertical pressure velocity, (a) $\langle f_{u} \rangle \langle \omega_{u} \rangle$ and (b) $\langle f_{d} \rangle \langle \omega_{d} \rangle$. Grey crosses are for the 24 member perturbed parameter ensemble.}
-\label{fig:2panel}
-\end{figure}
+\subsection{Vertical Velocities and Stratiform Precipitation}
 
-\subsection{Vertical Velocities and Deep Convective Precipitation}
-
-The large increase in magnitude of the upward and downward vertical velocities with resolution may be expected to impact the behavior of other model components. Curiously, there is an excellent negative correlation (Pearson's R-value = 0.99, N = 27) between the global mean, climatological $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ and a measure of the activity of the \cite{ZM1995AO} deep convection scheme (referred to as the {\em{ZM scheme}} hereafter), global mean, climatological $FREQZM$ (Figure~\ref{fig:corr}). At any grid-point and time-step, $FREQZM$ is a binary variable: 1 if the ZM scheme is active, 0 if it is not. Time mean $FREQZM$ is therefore the fraction of the model time that the ZM scheme is triggered, i.e., dilute CAPE exceeds $\geq 70$ J/kg. The regression indicates that model simulations with greater subsidence also have less convective activity.
-
-\begin{figure}
-\begin{center}
-\noindent\includegraphics[width=20pc,angle=0]{figs/temp_diags_corr.pdf}\\
-\end{center}
-\caption{Scatter plot of global mean, climatological $\langle f_{d} \rangle \langle \omega_{d} \rangle$ and FREQZM, and the fitted linear regression which has a Pearson's R-value = 0.99, using all 27 simulations. Grey crosses are for the 24 member perturbed parameter ensemble runs.}
-\label{fig:corr}
-\end{figure}
-
-Figure~\ref{fig:4zonal}a,b, shows the zonal mean variations in $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ and $FREQZM$ in the convergence experiment. $FREQZM$ is largest in the $\pm 10^{\circ}$ latitude region, within the Intertropical Convergence Zone (ITCZ), and rapidly decreasing polewards into the subtropics. $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ increases away from the ITCZ region and reaches a maximum at the poleward limit of the Hadley Cell. The increase (decrease) in $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ ($FREQZM$) with resolution is to first-order, independent of latitude.
-
-\begin{figure}
-\begin{center}
-\noindent\includegraphics[width=14pc,angle=0]{figs/temp_4zonal.pdf}\\
-\end{center}
-\caption{Zonal mean (a) climatological $\langle f_{d} \rangle \langle \omega_{d} \rangle$ and (b) climatological $FREQZM$. Zonal mean (c) R-values and (d) the shape parameter $b_1$ in the logistic regression.}
-\label{fig:4zonal}
-\end{figure}
-
-To further understand the relationship between subsidence and activity of the ZM scheme, a logistic regression between $\langle f_{d} \rangle \langle \omega_{d} \rangle$ and $FREQZM$ is performed for each grid column within each of the simulations. Logistic regression uses an iterative method to fit a continuous variable predictor, $x$ to a binary predictand $p$ using the exponential \citep{WILKSBOOK},
+\cite{RETAL2016CD} proposed an approximate scaling for the total precipitation rate in models $P_{tot}$, proportional to the upward moisture flux through cloud base,
 \begin{equation}
-p = \frac{exp{[b_0 + b_1 x]}}{1 + exp{[b_0 + b_1 x]}}, \label{eq:logreg}
+P_{tot} \approx -\frac{1}{g\rho_{w}} \omega q |_{cb} \label{eq:mflux}
 \end{equation}
-where $b_0$ and $b_1$ are the shape parameters of the exponential. The predictor is the instantaneous $\langle f_{d} \rangle \langle \omega_{d} \rangle$ of a grid column, and the predictand the binary $FREQZM$. The assumption is then that subsidence is the independent variable, which is reasonable considering the environment of subsiding regions is generally more stable than its surroundings, and the ZM scheme is modulated by the dilute CAPE stability calculation. Grid column regressions that are statistically significant at the $95\%$ level using a log-likelihood test \citep{WILKSBOOK} are retained for analysis. Since the aqua-planets have zonally symmetric boundary conditions, there is a zonally varying structure in the goodness of fit (R-value) and shape parameter $b_1$ (Figure~\ref{fig:4zonal}c,d).
+where $\omega q |_{cb}$ refers to the product of $\omega$ and specific humidity $q$ for ascending motion at cloud base, respectively, with $g=9.80616$ m/s$^2$ the acceleration of gravity and $\rho_w=1000$ kg/m$^3$ the density of rainwater used in CAM. \cite{OETAL2016JAMES} deem this the ``what goes up, must go down" model, highlighting the physically intuitive nature of the scaling, but note the scaling omits other potentially important processes, such as detrainment of cloudy updrafts into the environment or updrafts embedded within efficient circulations, with large gross moist stabilities.
 
-The zonal mean R-values indicate the greatest goodness of fit in the $\pm 10^{\circ}$ latitude band, hereafter referred to as the deep tropics. In this region, the shape parameter $b_1$ is large and negative (Figure~\ref{fig:4zonal}d), consistent with the idea that subsiding motion stabilizes the environment and actively depresses dilute CAPE and the activity of the ZM scheme in the simulations. The shape parameter becomes less negative in the deep tropics with resolution, likely due to the greater magnitude $\langle f_{d} \rangle \langle \omega_{d} \rangle$ with resolution, which requires a lower $b_1$ to predict the binary $FREQZM$. The R-values generally decrease with resolution indicating that there is degradation in the relationship with resolution.
+Through approximating the cloud base as the $850$ hPa level, equation~\ref{eq:mflux} was found to provide a good fit to total precipitation rates in a regional model \citep{RETAL2016CD} and in the CAM-SE AGCM with CAM5 physics, across multiple resolutions \citep[recall that CAM-SE is different from CAM-SE-CSLAM, used in this study;][]{OETAL2016JAMES}. As noted by \cite{RETAL2016CD}, using only resolved quantities in equation~\ref{eq:mflux} omits the sub-grid scale contribution to moisture fluxes, and so it is instructive to analyze the relative skill of this approximation for the individual components of $P_{tot}$, being the sum of stratiform $P_s$ and parameterized deep convective $P_c$ precipitation rates. Figure~\ref{fig:mflux} shows the median $P_c$, $P_s$ and $P_{tot}$ conditioned on the $850$ hPa resolved moisture flux scaling using $1$ mm/day bins, in the CAM6 $ne30$ simulation. The figure shows that the moisture flux scaling is a good first-order approximation to the median total precipitation rate, and that the increase in precipitation rates with moisture flux is primarily from the stratiform precipitation scheme. The scaling is just as skillful for different resolutions \citep[not shown;][]{OETAL2016JAMES} and so changes in stratiform precipitation rate with resolution can be understood through quantifying changes in resolved moisture fluxes with resolution.
 
-\subsubsection{Deep Tropics}
-
-Table~\ref{tbl:table2} shows the fractional contribution of the deep tropics to the climatological, global mean change in convective precipitation with resolution. The table indicates that a majority ($60-70 \%$) of the reduction in convective precipitation with resolution is from changes within the deep tropics (except in going from $ne20$ to $ne30$, where convective precipitation rates increase, in part due to a wide double-ITCZ in the $ne20$ run that spans outside of $\pm 10^{\circ}$ latitude, but which is contained within $\pm 10^{\circ}$ latitude in the $ne30$ run). Expanding the latitude boundaries marginally to $\pm 15^{\circ}$, roughly $75\%$ of the changes in convective precipitation with resolution occurs in this region (again, ignoring $ne30-ne20$; Table~\ref{tbl:table2}). This trend reflects changes in the partitioning of the ITCZ from convective to stratiform precipitation with resolution. 
-
-The large reduction in convective precipitation with resolution in the deep tropics also happens to be the region where the logistic regression indicates that subsiding motion is most skillful at depressing the activity of the convection scheme. But the change in $FREQZM$ in the deep tropics with resolution is not substantially different from any other region (Figure~\ref{fig:4zonal}b), such as the midlatitudes where the logistic regression indicates a poor relationship between subsidence and $FREQZM$ (Figure~\ref{fig:4zonal}c). The deep tropics is then only unique for its substantially larger change in ZM precipitation per change in $FREQZM$ with resolution.
+\begin{figure}
+\begin{center}
+\noindent\includegraphics[width=20pc,angle=0]{figs/temp_mflux.pdf}\\
+\end{center}
+\caption{Precipitation rates vs. upward moisture flux at the 850 hPa level. Solid lines refer to median stratiform (green), convective (blue) and total (magenta) precipitation rates conditional on bins of the moisture flux, and shaded regions refer to the conditional interquartile ranges.}
+\label{fig:mflux}
+\end{figure}
 
  \begin{table}
  \caption{Fractional contribution of latitude bands $\pm 10^{\circ}$ and $\pm 15^{\circ}$ to changes in global mean precipitation with resolution. The grid headers refer to differences with respect to the next lowest grid resolution, e.g., $ne30 = ne30-ne20$, $ne40=ne40-ne30$, etc... All differences are computed after conservative remapping to a common $ne20$ grid.}
@@ -190,6 +172,60 @@ The large reduction in convective precipitation with resolution in the deep trop
  \end{tabular}
  \label{tbl:table2}
  \end{table}
+
+To unravel the contributions of changes in $\omega$ and $q$ at the 850 hPa level, $\omega_{850}$ and $q_{850}$, to the increase in global mean, climatological stratiform precipitation rates $\overline{P_s}$, $\overline{P_s}$ is decomposed in $\omega_{850}$ and $q_{850}$ space following \cite{TETAL2018CD}. Table~\ref{tbl:table2} shows the fractional contribution of deep tropical belts to the global mean change in stratiform precipitation with resolution. The table indicates that roughly a majority ($45-70 \%$) of the increase in stratiform precipitation with resolution is from changes within the $\pm 15^{\circ}$ latitude band, and so the moisture flux decomposition is restricted to this region to simplify the analysis; $\overline{P_s}$ is redefined as the average over $\pm 15^{\circ}$ latitude. 
+
+$\overline{P_s}$ can be expressed as the double sum of the product of the time mean magnitude $M_s$ and time mean spatial frequency $f_s$, over $\omega_{850}$ and $q_{850}$ space,
+\begin{equation}
+\overline{P_{s}} = \sum_i \sum_j f_s \left( \omega_i , q_j \right) M_s \left( \omega_i , q_j \right) \label{eq:pdecomp}
+\end{equation}
+where the subscript $850$ is dropped from $\omega$ and $q$ for brevity. $f_s$ is a measure of the occurrence of a particular combination $\left( \omega_i , q_j \right)$ in a simulation, and $M_s$ the mean stratiform precipitation rate associated with the combination $\left( \omega_i , q_j \right)$. Their product $f_s M_s$ is then the contribution of a particular combination of $\left( \omega_i , q_j \right)$ to $\overline{P_s}$.
+
+Figure~\ref{fig:pdecomp} shows plots of the terms $M_s$ and $f_s M_s$ for all resolutions. The plots are computed using 6-hourly instantaneous output of $\omega_{850}$ and $q_{850}$, with 0.05 Pa/s and 0.4 g/kg bin widths, respectively. Bins in  $\left( \omega_{i} , q_{j} \right)$ space with $f_s <1 \times 10^{-5}$ are masked out, which is a somewhat arbitrary, but still reasonable cut-off for a bins' contribution to $\overline{P_s}$. The $M_s$ plots (left column) show that larger magnitude $\omega_{850}$ correspond to larger magnitude stratiform precipitation rates, while the impact of changing $q_{850}$ on $M_s$ is less clear. The changes in $M_s$ with resolution are subtle, while the changes in $f_s$ with resolution are large (not shown). The changes to $f_s$ can be inferred from the larger space of $\left( \omega_i , q_j \right)$ plotted at higher resolutions, indicating that larger magnitude $\omega_{850}$ values are occurring more frequently at higher resolutions, above the cutoff for plotting. The $f_s M_s$ plots (right column) clearly shows that larger magnitude $\omega_{850}$, and therefore larger magnitude stratiform precipitation rates, are contributing to the increase in $\overline{P_s}$ with resolution. In contrast, smaller magnitude $\omega_{850}$ and hence smaller stratiform precipitation rates contribute less and less to $\overline{P_s}$ with increasing resolution.
+
+\begin{figure}
+\begin{center}
+\noindent\includegraphics[width=20pc,angle=0]{figs/temp_pdecomp.pdf}\\
+\end{center}
+\caption{Decomposition of the climatological stratiform precipitation rates, averaged over the $\pm 15^{\circ}$ latitude band into $\omega_{850}$ and $q_{850}$ environmental conditions. Left column shows the time mean magnitude term $M\left( \omega_i , q_j \right)$ and the right column is the magnitude term multiplied by the space-time frequency term $f\left( \omega_i , q_j \right) M\left( \omega_i , q_j \right)$. Integrals over $f M$ gives the climatological, area averaged stratiform precipitation rate. Panel labels denote the grid resolution of the model run.}
+\label{fig:pdecomp}
+\end{figure}
+
+\subsection{Vertical Velocities and Deep Convective Precipitation}
+
+While the increase in magnitude of vertical velocities with resolution clearly drives the increase in moisture fluxes and stratiform precipitation rates with resolution, it is not clear why there is a reduction in parameterized deep convective precipitation rates with resolution. Curiously though, there is an excellent negative correlation (Pearson's R-value = 0.99, N = 27) between the global mean, climatological $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ and a measure of the activity of the \cite{ZM1995AO} deep convection scheme (referred to as the {\em{ZM scheme}} hereafter), global mean, climatological $FREQZM$ (Figure~\ref{fig:corr}). At any grid-point and time-step, $FREQZM$ is a binary variable: 1 if the ZM scheme is active, 0 if it is not. Time mean $FREQZM$ is therefore the fraction of the model time that the ZM scheme is triggered, i.e., dilute CAPE exceeds $\geq 70$ J/kg. The regression indicates that model simulations with greater subsidence also have less convective activity.
+
+\begin{figure}
+\begin{center}
+\noindent\includegraphics[width=20pc,angle=0]{figs/temp_diags_corr.pdf}\\
+\end{center}
+\caption{Scatter plot of global mean, climatological $\langle f_{d} \rangle \langle \omega_{d} \rangle$ and FREQZM, and the fitted linear regression which has a Pearson's R-value = 0.99, using all 27 simulations. Grey crosses are for the 24 member perturbed parameter ensemble runs.}
+\label{fig:corr}
+\end{figure}
+
+Figure~\ref{fig:4zonal}a,b, shows the zonal mean variations in $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ and $FREQZM$ in the convergence experiment. $FREQZM$ is largest in the $\pm 10^{\circ}$ latitude region, within the ITCZ, and rapidly decreasing polewards into the subtropics. $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ increases away from the ITCZ region and reaches a maximum at the poleward limit of the Hadley Cell. The increase (decrease) in $\langle f_{d} \rangle \, \langle \omega_{d} \rangle$ ($FREQZM$) with resolution is to first-order, independent of latitude.
+
+\begin{figure}
+\begin{center}
+\noindent\includegraphics[width=14pc,angle=0]{figs/temp_4zonal.pdf}\\
+\end{center}
+\caption{Zonal mean (a) climatological $\langle f_{d} \rangle \langle \omega_{d} \rangle$ and (b) climatological $FREQZM$. Zonal mean (c) R-values and (d) the shape parameter $b_1$ in the logistic regression.}
+\label{fig:4zonal}
+\end{figure}
+
+To further understand the relationship between subsidence and activity of the ZM scheme, a logistic regression between $\langle f_{d} \rangle \langle \omega_{d} \rangle$ and $FREQZM$ is performed for each grid column within each of the simulations. Logistic regression uses an iterative method to fit a continuous variable predictor, $x$ to a binary predictand $p$ using the exponential \citep{WILKSBOOK},
+\begin{equation}
+p = \frac{exp{[b_0 + b_1 x]}}{1 + exp{[b_0 + b_1 x]}}, \label{eq:logreg}
+\end{equation}
+where $b_0$ and $b_1$ are the shape parameters of the exponential. The predictor is the instantaneous $\langle f_{d} \rangle \langle \omega_{d} \rangle$ of a grid column, and the predictand the binary $FREQZM$. The assumption is then that subsidence is the independent variable, which is reasonable considering the environment of subsiding regions is generally more stable than its surroundings, and the ZM scheme is modulated by the dilute CAPE stability calculation. Grid column regressions that are statistically significant at the $95\%$ level using a log-likelihood test \citep{WILKSBOOK} are retained for analysis. Since the aqua-planets have zonally symmetric boundary conditions, there is a zonally varying structure in the goodness of fit (R-value) and shape parameter $b_1$ (Figure~\ref{fig:4zonal}c,d).
+
+The zonal mean R-values indicate the greatest goodness of fit in the $\pm 10^{\circ}$ latitude band, hereafter referred to as the deep tropics. In this region, the shape parameter $b_1$ is large and negative (Figure~\ref{fig:4zonal}d), consistent with the idea that subsiding motion stabilizes the environment and actively depresses dilute CAPE and the activity of the ZM scheme in the simulations. The shape parameter becomes less negative in the deep tropics with resolution, likely due to the greater magnitude $\langle f_{d} \rangle \langle \omega_{d} \rangle$ with resolution, which requires a lower $b_1$ to predict the binary $FREQZM$. The R-values generally decrease with resolution indicating that there is degradation in the relationship with resolution. The logistic regression is less skillful in the subtropics, with skill declining even further in the mid-latitudes (Figure~\ref{fig:4zonal}c).
+
+\subsubsection{Deep Tropics}
+
+Table~\ref{tbl:table2} indicates that a majority ($60-70 \%$) of the reduction in convective precipitation with resolution is from changes within the deep tropics (except in going from $ne20$ to $ne30$, where convective precipitation rates increase, in part due to a wide double-ITCZ in the $ne20$ run that spans outside of $\pm 10^{\circ}$ latitude, but which is contained within $\pm 10^{\circ}$ latitude in the $ne30$ run). Expanding the latitude boundaries marginally to $\pm 15^{\circ}$, roughly $75\%$ of the changes in convective precipitation with resolution occurs in this region (again, ignoring $ne30-ne20$; Table~\ref{tbl:table2}). This trend reflects changes in the partitioning of the ITCZ from convective to stratiform precipitation with resolution. 
+
+The large reduction in convective precipitation with resolution in the deep tropics also happens to be the region where the logistic regression indicates that subsiding motion is most skillful at depressing the activity of the convection scheme. But the change in $FREQZM$ in the deep tropics with resolution is not substantially different from any other region (Figure~\ref{fig:4zonal}b), such as the midlatitudes where the logistic regression indicates a poor relationship between subsidence and $FREQZM$ (Figure~\ref{fig:4zonal}c). The deep tropics is then only unique for its substantially larger change in ZM precipitation per change in $FREQZM$ with resolution.
 
 To characterize the changes to dilute CAPE of subsiding regions in the deep tropics with resolution, temperature and moisture profiles are conditionally sampled depending on whether $\langle \omega \rangle$ is positive or negative, indicating predominantly subsiding or ascending grid columns. The time mean temperature and moisture profiles of subsiding and ascending regions are then used to compute the dilute CAPE used in the ZM scheme, offline. Figure~\ref{fig:cape}a shows the dilute CAPE values associated with mean conditions for ascending, descending and all grid columns in the deep tropics, with resolution. Ascending regions are associated with larger values of dilute CAPE ($>180$ J/kg) relative to subsiding regions ($<110$ J/kg), and the dilute CAPE in both regimes decreases monotonically with resolution. 
 
@@ -213,13 +249,13 @@ Figure~\ref{fig:profiles} shows the time mean temperature and specific humidity 
 
 The large spread in dilute CAPE between ascending/descending regions is crucial for maintaining the relationship shown by the logistic regression, since the much smaller values of dilute CAPE of subsiding grid columns is required to depress dilute CAPE below the threshold for convection. To unravel the contributions of warming and drying shown in Figure~\ref{fig:profiles} to the large spread in dilute CAPE between the two regimes, dilute CAPE is recomputed using the mean specific humidity of ascending/descending regions in the deep tropics, but setting the temperature profile to the mean profile for the entire deep tropics. Figure~\ref{fig:cape}c shows this influence of changing moisture on dilute CAPE, which to first order, explains the large spread in dilute CAPE between the ascending/descending regions in the deep tropics. Temperature differences between ascending/descending regimes has a smaller, second order influence on the spread in dilute CAPE (not shown).
 
-The space-time weights associated with ascending and descending grid columns in the deep tropics vary drastically with resolution (Figure~\ref{fig:cape}b). The subsiding (ascending) space-time weights change from $0.32$ ($0.68$) in the $ne20$ run, monotonically increasing (decreasing) with resolution to $0.51$ ($0.49$) in the $ne120$ run. This increasing occurrence of stable, subsiding grid columns accounts for about half of the changes in dilute CAPE in the deep tropics with resolution, the other half being due to the systematic reduction in dilute CAPE for both ascending and descending regions (Figure~\ref{fig:cape}a). This is verified through comparing the weighted sum of the ascending/descending dilute CAPE values with the dilute CAPE for the entire deep tropics (compare black and grey crosses in Figure~\ref{fig:cape}a). 
+The space-time weights associated with ascending and descending grid columns in the deep tropics vary drastically with resolution (Figure~\ref{fig:cape}b). The subsiding (ascending) space-time weights change from $0.32$ ($0.68$) in the $ne20$ run, monotonically increasing (decreasing) with resolution to $0.51$ ($0.49$) in the $ne120$ run. The increasing occurrence of stable, subsiding grid columns accounts for about half of the changes in dilute CAPE in the deep tropics with resolution, the other half being due to the systematic reduction in dilute CAPE for both ascending and descending regions (Figure~\ref{fig:cape}a). This breakdown is straightforward to compute since the sum of the products of the space-time fractions with their associated ascending/descending dilute CAPE values approximate the dilute CAPE computed from the mean temperature/moisture profiles over the entire deep tropics (compare black and grey crosses in Figure~\ref{fig:cape}a) rather well. 
 
-To isolate the relative importance of temperature or moisture on the systematic reduction in dilute CAPE with resolution for both ascending/descending regimes, dilute CAPE is recomputed for all resolutions, but through fixing the moisture profiles to the lowest resolution $ne20$ profile, and then through only fixing only the temperature to the $ne20$ profile. Figure~\ref{fig:cape}d shows the influence of changing temperature profile with resolution on dilute CAPE of ascending/descending grid columns, and illustrates that the systematic reduction in dilute CAPE with resolution in both regimes is primarily from changes to the temperature field. Moisture changes with resolution has a smaller influence, only appreciably impacting the dilute CAPE of ascending regions at higher resolutions (not shown).
+To isolate the relative importance of temperature or moisture on the systematic reduction in dilute CAPE with resolution for both ascending/descending regimes, dilute CAPE is recomputed for all resolutions, but through fixing the moisture profiles to the lowest resolution $ne20$ profile, and then through fixing only the temperature to the $ne20$ profile. Figure~\ref{fig:cape}d shows the influence of changing temperature profile with resolution on dilute CAPE of ascending/descending grid columns, and illustrates that the systematic reduction in dilute CAPE with resolution in both regimes is primarily from changes to the temperature field. Moisture changes with resolution has a smaller influence, only appreciably impacting the dilute CAPE of ascending regions at higher resolutions (not shown).
 
 \subsubsection{Subtropics}
 
-Figure~\ref{fig:cape-subt}a shows the dilute CAPE values computed from mean temperature and moisture of subsiding and ascending regions in the $\pm \left( 10^{\circ}-30^{\circ} \right) $ latitude bands, hereafter referred to as the subtropics. The spread in dilute CAPE between ascending and descending grid columns is much smaller than for the deep tropics (Figure~\ref{fig:cape}a), and their dilute CAPE  values vary much less with resolution ($\sim 20$ J/kg, compared with $\sim 80$ J/kg across all resolutions in the deep tropics). Through recomputing dilute CAPE and fixing the temperature or moisture profiles to $ne20$ values, the reduction in dilute CAPE with resolution is attributed to both temperature and moisture, but with temperature changes playing a larger role (not shown). This analysis suggests that Increasing subsidence with resolution increases the stability of the mean state, since both ascending/descending regimes become more stable with resolution, and reducing climatological $FREQZM$ despite the poor relationship between instantaneous subsidence and $FREQZM$ in the subtropics, as shown by the logistic regression (Figure~\ref{fig:4zonal}c).
+Figure~\ref{fig:cape-subt}a shows the dilute CAPE values computed from mean temperature and moisture of subsiding and ascending regions in the $\pm \left( 10^{\circ}-30^{\circ} \right) $ latitude bands, hereafter referred to as the subtropics. The spread in dilute CAPE between ascending and descending grid columns is much smaller than for the deep tropics (Figure~\ref{fig:cape}a), and their dilute CAPE  values vary much less with resolution ($\sim 20$ J/kg, compared with $\sim 80$ J/kg across all resolutions in the deep tropics). Through recomputing dilute CAPE and fixing the temperature or moisture profiles to $ne20$ values, the reduction in dilute CAPE with resolution is attributed to both temperature and moisture, but with temperature changes playing a larger role (not shown). This analysis suggests that increasing subsidence with resolution (\ref{fig:4zonal}a) increases the stability of the mean state, since both ascending/descending regimes become more stable with resolution, and reducing climatological $FREQZM$ (\ref{fig:4zonal}b) despite the poor relationship between instantaneous subsidence and $FREQZM$ in the subtropics, as shown by the logistic regression (Figure~\ref{fig:4zonal}c).
 
 \begin{figure}
 \begin{center}
@@ -250,42 +286,6 @@ To understand why dilute CAPE is less sensitive to subsidence in the subtropics,
 \end{figure}
 
 In the $\pm \left(10^{\circ}-20^{\circ} \right)$ latitude bands there are opposing influences on dilute CAPE; a global maximum in surface latent heat fluxes (Figure~\ref{fig:2zonal}b), influencing the thermodynamic state of boundary layer parcels and increasing dilute CAPE from below \citep{Z2002JGR}, and increasing subsidence (Figure~\ref{fig:4zonal}a), which opposes dilute CAPE from above. The shallow convection regime of the ZM scheme is likely a result of these two opposing influences on dilute CAPE, with large latent heat fluxes increasing dilute CAPE above the threshold for convection, but with subsidence restricting dilute CAPE from becoming much larger than this threshold. This interpretation is supported by the logistic regression, which shows a local minimum in goodness-of-fit in the $\pm \left(10^{\circ}-20^{\circ} \right)$ latitude region (Figure~\ref{fig:4zonal}c), indicating that it is particularly difficult for subsiding motion to depress dilute CAPE below the threshold for convection where the surface latent heat fluxes are large.
-
-\subsection{Vertical Velocities and Stratiform Precipitation}
-
-In contrast to the impact of vertical motion on the ZM scheme, the stratiform scheme is more intuitively connected to vertical velocities. \cite{RETAL2016CD} proposed an approximate scaling for the total precipitation rate in models $P_{tot}$, proportional to the upward moisture flux through cloud base,
-\begin{equation}
-P_{tot} \approx -\frac{1}{g\rho_{w}} \omega^{cb}_u q^{cb}_u \label{eq:mflux}
-\end{equation}
-where $\omega^{cb}_u$ and $q^{cb}_u$ refers to $\omega$ and specific humidity $q$ for ascending motion at cloud base, respectively, with $g=9.80616$ m/s$^2$ the acceleration of gravity and $\rho_w=1000$ kg/m$^3$ the density of rainwater used in CAM. \cite{OETAL2016JAMES} deem this the ``what goes up, must go down" model, highlighting the physically intuitive nature of the scaling, but note the scaling omits other potentially important processes, such as detrainment of cloudy updrafts into the environment or updrafts embedded within efficient circulations, with large gross moist stabilities.
-
-Through approximating the cloud base as the $850$ hPa level, equation~\ref{eq:mflux} was found to provide a good fit to total precipitation rates in a regional model \citep{RETAL2016CD} and in the CAM-SE AGCM with CAM5 physics, across multiple resolutions \citep{OETAL2016JAMES}. As noted by \cite{RETAL2016CD}, using only resolved quantities in equation~\ref{eq:mflux} omits the sub-grid scale contribution to moisture fluxes, and so it is instructive to analyze the relative skill of this approximation for the individual components of $P_{tot}$, being the sum of stratiform $P_s$ and ZM convective $P_c$ precipitation rates. Figure~\ref{fig:mflux} shows the median $P_c$, $P_s$ and $P_{tot}$ conditioned on the $850$ hPa resolved moisture flux scaling using $1$ mm/day bins, in the CAM6 $ne30$ simulation. The figure shows that the moisture flux scaling is a good first-order approximation to the median total precipitation rate, and that the increase in precipitation rates with moisture flux is primarily from the stratiform precipitation scheme. The scaling is just as skillful for different resolutions \citep[not shown;][]{OETAL2016JAMES} and so changes to the global mean, climatological $P_s$ with resolution can be understood through quantifying changes in resolved moisture fluxes with resolution.
-
-\begin{figure}
-\begin{center}
-\noindent\includegraphics[width=20pc,angle=0]{figs/temp_mflux.pdf}\\
-\end{center}
-\caption{Precipitation rates vs. upward moisture flux at the 850 hPa level. Solid lines refer to median stratiform (green), convective (blue) and total (magenta) precipitation rates conditional on bins of the moisture flux, and shaded regions refer to the conditional interquartile ranges.}
-\label{fig:mflux}
-\end{figure}
-
-To unravel the contributions of changes in $\omega$ and $q$ at the 850 hPa level $\omega_{850}$ and $q_{850}$, to the increase in global mean, climatological stratiform precipitation rates $\overline{P_s}$, $\overline{P_s}$ is decomposed in $\omega_{850}$ and $q_{850}$ space following \cite{TETAL2018CD}. Table~\ref{tbl:table2} indicates that the $\pm 15^{\circ}$ latitude band accounts for most of the change in global mean stratiform precipitation with resolution. The decomposition is then restricted to stratiform precipitation rates and moisture fluxes in the $\pm 15^{\circ}$ latitude region to simplify the analysis, and $\overline{P_s}$ is redefined as the average over $\pm 15^{\circ}$ latitude. 
-
-$\overline{P_s}$ can be expressed as the double sum of the product of the time mean magnitude $M_s$ and time mean spatial frequency $f_s$, over $\omega_{850}$ and $q_{850}$ space,
-\begin{equation}
-\overline{P_{s}} = \sum_i \sum_j f_s \left( \omega_i , q_j \right) M_s \left( \omega_i , q_j \right) \label{eq:pdecomp}
-\end{equation}
-where the subscript $850$ is dropped from $\omega$ and $q$ for brevity. $f_s$ is a measure of the occurrence of a particular combination $\left( \omega_i , q_j \right)$ in a simulation, and $M_s$ the mean stratiform precipitation rate associated with the combination $\left( \omega_i , q_j \right)$. Their product $f_s M_s$ is then the contribution of a particular combination of $\left( \omega_i , q_j \right)$ to $\overline{P_s}$.
-
-Figure~\ref{fig:pdecomp} shows plots of the terms $M_s$ and $f_s M_s$ for all resolutions. The plots are computed using 6-hourly instantaneous output of $\omega_{850}$ and $q_{850}$, with 0.05 Pa/s and 0.4 g/kg bin wdiths, respectively. Bins in  $\left( \omega_{i} , q_{j} \right)$ space with $f_s <1 \times 10^{-5}$ are masked out, which is a somewhat arbitrary, but still reasonable cut-off for a bins' contribution to $\overline{P_s}$. The $M_s$ plots (left column) show that larger magnitude $\omega_{850}$ correspond to larger magnitude stratiform precipitation rates, while the impact of changing $q_{850}$ on $M_s$ is less clear. The changes in $M_s$ with resolution are subtle, while the changes in $f_s$ with resolution are large (not shown). The changes to $f_s$ can be inferred from the larger space of $\left( \omega_i , q_j \right)$ plotted at higher resolutions, indicating that larger magnitude $\omega_{850}$ values are occurring more frequently at higher resolutions, above the cutoff for plotting. The $f_s M_s$ plots (right column) clearly shows that larger magnitude $\omega_{850}$, and therefore larger magnitude stratiform precipitation rates are contributing to the increase in $\overline{P_s}$ with resolution. In contrast, smaller magnitude $\omega_{850}$ and hence smaller stratiform precipitation rates contribute less and less to $\overline{P_s}$ with increasing resolution.
-
-\begin{figure}
-\begin{center}
-\noindent\includegraphics[width=20pc,angle=0]{figs/temp_pdecomp.pdf}\\
-\end{center}
-\caption{Decomposition of the climatological stratiform precipitation rates, averaged over the $\pm 15^{\circ}$ latitude band into $\omega_{850}$ and $q_{850}$ environmental conditions. Left column shows the time mean magnitude term $M\left( \omega_i , q_j \right)$ and the right column is the magnitude term multiplied by the space-time frequency term $f\left( \omega_i , q_j \right) M\left( \omega_i , q_j \right)$. Integrals over $f M$ gives the climatological, area averaged stratiform precipitation rate. Panel labels denote the grid resolution of the model run.}
-\label{fig:pdecomp}
-\end{figure}
 
 \section{Conclusions}
 
