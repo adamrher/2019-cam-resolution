@@ -17,8 +17,9 @@ begin
   nfiles = dimsizes(fname_in)
   varnams = (/"bin_centers","medians","upperQ","lowerQ","nnorm","globav","globavup","pdfprect","pdfmflux"/)
 
-  xaxis = "-~F33~w~F21~*q/(g*rhow) at 850 hPa (mm/day)"
   xaxis = "-~F33~w~F21~~B~850~N~q~B~850~N~ / g~F33~r~F21~~B~w~N~ (mm/day)"
+  xaxis = "-~F33~w~F14~~B~850~N~q~B~850~N~ / g~F33~r~F14~~B~w~N~~F21~ (mm/day)"
+
   yaxis = "Precipitation Rate (mm/day)"
 
   pltNam = "temp_mflux"

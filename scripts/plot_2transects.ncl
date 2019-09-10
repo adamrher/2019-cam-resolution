@@ -112,7 +112,7 @@ begin
    res2 = res1
    res2@gsnContourNegLineDashPattern = 2
    res2@cnLineThicknesses = (/3,3,3/)
-   res2@cnLineColor = "white"
+   res2@cnLineColor = "black"
    res2@cnLevels = (/-1.,0.0075/)
 
 
@@ -293,8 +293,9 @@ begin
   overlay(plot(n),dum1)
   delete(dum1)
 
-  dum1 = gsn_csm_contour(wks,ptx,res1)
-  overlay(plot(n),dum1)
+  ;;dum1 = gsn_csm_contour(wks,ptx,res1)
+  ;;overlay(plot(n),dum1)
+  ;;delete(dum1)
 
   if (writencdf) then
     if (n.eq.0) then
@@ -305,7 +306,7 @@ begin
     ncdf->$VAR2(n)$ = ptx
     ncdf->$VAR3(n)$ = cmfx
   end if
-  delete([/dum1,cmfx,ptx,omgx/])
+  delete([/cmfx,ptx,omgx/])
 
 end do ;nfiles
 
