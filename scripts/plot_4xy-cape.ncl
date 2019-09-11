@@ -18,6 +18,8 @@ begin
 
 ;;;define VARS
 
+  senstest = False
+
   pltNam = "temp_cape"
 
   secpday = 60.*60.*24.
@@ -27,7 +29,11 @@ begin
 ;******************************************************
   wkstype = "pdf"
   wks = gsn_open_wks(wkstype,pltNam)               ; open workstation
-  plot = new( (/4/), "graphic")
+  if (senstest) then
+    plot = new( (/6/), "graphic")
+  else
+    plot = new( (/4/), "graphic")
+  end if
 
   resf                        = True
 
@@ -93,13 +99,18 @@ begin
   plot(1) = gsn_csm_blank_plot(wks,resf)
 
   resf@trYMinF = 40.
-  resf@trYMaxF = 260.
+  resf@trYMaxF = 260.;300.
   resf@tiYAxisString = "Dilute-CAPE (J/kg)"
   plot(0) = gsn_csm_blank_plot(wks,resf)
 
   resf@tiXAxisString = "~F33~D~F21~x (km)"
   plot(2) = gsn_csm_blank_plot(wks,resf)
   plot(3) = gsn_csm_blank_plot(wks,resf)
+
+  if (senstest) then
+    plot(4) = gsn_csm_blank_plot(wks,resf)
+    plot(5) = gsn_csm_blank_plot(wks,resf)
+  end if
 
 ;;;load files
 
@@ -210,6 +221,27 @@ begin
      plot@$pNam$ = gsn_add_polymarker(wks,plot(3),dx(n),fqgtz(n),res)
 
 ;--------------------------------------------------------------------
+     if (senstest) then
+
+       res@gsMarkerColor = "red"
+
+       pNam = unique_string("tmp")
+       plot@$pNam$ = gsn_add_polymarker(wks,plot(4),dx(n),mqltz(n),res)
+
+       pNam = unique_string("tmp")
+       plot@$pNam$ = gsn_add_polymarker(wks,plot(5),dx(n),ftltz(n),res)
+
+       res@gsMarkerColor = "blue"
+
+       pNam = unique_string("tmp")
+       plot@$pNam$ = gsn_add_polymarker(wks,plot(4),dx(n),mqgtz(n),res)
+
+       pNam = unique_string("tmp")
+       plot@$pNam$ = gsn_add_polymarker(wks,plot(5),dx(n),ftgtz(n),res)
+
+     end if
+
+;--------------------------------------------------------------------
    end do
 
 ;;drawNDCGrid(wks)
@@ -223,12 +255,16 @@ begin
   resP@gsnPanelBottom   = 0.05
   resPgsnPanelXWhiteSpacePercent = 5
   resP@gsnPanelFigureStringsFontHeightF = 0.015
-  resP@gsnPanelFigureStrings = (/"a.","b.","c.","d."/)
   resP@gsnPanelFigureStringsPerimOn     = True
   resP@gsnPanelFigureStringsBackgroundFillColor = "white"
   resP@amJust           = "TopLeft"
-  ;resP@txString = pltTitle
-  gsn_panel(wks,plot,(/2,2/),resP)               ; now draw as one plot
+  if (senstest) then
+    resP@gsnPanelFigureStrings = (/"a.","b.","c.","d.","e.","f."/)
+    gsn_panel(wks,plot,(/3,2/),resP)
+  else
+    resP@gsnPanelFigureStrings = (/"a.","b.","c.","d."/)
+    gsn_panel(wks,plot,(/2,2/),resP)
+  end if
 
 frame(wks)
 
