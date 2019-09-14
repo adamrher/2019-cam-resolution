@@ -18,6 +18,7 @@ begin
   VARY = "SPECBAR"
 
   colors = (/"blue","deepskyblue1","green","magenta","red","black"/)
+  colors4 = (/"blue4","deepskyblue4","green4","magenta4","red4","grey45"/)
 
   label = (/"  ne20", \
             "  ne30", \
@@ -114,6 +115,7 @@ begin
   ;;switch order of files
   fname = fname(::-1)
   colors= colors(::-1)
+  colors4= colors4(::-1)
   yy = yy(::-1)
   label = label(::-1)
 
@@ -140,8 +142,8 @@ do n = 0,ncase-1
   if (n.eq.0) then
     resf@tiYAxisString          = "Kinetic Energy (m~S~2~N~/s~S~2~N~)"
     resf@tiXAxisString          = "Spherical Wavenumber"
-    resf@trXMinF                = 1
-    resf@trXMaxF                = 1000.
+    resf@trXMinF                = 1.
+    resf@trXMaxF                = 1000.;800.
     resf@trYMinF                = 2.e-6
     resf@trYMaxF                = 1.e3
     plot(0) = gsn_csm_xy(wks,varx(1:nx-1),vary(1:nx-1),resf)
@@ -152,8 +154,10 @@ do n = 0,ncase-1
     gsn_polyline(wks,plot(0),xref/15.,yref,plres)
  
     resf@tiYAxisString          = "Compensated Kinetic Energy (m~S~2~N~/s~S~2~N~)"
+    ;resf@trXMinF                = 10.
+    ;resf@trXMaxF                = 4.e2
     resf@trYMinF                = 1.e-1
-    resf@trYMaxF                = 6.e3
+    resf@trYMaxF                = 6.e3;2.e3
     plot(1) = gsn_csm_xy(wks,varx(1:nx-1),varyy(1:nx-1),resf)
   else
     tmp0 = gsn_csm_xy(wks,varx(1:nx-1),vary(1:nx-1),resf)
@@ -168,6 +172,42 @@ do n = 0,ncase-1
   plres@gsLineColor       = colors(n)
   gsn_polyline_ndc(wks,xx,(/yy(n),yy(n)/),plres)
   gsn_text_ndc(wks,label(n),xx(1),yy(n),txres)
+
+end do
+
+;*****************************************************
+;Add Effective Resolution Shading
+;*****************************************************
+
+loedx = (/ 833.56795, 555.711967, 416.783975, 277.8559834, 208.3919875, 138.92799167/)
+hiedx = (/1667.1359 ,1111.423934, 833.56795 , 555.711967 , 416.783975 , 277.8559834 /)
+
+loedx = loedx(::-1)
+hiedx = hiedx(::-1)
+
+loen  = L/loedx
+hien  = L/(1.5*hiedx)
+
+dloen = round(loen,2)
+dhien = round(hien,2)
+
+do n = 0,ncase-1
+
+   ncdf = addfile("../data/kespectra/" + fname(n), "r")
+   varx = ncdf->$VARX$
+   vary = ncdf->$VARY$
+   delete(ncdf)
+
+   varyy = vary*(varx^(5/3.))
+   varyy@_FillValue = default_fillvalue("float")
+   varyy = where(varx.ge.dhien(n) .and. varx.le.dloen(n),varyy,varyy@_FillValue)
+
+   resf@xyCurveDrawOrder = "PreDraw"
+   resf@xyLineColors           = colors4(n)
+   resf@xyLineThicknesses = 20
+   tmp1 = gsn_csm_xy(wks,varx,varyy,resf)
+   overlay(plot(1),tmp1)
+   delete([/tmp1,varx,vary,varyy/])
 
 end do
 ;;drawNDCGrid(wks)
