@@ -112,7 +112,7 @@ begin
    res2 = res1
    res2@gsnContourNegLineDashPattern = 2
    res2@cnLineThicknesses = (/3,3,3/)
-   res2@cnLineColor = "black"
+   res2@cnLineColor = "black";;"firebrick1"
    res2@cnLevels = (/-1.,0.0075/)
 
 

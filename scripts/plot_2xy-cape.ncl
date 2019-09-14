@@ -18,7 +18,7 @@ begin
 
 ;;;define VARS
 
-  pltNam = "temp_cape"
+  pltNam = "temp_cape-subtropics"
 
   secpday = 60.*60.*24.
 
@@ -212,6 +212,30 @@ end if
 
 
    end do
+
+;*****************************************************
+; Add legend
+;*****************************************************
+ txres = True
+ txres@txFontHeightF = 0.0175
+ txres@txJust = "CenterLeft"
+
+ res@gsMarkerIndex = 2
+ res@gsMarkerSizeF = 20;26
+ res@gsMarkerThicknessF = 5;6
+ label = (/"    Ascending Columns", \
+           "    Descending Columns", \
+           "    All Columns"/)
+ nlabels = dimsizes(label)
+
+ yy = 0.775
+ xx = (/0.15,0.45,0.77/)
+ colors = (/"red","blue","black"/)
+ do n = 0,nlabels-1
+   res@gsMarkerColor = colors(n)
+   gsn_polymarker_ndc(wks,(/xx(n),xx(n)/),(/yy,yy/),res)
+   gsn_text_ndc(wks,label(n),xx(n),yy,txres)
+ end do
 
 ;;drawNDCGrid(wks)
 ;*****************************************************
