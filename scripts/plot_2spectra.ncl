@@ -181,8 +181,10 @@ end do
 loedx = (/ 833.56795, 555.711967, 416.783975, 277.8559834, 208.3919875, 138.92799167/)
 hiedx = (/1667.1359 ,1111.423934, 833.56795 , 555.711967 , 416.783975 , 277.8559834 /)
 
-loedx = loedx(::-1)
-hiedx = hiedx(::-1)
+;loedx = loedx(::-1)
+;hiedx = hiedx(::-1)
+colors4 = colors4(::-1)
+fname = fname(::-1)
 
 loen  = L/loedx
 hien  = L/hiedx
