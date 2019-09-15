@@ -191,6 +191,8 @@ end do
  loedx = loedx(::-1)
  hiedx = hiedx(::-1)
 
+ ;;hiedx = 0.75*hiedx
+
  loen  = L/loedx
  hien  = L/hiedx
 
