@@ -18,7 +18,7 @@ begin
   VARY = "SPECBAR"
 
   colors = (/"blue","deepskyblue1","green","magenta","red","black"/)
-  colors4 = (/"blue4","deepskyblue4","green4","magenta4","red4","grey45"/)
+  colors4 = (/"blue4","deepskyblue4","green4","magenta4","red4","grey56"/)
 
   label = (/"  ne20", \
             "  ne30", \
@@ -143,7 +143,7 @@ do n = 0,ncase-1
     resf@tiYAxisString          = "Kinetic Energy (m~S~2~N~/s~S~2~N~)"
     resf@tiXAxisString          = "Spherical Wavenumber"
     resf@trXMinF                = 1.
-    resf@trXMaxF                = 1000.;800.
+    resf@trXMaxF                = 1000.
     resf@trYMinF                = 2.e-6
     resf@trYMaxF                = 1.e3
     plot(0) = gsn_csm_xy(wks,varx(1:nx-1),vary(1:nx-1),resf)
@@ -152,18 +152,17 @@ do n = 0,ncase-1
     xref = (/18.,60./)
     yref = 50.^3.*(xref)^(-3.)
     gsn_polyline(wks,plot(0),xref/15.,yref,plres)
- 
+
     resf@tiYAxisString          = "Compensated Kinetic Energy (m~S~2~N~/s~S~2~N~)"
-    ;resf@trXMinF                = 10.
-    ;resf@trXMaxF                = 4.e2
     resf@trYMinF                = 1.e-1
-    resf@trYMaxF                = 6.e3;2.e3
+    resf@trYMaxF                = 6.e3
     plot(1) = gsn_csm_xy(wks,varx(1:nx-1),varyy(1:nx-1),resf)
   else
     tmp0 = gsn_csm_xy(wks,varx(1:nx-1),vary(1:nx-1),resf)
     overlay(plot(0),tmp0)
 
     vary = vary*(varx^(5/3.))
+
     tmp1 = gsn_csm_xy(wks,varx(1:nx-1),varyy(1:nx-1),resf)
     overlay(plot(1),tmp1)
   end if
@@ -186,7 +185,7 @@ loedx = loedx(::-1)
 hiedx = hiedx(::-1)
 
 loen  = L/loedx
-hien  = L/(1.5*hiedx)
+hien  = L/hiedx
 
 dloen = round(loen,2)
 dhien = round(hien,2)
