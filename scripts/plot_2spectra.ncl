@@ -178,39 +178,51 @@ end do
 ;Add Effective Resolution Shading
 ;*****************************************************
 
-loedx = (/ 833.56795, 555.711967, 416.783975, 277.8559834, 208.3919875, 138.92799167/)
-hiedx = (/1667.1359 ,1111.423934, 833.56795 , 555.711967 , 416.783975 , 277.8559834 /)
+ resgs = True
+ resgs@gsMarkerIndex = 16
+ resgs@gsMarkerSizeF = 12;20
+ resgs@gsMarkerThicknessF = 5
+ resgs@tfPolyDrawOrder = "PreDraw"
 
-;loedx = loedx(::-1)
-;hiedx = hiedx(::-1)
-colors4 = colors4(::-1)
-fname = fname(::-1)
 
-loen  = L/loedx
-hien  = L/hiedx
+ loedx = (/ 833.56795, 555.711967, 416.783975, 277.8559834, 208.3919875, 138.92799167/)
+ hiedx = (/1667.1359 ,1111.423934, 833.56795 , 555.711967 , 416.783975 , 277.8559834 /)
 
-dloen = round(loen,2)
-dhien = round(hien,2)
+ loedx = loedx(::-1)
+ hiedx = hiedx(::-1)
 
-do n = 0,ncase-1
+ loen  = L/loedx
+ hien  = L/hiedx
 
-   ncdf = addfile("../data/kespectra/" + fname(n), "r")
-   varx = ncdf->$VARX$
-   vary = ncdf->$VARY$
-   delete(ncdf)
+ dloen = round(loen,2)
+ dhien = round(hien,2)
 
-   varyy = vary*(varx^(5/3.))
-   varyy@_FillValue = default_fillvalue("float")
-   varyy = where(varx.ge.dhien(n) .and. varx.le.dloen(n),varyy,varyy@_FillValue)
+ do n = 0,ncase-1
 
-   resf@xyCurveDrawOrder = "PreDraw"
-   resf@xyLineColors           = colors4(n)
-   resf@xyLineThicknesses = 20
-   tmp1 = gsn_csm_xy(wks,varx,varyy,resf)
-   overlay(plot(1),tmp1)
-   delete([/tmp1,varx,vary,varyy/])
+    ncdf = addfile("../data/kespectra/" + fname(n), "r")
+    varx = ncdf->$VARX$
+    vary = ncdf->$VARY$
+    delete(ncdf)
 
-end do
+    varyy = vary*(varx^(5/3.))
+    varyy@_FillValue = default_fillvalue("float")
+    ;;varyy = where(varx.ge.dhien(n) .and. varx.le.dloen(n),varyy,varyy@_FillValue)
+    indy = ind(varx.eq.dhien(n))
+    resf@xyCurveDrawOrder = "PreDraw"
+    resf@xyLineColors           = colors4(n)
+    resf@xyLineThicknesses = 20
+
+    ;;tmp1 = gsn_csm_xy(wks,varx,varyy,resf)
+    ;;tmp1 = gsn_csm_xy(wks,varx(indy:indy+1),varyy(indy:indy+1),resf)
+    ;;overlay(plot(1),tmp1)
+
+    resgs@gsMarkerColor = colors4(n)
+    pNam = unique_string("tmp")
+    plot@$pNam$ = gsn_add_polymarker(wks,plot(1),varx(indy),varyy(indy),resgs)
+    delete([/varx,vary,varyy/])
+
+
+ end do
 ;;drawNDCGrid(wks)
 ;*****************************************************
 ; Plot panel

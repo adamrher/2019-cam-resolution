@@ -13,12 +13,22 @@ begin
 	     "physgrid_180607_QPC6_ne80pg3_ne80pg3_mg17_181018.pdf-omg.nc", \
              "physgrid_180515_QPC6_ne120pg3_ne120pg3_mg17_180602.pdf-omg.nc"/)
 
+  ;;; my scaling (n=-1)
   fname2 = (/"physgrid_180607_QPC6_ne20pg3_ne20pg3_mg17_181020_dt2700.pdf-omg_ne120-scale.nc", \
              "physgrid_180607_QPC6_ne30pg3_ne30pg3_mg17_180617.pdf-omg_ne120-scale.nc", \
              "physgrid_180607_QPC6_ne40pg3_ne40pg3_mg17_181020_dt1350.pdf-omg_ne120-scale.nc", \
              "physgrid_180515_QPC6_ne60pg3_ne60pg3_mg17_180528.pdf-omg_ne120-scale.nc", \
              "physgrid_180607_QPC6_ne80pg3_ne80pg3_mg17_181018.pdf-omg_ne120-scale.nc", \
              "physgrid_180515_QPC6_ne120pg3_ne120pg3_mg17_180602.pdf-omg.nc"/)
+
+;  ;;; Rauscher scaling (n=-2/3)
+;  fname2 = (/"physgrid_180607_QPC6_ne20pg3_ne20pg3_mg17_181020_dt2700.pdf-omg_ne120-rscale.nc", \
+;             "physgrid_180607_QPC6_ne30pg3_ne30pg3_mg17_180617.pdf-omg_ne120-rscale.nc", \
+;             "physgrid_180607_QPC6_ne40pg3_ne40pg3_mg17_181020_dt1350.pdf-omg_ne120-rscale.nc", \
+;             "physgrid_180515_QPC6_ne60pg3_ne60pg3_mg17_180528.pdf-omg_ne120-rscale.nc", \
+;             "physgrid_180607_QPC6_ne80pg3_ne80pg3_mg17_181018.pdf-omg_ne120-rscale.nc", \
+;             "physgrid_180515_QPC6_ne120pg3_ne120pg3_mg17_180602.pdf-omg.nc"/)
+
 
   fname3 = (/"physgrid_180607_QPC6_ne20pg3_ne20pg3_mg17_181020_dt2700.pdf-omg.nc", \
              "physgrid_180607_QPC6_ne30pg3_ne30pg3_mg17_180617.pdf-omg_ne20-remap.nc", \
