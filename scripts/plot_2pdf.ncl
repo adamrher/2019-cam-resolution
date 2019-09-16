@@ -219,7 +219,8 @@ end do
   resP@gsnPanelBottom   = 0.05
   resPgsnPanelXWhiteSpacePercent = 5
   resP@gsnPanelFigureStringsFontHeightF = 0.015
-  resP@gsnPanelFigureStrings = (/"a.","b.","c."/)
+  resP@gsnPanelFigureStrings = (/"a.","b."/)
+  ;;resP@gsnPanelFigureStrings = (/"a.","n = -2/3"/)
   resP@gsnPanelFigureStringsPerimOn     = True
   resP@gsnPanelFigureStringsBackgroundFillColor = "white"
   resP@amJust           = "TopRight"

@@ -18,7 +18,7 @@ begin
   VARY = "SPECBAR"
 
   colors = (/"blue","deepskyblue1","green","magenta","red","black"/)
-  colors4 = (/"blue4","deepskyblue4","green4","magenta4","red4","grey56"/)
+  colors4 = (/"blue4","deepskyblue3","green4","magenta3","red4","grey56"/)
 
   label = (/"  ne20", \
             "  ne30", \
@@ -184,14 +184,13 @@ end do
  resgs@gsMarkerThicknessF = 5
  resgs@tfPolyDrawOrder = "PreDraw"
 
-
  loedx = (/ 833.56795, 555.711967, 416.783975, 277.8559834, 208.3919875, 138.92799167/)
  hiedx = (/1667.1359 ,1111.423934, 833.56795 , 555.711967 , 416.783975 , 277.8559834 /)
 
- loedx = loedx(::-1)
- hiedx = hiedx(::-1)
-
- ;;hiedx = 0.75*hiedx
+ ;;loedx = loedx(::-1)
+ ;;hiedx = hiedx(::-1)
+ fname = fname(::-1)
+ colors4 = colors4(::-1)
 
  loen  = L/loedx
  hien  = L/hiedx
@@ -208,20 +207,20 @@ end do
 
     varyy = vary*(varx^(5/3.))
     varyy@_FillValue = default_fillvalue("float")
-    ;;varyy = where(varx.ge.dhien(n) .and. varx.le.dloen(n),varyy,varyy@_FillValue)
-    indy = ind(varx.eq.dhien(n))
+    varyy = where(varx.ge.dhien(n) .and. varx.le.dloen(n),varyy,varyy@_FillValue)
+
     resf@xyCurveDrawOrder = "PreDraw"
     resf@xyLineColors           = colors4(n)
     resf@xyLineThicknesses = 20
+    tmp1 = gsn_csm_xy(wks,varx,varyy,resf)
+    overlay(plot(1),tmp1)
+    delete([/tmp1,varx,vary,varyy/])
 
-    ;;tmp1 = gsn_csm_xy(wks,varx,varyy,resf)
-    ;;tmp1 = gsn_csm_xy(wks,varx(indy:indy+1),varyy(indy:indy+1),resf)
-    ;;overlay(plot(1),tmp1)
-
-    resgs@gsMarkerColor = colors4(n)
-    pNam = unique_string("tmp")
-    plot@$pNam$ = gsn_add_polymarker(wks,plot(1),varx(indy),varyy(indy),resgs)
-    delete([/varx,vary,varyy/])
+    ;;indy = ind(varx.eq.dhien(n))
+    ;;resgs@gsMarkerColor = colors4(n)
+    ;;pNam = unique_string("tmp")
+    ;;plot@$pNam$ = gsn_add_polymarker(wks,plot(1),varx(indy),varyy(indy),resgs)
+    ;;delete([/varx,vary,varyy/])
 
 
  end do
