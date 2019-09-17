@@ -1,29 +1,74 @@
-% qjrms4doc.tex V1.10, 4 October 2013
+\documentclass[alpha-refs]{wiley-article}
 
-\documentclass[times]{qjrms4}
-\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
-\usepackage{moreverb}
+\usepackage{graphicx}
+\usepackage[space]{grffile}
+\usepackage{latexsym}
+\usepackage{textcomp}
+\usepackage{longtable}
+\usepackage{tabulary}
+\usepackage{booktabs,array,multirow}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{colorlinks=false,pdfborder={0 0 0}}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\@combinedblfloats{\box\@outputbox}{\unvbox\@outputbox}{}{%
+  \errmessage{\noexpand\@combinedblfloats could not be patched}%
+}%
+\makeatother
+% You can conditionalize code for latexml or normal latex using this.
+\newif\iflatexml\latexmlfalse
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}%
 
-\def\volumenumber{00}
+\AtBeginDocument{\DeclareGraphicsExtensions{.pdf,.PDF,.eps,.EPS,.png,.PNG,.tif,.TIF,.jpg,.JPG,.jpeg,.JPEG}}
 
-\begin{document}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
 
-\runningheads{A.~R.~Herrington and K.~A.~Reed}{CAM resolution sensitivity}
+% Add any additional LaTeX packages and macros here
+\usepackage{siunitx}
+
+%---
+
+\iflatexml
+% Add any LateXML specific commands here
+
+%---
+
+\else
+% The commands below will only change the exported PDF. Edit or remove as needed
+
+\renewcommand{\sfdefault}{ptm}
+\renewcommand{\familydefault}{\sfdefault}
+
+
+\paperfield{Climate Modeling}
+\corraddress{School of Marine and Atmospheric Sciences, Stony Brook University, Stony Brook, NY 11794, USA}
+\corremail{\url{adam.herrington@stonybrook.edu}}
+\presentadd{Climate and Global Dynamics Laboratory, National Center for Atmospheric Research, Boulder, CO, 80305, USA}
+
+%---
+
+\papertype{Original Article}
 
 \title{On resolution sensitivity in the Community Atmosphere Model}
 
-\author{Adam R. Herrington\corrauth \& Kevin A. Reed}
-\address{School of Marine and Atmospheric Sciences, Stony Brook University, Stony Brook, NY 11794}
 
-\corraddr{\url{adam.herrington@stonybrook.edu}}
+\author[1]{Adam R. Herrington}
+\affil[1]{School of Marine and Atmospheric Sciences, Stony Brook University, Stony Brook, NY 11794, USA}
+\author[1]{Kevin A. Reed}
+\runningauthor{Adam R. Herrington}
 
-\begin{abstract}
-Advances in high performance computing make it possible to run atmospheric general circulation models (AGCMs) over an increasingly wider range of grid resolutions, using either globally uniform or variable-resolution grid structures. In principle, this is an exciting opportunity to resolve atmospheric process and scales in a global model with unprecedented detail, but in practice this grid flexibility is not obviously compatible with the non- or weakly- converging solutions with increasing horizontal resolution that have long characterized AGCMs. In the the Community Atmosphere Model (CAM), there are robust sensitivities to horizontal resolution that have persisted since the model was first introduced over thirty years ago; the atmosphere progressively dries and becomes less cloudy with resolution, and parameterized deep convective precipitation decreases at the expense of stratiform precipitation with resolution. This study documents a convergence experiment using CAM, version 6, to argue that a unifying cause, the sensitivity of resolved dynamical modes to native grid resolution, feedback onto other model components and explain these robust sensitivities to resolution. The increasing magnitude of resolved vertical velocities with resolution are shown to fit an analytic scaling derived for the equations of motion at hydrostatic scales. This trend in vertical velocities results in an increase in resolved moisture fluxes at cloud base, balanced through an increase in stratiform precipitation rates with resolution. Compensating, greater magnitude subsiding motion with resolution has previously been shown to dry out the atmosphere and reduce cloud cover, and here it also shown to stabilize the mean state and reduce the activity of parameterized convection and convective precipitation rates with resolution. The impact of changing vertical velocity field with native grid resolution cannot be ignored in any effort to recover convergent solutions in AGCMs, and in particular, the development of scale-aware physical parameterizations.
-\end{abstract}
-
-\keywords{Climate models, physical parameterizations, resolution sensitivity}
+\begin{document}
 
 \maketitle
+\selectlanguage{english}
+\begin{abstract}
+Advances in high performance computing make it possible to run atmospheric general circulation models (AGCMs) over an increasingly wider range of grid resolutions, using either globally uniform or variable-resolution grid structures. In principle, this is an exciting opportunity to resolve atmospheric process and scales in a global model with unprecedented detail, but in practice this grid flexibility is not obviously compatible with the non- or weakly- converging solutions with increasing horizontal resolution that have long characterized AGCMs. In the the Community Atmosphere Model (CAM), there are robust sensitivities to horizontal resolution that have persisted since the model was first introduced over thirty years ago; the atmosphere progressively dries and becomes less cloudy with resolution, and parameterized deep convective precipitation decreases at the expense of stratiform precipitation with resolution. This study documents a convergence experiment using CAM, version 6, to argue that a unifying cause, the sensitivity of resolved dynamical modes to native grid resolution, feedback onto other model components and explain these robust sensitivities to resolution. The increasing magnitude of resolved vertical velocities with resolution are shown to fit an analytic scaling derived for the equations of motion at hydrostatic scales. This trend in vertical velocities results in an increase in resolved moisture fluxes at cloud base, balanced through an increase in stratiform precipitation rates with resolution. Compensating, greater magnitude subsiding motion with resolution has previously been shown to dry out the atmosphere and reduce cloud cover, and here it also shown to stabilize the mean state and reduce the activity of parameterized convection and convective precipitation rates with resolution. The impact of changing vertical velocity field with native grid resolution cannot be ignored in any effort to recover convergent solutions in AGCMs, and in particular, the development of scale-aware physical parameterizations.
+\textbf{Keywords} --- Climate models, physical parameterizations, resolution sensitivity%
+\end{abstract}%
 
 \section{Introduction}
 
@@ -183,7 +228,7 @@ Figure~\ref{fig:pdecomp} shows plots of the terms $M_s$ and $f_s M_s$ for all re
 
 \begin{figure}
 \begin{center}
-\noindent\includegraphics[width=20pc,angle=0]{figs/temp_pdecomp.pdf}\\
+\noindent\includegraphics[width=10pc,angle=0]{figs/temp_pdecomp.pdf}\\
 \end{center}
 \caption{Decomposition of the climatological stratiform precipitation rates, averaged over the $\pm 15^{\circ}$ latitude band into $\omega_{850}$ and $q_{850}$ environmental conditions. Left column shows the time mean magnitude term $M\left( \omega_i , q_j \right)$ and the right column is the magnitude term multiplied by the space-time frequency term $f\left( \omega_i , q_j \right) M\left( \omega_i , q_j \right)$. Integrals over $f M$ gives the climatological, area averaged stratiform precipitation rate. Panel labels denote the grid resolution of the model run.}
 \label{fig:pdecomp}
@@ -315,9 +360,13 @@ AGCMs are known to suffer from an excess of drizzle relative to observations \ci
 
 This study argues that the sensitivity of parameterized convection and stratiform precipitation rates to resolution are a response to the increase in magnitude of vertical velocities with resolution. This is essentially the hypothesis put forth by \cite{HR2017JCLIM} to explain resolution sensitivity, that increased vertical velocities with resolution interacts with other model components, steering the model towards a new mean state. Here, those interactions are documented explicitly. Resolution sensitivity therefore arises from the relationship between vertical velocities and resolution, a well-known scale dependency of the equations of motion \citep{O1981JAS}.
 
-\ack 
+\section{Acknowledgements}\label{acknowledgements}
+
 Funding support for this work was in part provided by the U.S. Department of Energy Office of Science (DE-SC0019459) and the National Science Foundation (AGS1648629 and AGS1830729). Computing and data storage resources, including the Cheyenne supercomputer (doi:10.5065/D6RX99HX), were provided by the Computational and Information Systems Laboratory (CISL) at the National Center for Atmospheric Research (NCAR). Herrington would like to thank Dr. Sultan Hameed for his assistance with the statistical analysis used in this study. Model output used in this study is publicly available from the GitHub repository \url{https://github.com/adamrher/2019-cam-resolution/tree/master/data}.
 
-\bibliographystyle{wileyqj}
-\bibliography{bib}
+\selectlanguage{english}
+%\FloatBarrier
+\bibliography{bibliography/bib.bib}
+
 \end{document}
+

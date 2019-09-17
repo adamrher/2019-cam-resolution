@@ -1,0 +1,486 @@
+\begin{thebibliography}{60}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Arakawa and Wu(2013)]{AW2013JAS}
+Akio Arakawa and Chien-Ming Wu.
+\newblock A unified representation of deep moist convection in numerical
+  modeling of the atmosphere. part i.
+\newblock \emph{Journal of the Atmospheric Sciences}, 70\penalty0 (7):\penalty0
+  1977--1992, 2013.
+
+\bibitem[Bogenschutz et~al.(2013)Bogenschutz, Gettelman, Morrison, Larson,
+  Craig, and Schanen]{BOG2013JCLIM}
+Peter~A Bogenschutz, Andrew Gettelman, Hugh Morrison, Vincent~E Larson, Cheryl
+  Craig, and David~P Schanen.
+\newblock Higher-order turbulence closure and its impact on climate simulations
+  in the community atmosphere model.
+\newblock \emph{Journal of Climate}, 26\penalty0 (23):\penalty0 9655--9676,
+  2013.
+
+\bibitem[Cho and Lindborg(2001)]{CL2001JGR}
+John~YN Cho and Erik Lindborg.
+\newblock Horizontal velocity structure functions in the upper troposphere and
+  lower stratosphere: 1. observations.
+\newblock \emph{Journal of Geophysical Research: Atmospheres}, 106\penalty0
+  (D10):\penalty0 10223--10232, 2001.
+
+\bibitem[Cho et~al.(1999)Cho, Zhu, Newell, Anderson, Barrick, Gregory, Sachse,
+  Carroll, and Albercook]{CETAL1999JGR}
+John~YN Cho, Yong Zhu, Reginald~E Newell, Bruce~E Anderson, John~D Barrick,
+  Gerald~L Gregory, Glen~W Sachse, Mary~Anne Carroll, and George~M Albercook.
+\newblock Horizontal wavenumber spectra of winds, temperature, and trace gases
+  during the pacific exploratory missions: 1. climatology.
+\newblock \emph{Journal of Geophysical Research: Atmospheres}, 104\penalty0
+  (D5):\penalty0 5697--5716, 1999.
+
+\bibitem[Dai(2006)]{D2006JCLIM}
+Aiguo Dai.
+\newblock Precipitation characteristics in eighteen coupled climate models.
+\newblock \emph{Journal of Climate}, 19\penalty0 (18):\penalty0 4605--4630,
+  2006.
+
+\bibitem[Davis et~al.(1996)Davis, Marshak, Wiscombe, and Cahalan]{DETAL1996JAS}
+Anthony Davis, Alexander Marshak, Warren Wiscombe, and Robert Cahalan.
+\newblock Scale invariance of liquid water distributions in marine
+  stratocumulus. part i: Spectral properties and stationarity issues.
+\newblock \emph{Journal of the atmospheric sciences}, 53\penalty0
+  (11):\penalty0 1538--1558, 1996.
+
+\bibitem[Dennis et~al.(2012)Dennis, Edwards, Evans, Guba, Lauritzen, Mirin,
+  St-Cyr, Taylor, and Worley]{DetAl2012IJHPCA}
+John~M. Dennis, Jim Edwards, Katherine~J. Evans, Oksana Guba, Peter~H.
+  Lauritzen, A.~.A. Mirin, Amik St-Cyr, Mark~A. Taylor, and Patrick~H. Worley.
+\newblock {CAM-SE}: A scalable spectral element dynamical core for the
+  {C}ommunity {A}tmosphere {M}odel.
+\newblock \emph{Int. J. High. Perform. C.}, 26\penalty0 (1):\penalty0 74--89,
+  2012.
+\newblock \doi{10.1177/1094342011428142}.
+\newblock URL \url{http://hpc.sagepub.com/content/26/1/74.abstract}.
+
+\bibitem[Donner et~al.(2016)Donner, O'Brien, Rieger, Vogel, and
+  Cooke]{DETALA2016ACP}
+Leo~J Donner, Travis~A O'Brien, Daniel Rieger, Bernhard Vogel, and William~F
+  Cooke.
+\newblock Are atmospheric updrafts a key to unlocking climate forcing and
+  sensitivity?
+\newblock \emph{Atmospheric Chemistry and Physics}, 16\penalty0 (20):\penalty0
+  12983--12992, 2016.
+
+\bibitem[Germano(1992)]{G1992JFM}
+Massimo Germano.
+\newblock Turbulence: the filtering approach.
+\newblock \emph{Journal of Fluid Mechanics}, 238:\penalty0 325--336, 1992.
+
+\bibitem[Gettelman et~al.(2015)Gettelman, Morrison, Santos, Bogenschutz, and
+  Caldwell]{MG2}
+Andrew Gettelman, Hugh Morrison, Sean Santos, P~Bogenschutz, and PM~Caldwell.
+\newblock Advanced two-moment bulk microphysics for global models. part ii:
+  Global model solutions and aerosol--cloud interactions.
+\newblock \emph{Journal of Climate}, 28\penalty0 (3):\penalty0 1288--1307,
+  2015.
+
+\bibitem[Golaz et~al.(2002)Golaz, Larson, and Cotton]{GETAL2002JAS}
+Jean-Christophe Golaz, Vincent~E. Larson, and William~R. Cotton.
+\newblock A pdf-based model for boundary layer clouds. part i: Method and model
+  description.
+\newblock \emph{Journal of the Atmospheric Sciences}, 59\penalty0
+  (24):\penalty0 3540–3551, 2002.
+\newblock \doi{10.1175/1520-0469(2002)059<3540:apbmfb>2.0.co;2}.
+
+\bibitem[Harris et~al.(2016)Harris, Lin, and Tu]{HETAL2016JCLIM}
+Lucas~M. Harris, Shian-Jiann Lin, and Chiaying Tu.
+\newblock High-resolution climate simulations using gfdl hiram with a stretched
+  global grid.
+\newblock \emph{Journal of Climate}, 29\penalty0 (11):\penalty0 4293–4314,
+  2016.
+\newblock \doi{10.1175/jcli-d-15-0389.1}.
+
+\bibitem[Herrington and Reed(2017)]{HR2017JCLIM}
+Adam~R. Herrington and Kevin~A. Reed.
+\newblock An explanation for the sensitivity of the mean state of the community
+  atmosphere model to horizontal resolution on aquaplanets.
+\newblock \emph{J. Climate}, 30\penalty0 (13):\penalty0 4781--4797, 2017.
+\newblock \doi{10.1175/jcli-d-16-0069.1}.
+\newblock URL \url{http://dx.doi.org/10.1175/jcli-d-16-0069.1}.
+
+\bibitem[Herrington et~al.(2019)Herrington, Lauritzen, Reed, Goldhaber, and
+  Eaton]{HETAL2019JAMES}
+Adam~R Herrington, Peter~H Lauritzen, Kevin~A Reed, Steve Goldhaber, and
+  Brian~E Eaton.
+\newblock Exploring a lower resolution physics grid in cam-se-cslam.
+\newblock \emph{Journal of Advances in Modeling Earth Systems}, 11, 2019.
+
+\bibitem[Herrington and Reed(2018)]{HR2018JAMES}
+AR~Herrington and KA~Reed.
+\newblock An idealized test of the response of the community atmosphere model
+  to near-grid-scale forcing across hydrostatic resolutions.
+\newblock \emph{J. Adv. Model. Earth Syst.}, 10\penalty0 (2):\penalty0
+  560--575, 2018.
+
+\bibitem[Herrington et~al.(2018)Herrington, Lauritzen, Taylor, Goldhaber,
+  Eaton, Bacmeister, Reed, and Ullrich]{HL2018MWR}
+A.R. Herrington, P.H. Lauritzen, M.~A. Taylor, S.~Goldhaber, Brian~E. Eaton,
+  J.T. Bacmeister, K.A. Reed, and P.A. Ullrich.
+\newblock Physics-dynamics coupling with element-based high-order galerkin
+  methods: quasi equal-area physics grid.
+\newblock \emph{Mon. Wea. Rev.}, 47:\penalty0 69--84, 2018.
+\newblock \doi{10.1175/MWR-D-18-0136.1}.
+
+\bibitem[Jeevanjee(2017)]{J2017JAMES}
+Nadir Jeevanjee.
+\newblock Vertical velocity in the gray zone.
+\newblock \emph{Journal of Advances in Modeling Earth Systems}, 9\penalty0
+  (6):\penalty0 2304--2316, 2017.
+\newblock \doi{10.1002/2017MS001059}.
+
+\bibitem[Jeevanjee and Romps(2016)]{JR2016QJRMS}
+Nadir Jeevanjee and David~M Romps.
+\newblock Effective buoyancy at the surface and aloft.
+\newblock \emph{Quart. J. Roy. Meteor. Soc.}, 142\penalty0 (695):\penalty0
+  811--820, 2016.
+
+\bibitem[Kiehl and Williamson(1991)]{KW1991JGR}
+JT~Kiehl and DL~Williamson.
+\newblock Dependence of cloud amount on horizontal resolution in the national
+  center for atmospheric research community climate model.
+\newblock \emph{Journal of Geophysical Research: Atmospheres}, 96\penalty0
+  (D6):\penalty0 10955--10980, 1991.
+
+\bibitem[Lauritzen and Williamson(2019)]{LW2019JAMES}
+Peter~H. Lauritzen and David~L. Williamson.
+\newblock A total energy error analysis of dynamical cores and physics-dynamics
+  coupling in the community atmosphere model (cam).
+\newblock \emph{J. Adv. Model. Earth Syst.}, 2019.
+\newblock \doi{10.1029/2018MS001549}.
+
+\bibitem[Lauritzen et~al.(2018)Lauritzen, Nair, Herrington, Callaghan,
+  Goldhaber, Dennis, Bacmeister, Eaton, Zarzycki, Taylor, Gettelman, Neale,
+  Dobbins, Reed, and Dubos]{LetAl2018JAMES}
+Peter~H. Lauritzen, R.D. Nair, A.R. Herrington, P.~Callaghan, S.~Goldhaber,
+  J.M. Dennis, Julio~T. Bacmeister, B.~Eaton, C.M. Zarzycki, Mark~A. Taylor,
+  A.~Gettelman, R.B. Neale, B.~Dobbins, K.A. Reed, and T.~Dubos.
+\newblock {NCAR CESM2.0} release of {CAM-SE}: A reformulation of the
+  spectral-element dynamical core in dry-mass vertical coordinates with
+  comprehensive treatment of condensates and energy.
+\newblock \emph{J. Adv. Model. Earth Syst.}, 2018.
+\newblock \doi{10.1029/2017MS001257}.
+
+\bibitem[Lauritzen et~al.(2017)Lauritzen, Taylor, Overfelt, Ullrich, Nair,
+  Goldhaber, and Kelly]{LTOUNGK2017MWR}
+Peter~Hjort Lauritzen, Mark~A. Taylor, James Overfelt, Paul~A. Ullrich,
+  Ramachandran~D. Nair, Steve Goldhaber, and Rory Kelly.
+\newblock {CAM-SE-CSLAM}: Consistent coupling of a conservative semi-lagrangian
+  finite-volume method with spectral element dynamics.
+\newblock \emph{Mon. Wea. Rev.}, 145\penalty0 (3):\penalty0 833--855, 2017.
+\newblock \doi{10.1175/MWR-D-16-0258.1}.
+
+\bibitem[Lindborg(1999)]{L1999JFM}
+Erik Lindborg.
+\newblock Can the atmospheric kinetic energy spectrum be explained by
+  two-dimensional turbulence?
+\newblock \emph{Journal of Fluid Mechanics}, 388:\penalty0 259–288, 1999.
+\newblock \doi{10.1017/s0022112099004851}.
+
+\bibitem[Liu et~al.(2012)Liu, Easter, Ghan, Zaveri, Rasch, Shi, Lamarque,
+  Gettelman, Morrison, Vitt, et~al.]{MAM}
+Xiaohong Liu, Richard~C Easter, Steven~J Ghan, R~Zaveri, P~Rasch, Xiangjun Shi,
+  J-F Lamarque, Andrew Gettelman, Hugh Morrison, Francis Vitt, et~al.
+\newblock Toward a minimal representation of aerosols in climate models:
+  Description and evaluation in the community atmosphere model cam5.
+\newblock \emph{Geoscientific Model Development}, 5\penalty0 (3):\penalty0 709,
+  2012.
+
+\bibitem[Medeiros et~al.(2016)Medeiros, Williamson, and Olson]{MWO2016JAMES}
+Brian Medeiros, David~L. Williamson, and Jerry~G. Olson.
+\newblock Reference aquaplanet climate in the community atmosphere model,
+  version 5.
+\newblock \emph{J. Adv. Model. Earth Syst.}, 8\penalty0 (1):\penalty0 406--424,
+  2016.
+\newblock \doi{10.1002/2015MS000593}.
+
+\bibitem[Nastrom and Gage(1985)]{NG1985JAS}
+G.~D. Nastrom and K.~S. Gage.
+\newblock A climatology of atmospheric wavenumber spectra of wind and
+  temperature observed by commercial aircraft.
+\newblock \emph{J. Atmos. Sci.}, 42:\penalty0 950--960, 1985.
+
+\bibitem[Neale and Hoskins(2000)]{NH2000ASL}
+R.~B. Neale and B.~J. Hoskins.
+\newblock A standard test for agcms including their physical parametrizations:
+  I: the proposal.
+\newblock \emph{Atmos. Sci. Lett}, 1\penalty0 (2):\penalty0 101--107, 2000.
+\newblock \doi{10.1006/asle.2000.0022}.
+
+\bibitem[Neale et~al.(2008)Neale, Richter, and Jochum]{NRJ2008JC}
+Richard~B. Neale, Jadwiga~H. Richter, and Markus Jochum.
+\newblock The impact of convection on {ENSO}: From a delayed oscillator to a
+  series of events.
+\newblock \emph{J. Climate}, 21:\penalty0 5904--5924, 2008.
+
+\bibitem[Neale et~al.(2010)Neale, Chen, Gettelman, Lauritzen, Park, Williamson,
+  Conley, Garcia, Kinnison, Lamarque, Marsh, Mills, Smith, Tilmes, Vitt,
+  Cameron-Smith, Collins, Iacono, Easter, Ghan, Liu, Rasch, and Taylor]{CAM4}
+Richard~B. Neale, Chih-Chieh Chen, Andrew Gettelman, Peter~H. Lauritzen, Sungsu
+  Park, David~L. Williamson, Andrew~J. Conley, Rolando Garcia, Doug Kinnison,
+  Jean-Francois Lamarque, Dan Marsh, Mike Mills, Anne~K. Smith, Simone Tilmes,
+  Francis Vitt, Philip Cameron-Smith, William~D. Collins, Michael~J. Iacono,
+  Richard~C. Easter, Steven~J. Ghan, Xiaohong Liu, Philip~J. Rasch, and Mark~A.
+  Taylor.
+\newblock Description of the {NCAR} {C}ommunity {A}tmosphere {M}odel ({CAM}
+  4.0).
+\newblock {NCAR} {T}echnical {N}ote, National Center of Atmospheric Research,
+  2010.
+
+\bibitem[Neale et~al.(2012)Neale, Chen, Gettelman, Lauritzen, Park, Williamson,
+  Conley, Garcia, Kinnison, Lamarque, Marsh, Mills, Smith, Tilmes, Vitt,
+  Cameron-Smith, Collins, Iacono, Easter, Ghan, Liu, Rasch, and Taylor]{CAM5}
+Richard~B. Neale, Chih-Chieh Chen, Andrew Gettelman, Peter~H. Lauritzen, Sungsu
+  Park, David~L. Williamson, Andrew~J. Conley, Rolando Garcia, Doug Kinnison,
+  Jean-Francois Lamarque, Dan Marsh, Mike Mills, Anne~K. Smith, Simone Tilmes,
+  Francis Vitt, Philip Cameron-Smith, William~D. Collins, Michael~J. Iacono,
+  Richard~C. Easter, Steven~J. Ghan, Xiaohong Liu, Philip~J. Rasch, and Mark~A.
+  Taylor.
+\newblock Description of the {NCAR} {C}ommunity {A}tmosphere {M}odel ({CAM}
+  5.0).
+\newblock {NCAR} {T}echnical {N}ote NCAR/TN-486+STR, National Center of
+  Atmospheric Research, 2012.
+
+\bibitem[O'Brien et~al.(2016)O'Brien, Collins, Kashinath, Rübel, Byna, Gu,
+  Krishnan, and Ullrich]{OETAL2016JAMES}
+Travis~A. O'Brien, William~D. Collins, Karthik Kashinath, Oliver Rübel, Suren
+  Byna, Junmin Gu, Hari Krishnan, and Paul~A. Ullrich.
+\newblock Resolution dependence of precipitation statistical fidelity in
+  hindcast simulations.
+\newblock \emph{J. Adv. Model. Earth Syst.}, 8\penalty0 (2):\penalty0 976--990,
+  2016.
+\newblock \doi{10.1002/2016ms000671}.
+\newblock URL \url{http://dx.doi.org/10.1002/2016ms000671}.
+
+\bibitem[Orlanski(1981)]{O1981JAS}
+I.~Orlanski.
+\newblock The quasi-hydrostatic approximation.
+\newblock \emph{J. Atmos. Sci.}, 38:\penalty0 572--582, 1981.
+\newblock \doi{10.1175/1520-0469(1981)038<0572:TQHA>2.0.CO;2}.
+\newblock URL
+  \url{http://dx.doi.org/10.1175/1520-0469(1981)038<0572:TQHA>2.0.CO;2}.
+
+\bibitem[Pauluis and Garner(2006)]{PG2006JAS}
+Olivier Pauluis and Stephen Garner.
+\newblock Sensitivity of radiative--convective equilibrium simulations to
+  horizontal resolution.
+\newblock \emph{J. Atmos. Sci.}, 63\penalty0 (7):\penalty0 1910--1923, 2006.
+
+\bibitem[Plant and Craig(2008)]{PC2008JAS}
+R.~S. Plant and G.~C. Craig.
+\newblock A stochastic parameterization for deep convection based on
+  equilibrium statistics.
+\newblock \emph{J. Atmos. Sci.}, 65:\penalty0 87--105, 2008.
+\newblock \doi{10.1175/2007JAS2263.1}.
+\newblock URL \url{http://dx.doi.org/10.1175/2007JAS2263.1}.
+
+\bibitem[Pope and Stratton(2002)]{PS2002CD}
+V~Pope and R~Stratton.
+\newblock The processes governing horizontal resolution sensitivity in a
+  climate model.
+\newblock \emph{Climate Dynamics}, 19\penalty0 (3-4):\penalty0 211--236, 2002.
+
+\bibitem[Rauscher et~al.(2013)Rauscher, Ringler, Skamarock, and
+  Mirin]{RETAL2013JCLIM}
+Sara~A. Rauscher, Todd~D. Ringler, William~C. Skamarock, and Arthur~A. Mirin.
+\newblock Exploring a global multiresolution modeling approach using aquaplanet
+  simulations.
+\newblock \emph{Journal of Climate}, 26\penalty0 (8):\penalty0 2432–2452,
+  2013.
+\newblock \doi{10.1175/jcli-d-12-00154.1}.
+
+\bibitem[Rauscher et~al.(2016)Rauscher, O’Brien, Piani, Coppola, Giorgi,
+  Collins, and Lawston]{RETAL2016CD}
+Sara~A. Rauscher, Travis~A. O’Brien, Claudio Piani, Erika Coppola, Filippo
+  Giorgi, William~D. Collins, and Patricia~M. Lawston.
+\newblock A multimodel intercomparison of resolution effects on precipitation:
+  simulations and theory.
+\newblock \emph{Climate Dynamics}, 47\penalty0 (7-8):\penalty0 2205–2218,
+  2016.
+\newblock \doi{10.1007/s00382-015-2959-5}.
+
+\bibitem[Raymond and Blyth(1992)]{RB1992JAS}
+D.~J. Raymond and A.~M. Blyth.
+\newblock Extension of the stochastic mixing model to cumulonimbus clouds.
+\newblock \emph{Journal of the Atmospheric Sciences}, 49\penalty0
+  (21):\penalty0 1968–1983, 1992.
+\newblock \doi{10.1175/1520-0469(1992)049<1968:eotsmm>2.0.co;2}.
+
+\bibitem[Richter and Rasch(2008)]{RR2008JC}
+Jadwiga~H. Richter and Philip~J. Rasch.
+\newblock Effects of convective momentum transport on the atmospheric
+  circulation in the community atmosphere model, version 3.
+\newblock \emph{J. Climate}, 21\penalty0 (7):\penalty0 1487--1499, 2008.
+
+\bibitem[Satoh et~al.(2008)Satoh, Matsuno, Tomita, Miura, Nasuno, and
+  Iga]{SMTMN2008JCP}
+M~Satoh, T.~Matsuno, H.~Tomita, H.~Miura, T.~Nasuno, and S.~Iga.
+\newblock Nonhydrostatic icosahedral atmospheric model ({NICAM}) for global
+  cloud resolving simulations.
+\newblock \emph{J. Comput. Phys.}, pages 3486--3514, 2008.
+
+\bibitem[Skamarock(2011)]{S2011LNCSE}
+W.C. Skamarock.
+\newblock Kinetic energy spectra and model filters, in: {P}.{H}. {L}auritzen,
+  {R}.{D}. {N}air, {C}. {J}ablonowski, {M}. {T}aylor ({E}ds.), {N}umerical
+  techniques for global atmospheric models.
+\newblock \emph{Lecture Notes in Computational Science and Engineering,
+  {S}pringer}, 80, 2011.
+
+\bibitem[Skamarock et~al.(2012)Skamarock, Klemp, Duda, Fowler, Park, and
+  Ringler]{MPASatm}
+William~C. Skamarock, Joseph~B. Klemp, Michael~G. Duda, Laura Fowler, Sang-Hun
+  Park, and Todd~D. Ringler.
+\newblock A multi-scale nonhydrostatic atmospheric model using centroidal
+  {V}oronoi tesselations and {C}-grid staggering.
+\newblock \emph{Mon. Wea. Rev.}, 240:\penalty0 3090--3105, 2012.
+\newblock \doi{doi:10.1175/MWR-D-11-00215.1}.
+
+\bibitem[Skamarock et~al.(2014)Skamarock, Park, Klemp, and Snyder]{SPKS2014JAS}
+William~C. Skamarock, Sang-Hun Park, Joseph~B. Klemp, and Chris Snyder.
+\newblock Atmospheric kinetic energy spectra from global high-resolution
+  nonhydrostatic simulations.
+\newblock \emph{Journal of the Atmospheric Sciences}, 71\penalty0
+  (11):\penalty0 4369--4381, 2014.
+\newblock \doi{10.1175/JAS-D-14-0114.1}.
+
+\bibitem[Song and Zhang(2018)]{SZ2018JCLIM}
+Fengfei Song and Guang~J Zhang.
+\newblock Understanding and improving the scale dependence of trigger functions
+  for convective parameterization using cloud-resolving model data.
+\newblock \emph{Journal of Climate}, 31\penalty0 (18):\penalty0 7385--7399,
+  2018.
+
+\bibitem[Takahashi et~al.(2006)Takahashi, Hamilton, and Ohfuchi]{THO2006GRL}
+Yoshiyuki~O. Takahashi, Kevin Hamilton, and Wataru Ohfuchi.
+\newblock Explicit global simulation of the mesoscale spectrum of atmospheric
+  motions.
+\newblock \emph{Geophys. Res. Lett.}, 33\penalty0 (12), 2006.
+\newblock \doi{10.1029/2006gl026429}.
+\newblock URL \url{http://dx.doi.org/10.1029/2006gl026429}.
+
+\bibitem[Taylor and Fournier(2010)]{TF2010JCP}
+Mark~A. Taylor and A.~Fournier.
+\newblock A compatible and conservative spectral element method on unstructured
+  grids.
+\newblock \emph{J. Comput. Phys.}, 229\penalty0 (17):\penalty0 5879 -- 5895,
+  2010.
+\newblock \doi{10.1016/j.jcp.2010.04.008}.
+
+\bibitem[Terai et~al.(2016)Terai, Caldwell, and Klein]{TETAL2016AGU}
+Christopher Terai, Peter Caldwell, and Stephen Klein.
+\newblock Why do climate models drizzle too much and what impact does this
+  have?
+\newblock In \emph{AGU Fall Meeting Abstracts}, 2016.
+
+\bibitem[Terai et~al.(2018)Terai, Caldwell, Klein, Tang, and
+  Branstetter]{TETAL2018CD}
+Christopher~R Terai, Peter~M Caldwell, Stephen~A Klein, Qi~Tang, and Marcia~L
+  Branstetter.
+\newblock The atmospheric hydrologic cycle in the acme v0. 3 model.
+\newblock \emph{Climate dynamics}, 50\penalty0 (9-10):\penalty0 3251--3279,
+  2018.
+
+\bibitem[Ullrich et~al.(2017)Ullrich, Jablonowski, Kent, Lauritzen, Nair, Reed,
+  Zarzycki, Hall, Dazlich, Heikes, Konor, Randall, Dubos, Meurdesoif, Chen,
+  Harris, K\"uhnlein, Lee, Qaddouri, Girard, Giorgetta, Reinert, Klemp, Park,
+  Skamarock, Miura, Ohno, Yoshida, Walko, Reinecke, and Viner]{DCMIP16}
+P.~A. Ullrich, C.~Jablonowski, J.~Kent, P.~H. Lauritzen, R.~Nair, K.~A. Reed,
+  C.~M. Zarzycki, D.~M. Hall, D.~Dazlich, R.~Heikes, C.~Konor, D.~Randall,
+  T.~Dubos, Y.~Meurdesoif, X.~Chen, L.~Harris, C.~K\"uhnlein, V.~Lee,
+  A.~Qaddouri, C.~Girard, M.~Giorgetta, D.~Reinert, J.~Klemp, S.-H. Park,
+  W.~Skamarock, H.~Miura, T.~Ohno, R.~Yoshida, R.~Walko, A.~Reinecke, and
+  K.~Viner.
+\newblock "dcmip2016: A review of non-hydrostatic dynamical core design and
+  intercomparison of participating models".
+\newblock \emph{Geosci. Model Dev.}, 10:\penalty0 4477--4509, 2017.
+\newblock \doi{10.5194/gmd-10-4477-2017}.
+
+\bibitem[Weisman et~al.(1997)Weisman, Skamarock, and Klemp]{WETAL1997MWR}
+Morris~L Weisman, William~C Skamarock, and Joseph~B Klemp.
+\newblock The resolution dependence of explicitly modeled convective systems.
+\newblock \emph{Monthly Weather Review}, 125\penalty0 (4):\penalty0 527--548,
+  1997.
+\newblock \doi{10.1175/1520-0493(1997)125<0527:TRDOEM>2.0.CO;2}.
+
+\bibitem[Wilks(2011)]{WILKSBOOK}
+Daniel~S Wilks.
+\newblock \emph{Statistical methods in the atmospheric sciences}, volume 100.
+\newblock Academic press, 2011.
+
+\bibitem[Williamson(2008)]{W2008TELLUS}
+DAVID~L. Williamson.
+\newblock Convergence of aqua-planet simulations with increasing resolution in
+  the community atmospheric model, version 3.
+\newblock \emph{Tellus A}, 60\penalty0 (5):\penalty0 848--862, 2008.
+\newblock \doi{10.1111/j.1600-0870.2008.00339.x}.
+
+\bibitem[Williamson(2013)]{W2013QJRMS}
+David~L. Williamson.
+\newblock The effect of time steps and time-scales on parametrization suites.
+\newblock \emph{Quart. J. Roy. Meteor. Soc.}, 139\penalty0 (671):\penalty0
+  548--560, 2013.
+\newblock \doi{10.1002/qj.1992}.
+
+\bibitem[Williamson et~al.(1995)Williamson, Kiehl, and Hack]{WETAL1995CD}
+David~L. Williamson, Jeffrey~T. Kiehl, and James~J. Hack.
+\newblock Climate sensitivity of the ncar community climate model (ccm2) to
+  horizontal resolution.
+\newblock \emph{Climate Dynamics}, 11\penalty0 (7):\penalty0 377–397, 1995.
+\newblock \doi{10.1007/s003820050082}.
+
+\bibitem[Xie and Zhang(2000)]{XZ2000JGR}
+Shaocheng Xie and Minghua Zhang.
+\newblock Impact of the convection triggering function on single-column model
+  simulations.
+\newblock \emph{Journal of Geophysical Research: Atmospheres}, 105\penalty0
+  (D11):\penalty0 14983--14996, 2000.
+
+\bibitem[Xie et~al.(2019)Xie, Wang, Lin, Ma, Tang, Tang, Zheng, Golaz, Zhang,
+  and Zhang]{XETAL2019JAMES}
+Shaocheng Xie, Yi-Chi Wang, Wuyin Lin, Hsi-Yen Ma, Qi~Tang, Shuaiqi Tang, Xue
+  Zheng, Jean-Christophe Golaz, Guang~J Zhang, and Minghua Zhang.
+\newblock Improved diurnal cycle of precipitation in e3sm with a revised
+  convective triggering function.
+\newblock \emph{Journal of Advances in Modeling Earth Systems}, 2019.
+
+\bibitem[Zarzycki et~al.(2014)Zarzycki, Levy, Jablonowski, Overfelt, Taylor,
+  and Ullrich]{ZetAl2014JCb}
+Colin~M. Zarzycki, Michael~N. Levy, Christiane Jablonowski, James~R. Overfelt,
+  Mark~A. Taylor, and Paul~A. Ullrich.
+\newblock Aquaplanet experiments using cam's variable-resolution dynamical
+  core.
+\newblock \emph{J. Climate}, 27\penalty0 (14):\penalty0 5481--5503, 2014.
+\newblock \doi{10.1175/JCLI-D-14-00004.1}.
+
+\bibitem[Zhang and McFarlane({1995})]{ZM1995AO}
+G.J. Zhang and N.A. McFarlane.
+\newblock Sensitivity of climate simulations to the parameterization of cumulus
+  convection in the canadian climate centre general circulation model.
+\newblock \emph{{Atmosphere-ocean}}, {33}\penalty0 ({3}):\penalty0 {407--446},
+  {1995}.
+
+\bibitem[Zhang(2002)]{Z2002JGR}
+Guang~J Zhang.
+\newblock Convective quasi-equilibrium in midlatitude continental environment
+  and its effect on convective parameterization.
+\newblock \emph{Journal of Geophysical Research: Atmospheres}, 107\penalty0
+  (D14):\penalty0 ACL--12, 2002.
+
+\bibitem[Zängl et~al.(2014)Zängl, Reinert, Rípodas, and Baldauf]{Z2014QJRMS}
+Günther Zängl, Daniel Reinert, Pilar Rípodas, and Michael Baldauf.
+\newblock The icon (icosahedral non-hydrostatic) modelling framework of dwd and
+  mpi-m: Description of the non-hydrostatic dynamical core.
+\newblock \emph{Quarterly Journal of the Royal Meteorological Society},
+  141\penalty0 (687):\penalty0 563–579, 2014.
+\newblock \doi{10.1002/qj.2378}.
+
+\end{thebibliography}
