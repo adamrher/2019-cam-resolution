@@ -1,0 +1,48 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red26\green26\blue26;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c13333\c13333\c13333;\cssrgb\c100000\c100000\c100000;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl220\partightenfactor0
+
+\f0\fs20 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Reviewer: 2\
+\
+Comments to the Author\
+Review of Herrington and Reed \'93On resolution sensitivity in the Community Atmosphere Model\'94\
+\
+In this study, the authors examine the climate model CAM6\'92s sensitivity to changes in horizontal resolution. In particular, the study focuses on why stratiform precipitation increases and parameterized convective precipitation decreases with increasing resolution. The authors propose that higher resolutions allow for greater updraft velocities, which increases moisture flux at the cloud base, most of which falls back as precipitation, leading to increases in large-scale precipitation rate. They show that the updrafts scale inversely with horizontal resolution with a scaling of n=-1. Because of mass continuity, stronger updrafts are then balanced by an overall increase in subsidence. The authors then go on to argue that the stronger subsidence leads to a stabilization of the atmosphere, which decreases dilute-CAPE and the frequency of parameterized convection and precipitation.\
+\
+The authors address a long-standing and important sensitivity of the model and provide a largely convincing explanation for why the convective precipitation rate decreases in the CAM6 model. The manuscript is also well written and organized and the figures are clear and appropriate. There are three broader issues that I had with the study. However, they are largely minor, and therefore, I recommend minor revisions.\
+\
+\
+Minor comments\
+\
+1 Examining positive or negative omega at the grid box level, rather than at the column level\
+\
+The authors use <fx><omegax> to estimate column-mean omega for ascending or descending motions within a column. Therefore, my understanding is that there are many cases where a grid column has both <fd><omegad> and <fu><omegau> values.\
+\
+With this in mind, it was hard to make sense of phrases such as \'91greater magnitude subsiding motion\'92 in the abstract (L35). I could not decide whether the phrase meant that free tropospheric subsidence rates (such as omega850) tend to be stronger or whether there are larger areas of subsidence, until I realized that this is not actually captured by the <fd><omegad> decomposition. This decomposition also led to a few points of confusion in the latter half of the study where comparisons of subsidence were made with columnar values, such as FREQZM and dilute-CAPE, or with temperature profiles, as in Fig. 9. In these cases, I assumed that the column mean omega was used, but it left me wondering why the separation between downward motions and upward motions at the grid cell level (as opposed to the column level) was necessary in the first place.\
+\
+Given the additional level of complexity that is added by thinking in terms of the <fd><omegad> and <fu><omegau> of each column, would the authors please provide more text explaining the advantages of the decomposition and why this decomposition was chosen, rather than taking either the omega at a particular pressure level or the column mean omega <omega> to capture upward and downward motions?\
+\
+\
+2 Importance of global mean precipitation rate (total condensation) on atmospheric stability\
+\
+The abstract currently reads as if the increase in stabilization with resolution can wholly be attributed to the greater subsidence, but as Fig. 8 shows, ascending areas also exhibit a change in temperature that leads to lower dilute-CAPE. I noticed that the global mean precipitation rate increases with resolution across the simulations (except for the change from ne80 to ne120). Could the increased condensational heating from a greater precipitation rate explain the increase in stability and decrease in Dilute-CAPE that is unaccounted for by changes in the subsidence fraction? Over the deep Tropics, I expect the subsidence rates to adjust to the temperature profiles set up by the condensational heating and radiative cooling, rather than the subsidence rates setting the temperature profiles. The authors hint at this partitioning and importance of the mean state temperature profile on Page 7, second full paragraph of second column, where they note that the change in subsidence area explains about half of the decrease in the average dilute-CAPE, but its importance in reducing dilute-CAPE is not further discussed in the conclusions or mentioned in the abstract.\
+\
+If the output is available, the condensational heating rates and their differences across the models might help distinguish the role of greater condensation on atmospheric temperature profiles.\
+\
+Related to this point, perhaps the authors can explain why we would expect an increase in precipitation rate as a result of increases in resolved precipitation rate. In other words, do we expect resolved precipitation to be more efficient at removing water than parameterized convective precipitation? If so, this should be discussed.\
+\
+\
+3 Comparison with previous studies that used other models\
+\
+Would the authors comment on how general their study is to other climate models? For example, as the authors note, Pope and Stratton (2002) also see a shift of precipitation from convective precipitation to large-scale precipitation. Do results from Pope and Stratton (2002) also show changes in the circulation, temperature, and humidity that are consistent with the mechanism described in this study?\
+\
+\
+\
+Specific comments/Typos\
+\
+Page 3 ~L58 of first column: \'91macrophyiscs\'92 -> \'91macrophysics\'92}
