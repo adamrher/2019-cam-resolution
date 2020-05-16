@@ -153,6 +153,18 @@ begin
 
  end do
 
+;*****************************************************
+; Add label bar label
+;*****************************************************
+ txres = True
+ txres@txFontHeightF = 0.01
+ txres@txJust = "CenterCenter"
+
+ lbtitle1 = "Precipitation Rate (mm/day)"
+ gsn_text_ndc(wks,lbtitle1,0.52,0.01,txres)
+
+ ;;drawNDCGrid(wks)
+
 ;************************************************
 ; create panel
 ;************************************************
@@ -165,7 +177,7 @@ begin
   resP@gsnPanelFigureStringsBackgroundFillColor = "white"
   resP@amJust           = "BottomLeft"
 
-  resP@gsnPanelBottom   = 0.05
+  resP@gsnPanelBottom   = 0.065
   resP@gsnPanelXWhiteSpacePercent = 1.
   resP@gsnPanelYWhiteSpacePercent = 1.
   gsn_panel(wks,plot,(/nfiles,2/),resP)               ; now draw as one plot

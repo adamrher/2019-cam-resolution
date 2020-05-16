@@ -25,7 +25,7 @@ begin
 ;;;----------------------------------------------------------------------------------------------------------------
 
  ngrids = dimsizes(dxeq)
- nstudy = 11
+ nstudy = 13
 
  version = new(nstudy, "string")
  config  = new(nstudy, "string")
@@ -160,6 +160,25 @@ begin
   precl10 = (/   99999,   99999,   99999,   99999,   99999,   1.26 ,   1.42 ,   1.60 ,   1.85 ,   2.05 ,   2.22  /)
   prect10 = precc10 + precl10
 
+
+;Pope and Stratton 2002
+  version(11)= "HadAM3*"
+  config(11) = "AMIP"
+  dtcnst(11) = False  
+  dx11    = (/ "99999", "99999", "99999",  "N48" ,  "N72" ,  "N96" ,  "N144", "99999", "99999", "99999", "99999" /)
+  precc11 = (/   99999,   99999,   99999,   2.27 ,   2.26 ,   2.25 ,   2.19 ,   99999,   99999,   99999,   99999 /)
+  precl11 = (/   99999,   99999,   99999,   0.74 ,   0.78 ,   0.81 ,   0.88 ,   99999,   99999,   99999,   99999 /)
+  prect11 = precc11 + precl11
+
+;Hagemann et al 2005
+  version(12)= "ECHAM5*"
+  config(12) = "AMIP"
+  dtcnst(12) = False
+  dx12    = (/ "99999",  "T21" ,  "T31" ,  "T42" ,  "T63" ,  "T85" ,  "T106", "99999", "99999", "99999", "99999" /)
+  precc12 = (/   99999,   1.837,   1.757,   1.749,   1.703,   1.665,   1.653,   99999,   99999,   99999,   99999 /)
+  precl12 = (/   99999,   0.983,   1.083,   1.137,   1.213,   1.255,   1.271,   99999,   99999,   99999,   99999 /)
+  prect12 = precc12 + precl12
+
 ;;;----------------------------------------------------------------------------------------------------------------
 ;;; define master variable arrays
 ;;;----------------------------------------------------------------------------------------------------------------
@@ -183,6 +202,8 @@ begin
   PRECC(8,:) = precc8
   PRECC(9,:) = precc9
   PRECC(10,:)= precc10
+  PRECC(11,:)= precc11
+  PRECC(12,:)= precc12
 
   PRECT(0,:) = prect0
   PRECT(1,:) = prect1
@@ -195,6 +216,8 @@ begin
   PRECT(8,:) = prect8
   PRECT(9,:) = prect9
   PRECT(10,:)= prect10
+  PRECT(11,:)= prect11
+  PRECT(12,:)= prect12
 
   DX(0,:) = dx0
   DX(1,:) = dx1
@@ -207,6 +230,8 @@ begin
   DX(8,:) = dx8
   DX(9,:) = dx9
   DX(10,:)= dx10
+  DX(11,:)= dx11
+  DX(12,:)= dx12
 
   PRECC = where(PRECC.ge.99999,PRECC@_FillValue,PRECC)
   PRECT = where(PRECT.ge.99999,PRECT@_FillValue,PRECT)
@@ -383,11 +408,18 @@ begin
     end if
 
     if (config(indx2(n)).eq."JAN") then
-      res@gsnXYBarChartColors = "grey43";;"black"
+      if (n.eq.0) then
+        res@gsnXYBarChartColors = "white"
+      else
+        res@gsnXYBarChartColors = "grey43";;"black"
+      end if
     else if (config(indx2(n)).eq."CNTL") then
       res@gsnXYBarChartColors = "red"
     else if (config(indx2(n)).eq."QOBS") then
       res@gsnXYBarChartColors = "deepskyblue1"
+    else if (config(indx2(n)).eq."AMIP") then
+      res@gsnXYBarChartColors = "green4"
+    end if
     end if
     end if
     end if
