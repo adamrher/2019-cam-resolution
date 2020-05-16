@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  16 MAY 2020 16:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  16 MAY 2020 17:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -646,11 +646,11 @@ File: figs/temp_mflux.pdf Graphic file (type pdf)
 <use figs/temp_mflux.pdf>
 Package pdftex.def Info: figs/temp_mflux.pdf  used on input line 150.
 (pdftex.def)             Requested size: 240.0pt x 232.45023pt.
-<figs/temp_pdecomp.pdf, id=465, 200.92696pt x 539.92566pt>
+<figs/temp_pdecomp.pdf, id=465, 202.03963pt x 542.98396pt>
 File: figs/temp_pdecomp.pdf Graphic file (type pdf)
 <use figs/temp_pdecomp.pdf>
 Package pdftex.def Info: figs/temp_pdecomp.pdf  used on input line 188.
-(pdftex.def)             Requested size: 240.0pt x 644.93343pt.
+(pdftex.def)             Requested size: 240.0pt x 645.02383pt.
 <figs/temp_diags_corr.pdf, id=470, 545.94148pt x 511.45538pt>
 File: figs/temp_diags_corr.pdf Graphic file (type pdf)
 <use figs/temp_diags_corr.pdf>
@@ -746,7 +746,7 @@ rw/helvetic/uhvro8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmbi8a
 .pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr
 /local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on resolution-revised.pdf (12 pages, 2372397 bytes).
+Output written on resolution-revised.pdf (12 pages, 2453616 bytes).
 PDF statistics:
  814 PDF objects out of 1000 (max. 8388607)
  722 compressed objects within 8 object streams
