@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2019)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: resolution-revised.aux
+The style file: wileyqj.bst
+Database file #1: bib.bib
+Warning--empty pages in TETAL2016AGU
+You've used 64 entries,
+            2948 wiz_defined-function locations,
+            1130 strings with 20135 characters,
+and the built_in function-call counts, 104666 in all, are:
+= -- 12097
+> -- 2584
+< -- 32
++ -- 1408
+- -- 921
+* -- 7405
+:= -- 11616
+add.period$ -- 256
+call.type$ -- 64
+change.case$ -- 628
+chr.to.int$ -- 64
+cite$ -- 65
+duplicate$ -- 10607
+empty$ -- 7025
+format.name$ -- 1129
+if$ -- 21381
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 809
+newline$ -- 201
+num.names$ -- 256
+pop$ -- 3232
+preamble$ -- 1
+purify$ -- 625
+quote$ -- 0
+skip$ -- 4034
+stack$ -- 0
+substring$ -- 9375
+swap$ -- 6888
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 573
+warning$ -- 1
+while$ -- 642
+width$ -- 0
+write$ -- 743
+(There was 1 warning)
