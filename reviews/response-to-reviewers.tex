@@ -1,0 +1,191 @@
+\documentclass[12pt,oneside,a4paper]{article}%{amsart}
+\usepackage[margin=1in]{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{caption}
+\setlength\parindent{0pt}
+\usepackage[round]{natbib}
+\bibliographystyle{abbrvnat}
+\renewcommand{\bibsection}{}
+
+\title{\large Response to Reviewers}
+\author{\normalsize Adam R. Herrington and Kevin. A. Reed}
+\date{} % delete this line to display the current date
+
+\begin{document}
+
+\maketitle
+
+\section*{\large General Remarks}
+
+{\color{red}{We would like to thank both reviewers for taking the time to provide thoughtful feedback on our manuscript.}} \newline
+
+{\color{red}{Both reviewers raise a similar concern, that the manuscript lacks discussion on how the results from this single model may extend to other modeling systems. We agree with the reviewers, and in particular reviewer 1, that doing so would generalize the results more broadly, providing the breadth that often characterizes QJRMS articles. We have added a paragraph right after the first paragraph in the introduction, to more clearly frame the problem as common to most AGCMs, and how understanding a single model would shed light on resolution sensitivities in other modeling systems. Figure 1 has been updated to include convergence experiments from two non-NCAR models, HadAM3 \citep{PS2002CD} and ECHAM5 \citep{HETAL2006JC}, and we have discussed whether those model results are consistent with our findings throughout the conclusions (Lines XXX, etc ...).}}
+
+\section*{\large Reviewer 1}
+
+\subsection*{\small Generalizing results to other modeling systems}
+
+The authors should strongly consider expanding the discussion (and perhaps the
+meta-analysis shown in Figure 1) to include resolution dependence issues noted
+in other modeling systems. There are some other papers in the literature (e.g.,
+Volosciuk et al., 2015) that describe resolution dependences in other modeling
+systems. Many of the results described in this manuscript seem like they should
+generalize to other hydrostatic models, and it would be worth adding some
+discussion on whether these results are consistent with what is shown in other
+models. \newline
+
+{\color{red}{See General Remarks.}} \newline
+
+Relatedly, I would be curious to hear the authors’ commentary on what these
+results imply for how a scale-aware model should be designed. It seems that
+now that the resolution dependence (of CAM at least) is understood, a solution
+might be possible, and the authors of this manuscript understand this resolution
+dependence better than just about anyone. They are therefore well-poised to
+comment on possible solutions: especially those that might generalize to other modeling systems. \newline
+
+{\color{red}{Working on this.}}
+
+\subsection*{\small Inappropriate experimental design for a definitive statement on resolution exponent}
+
+Based on my reading, the manuscript states two key messages: (1) vertical velocity
+is inversely proportional to horizontal resolution (and therefore is inconsistent
+with other theories of resolution-dependence), and (2) dynamic/thermodynamic
+changes caused by intensification of vertical velocities can explain the resolution
+dependence of stratiform and convective precipitation. The bulk of the
+manuscript focuses on (2), and in my opinion, this aspect of the manuscript is
+on very strong footing. \newline
+
+However, the first key message seems to be based on interpretation of results from
+an inappropriate experimental design. The results of the authors’ experiments
+indeed are consistent with a scaling exponent of -1, however the experimental
+design does not isolate horizontal resolution from physics timestep. The authors
+explicitly state that changing the physics timestep will “lead to greater resolution
+sensitivity.” They later state that “the n=-2/3 slope proposed in Rauscher et
+al. (2016) greatly underestimates the increasing occurrence of large magnitude
+vertical velocities with resolution)” – in other words, the n=-2/3 slope has too
+weak of a resolution sensitivity. It is possible that the changes in the physics timestep explain why the resolution-dependence is stronger than predicted by
+Rauscher et al. \newline
+
+The authors state that they change the physics timestep in order to “avoid
+time-truncation errors”. Based on my understanding of Herrington and Reed
+(2018), this seems like a valid consideration for the experimental design. But
+why does the physics timestep need to change: why couldn’t it just be fixed
+at a value small enough to avoid time-truncation? This would avoid conflating
+timestep-dependence with resolution-dependence. \newline
+
+I recommend that the authors either remove their strong assertions that these
+results are inconsistent with the Rauscher et al. theory, or I recommend that the
+authors perform a set of tests with the physics timestep held fixed at a small
+value. \newline
+
+{\color{red}{Based on the reviewers concern, we have amended any strong and/or definitive statements about the -1 exponent due to its dependence on physics time-step (see Lines XXX, XXX and XXX). To the authors knowledge, there is no authoritative work on the appropriate choice of physics time-steps in AGCMs across different resolutions. And so we concede that such definitive statements cannot be made until there is consensus on both the physical and numerical justification for physics time-steps across resolutions. More recent work on physics time-steps \citep[e.g.,][]{W2013QJRMS,WETAL2015JAMES,HR2018JAMES} are not necessarily consistent with one another, and do not form a consensus.}} \newline
+
+{\color{red}{In response to the suggestion of fixing a small physics time-step across all resolutions, we are hesitant to agree that this is a more appropriate design choice \citep[see also Fig. 10 in][]{HR2018JAMES}. In thinking about numerical truncation errors, we are concerned that using the same physics time-step at low resolution as in high resolution, may place the simulations in different error regimes. That is, if you think about the log(physics time-step) vs. log(error) curve, it is likely the curves look different in low and high resolution. At high resolution, the model is resolving faster time-scales and so the errors are expected to be larger for a given physics time-step. But a given physics time-step may also be in a different regime at high resolution, i.e., not converging at the same rate as in the low resolution run.}} \newline
+
+{\color{red}{Figure~\ref{fig:dt-conv} shows an example of how for a fixed physics time-step, low and high resolution can be in different regimes. The slope of the error curves for a fixed physics time-step is shallower for high resolution compared with low resolution, for time-steps larger than about 100 s. That is, high resolution is in a less stable regime than low resolution for a fixed time-step (less stable, not un-stable; the errors still decrease with decreasing time-step at high resolution). Interestingly, neither high or low resolution achieve first order convergence for time steps greater than 100 s, which is not really defensible from a numerics standpoint \citep{WETAL2015JAMES}. Given these numerical uncertainties, and the large sensitivity of vertical velocity to physics time-step, I don't think we can say for certain that fixing the physics time-step to a reasonably small value (say 225 s) is any better of an approach than the approach we have taken. We have softened our language in the manuscript to reflect this uncertainty.}} \newline
+
+{\color{red}{Finally, we would like to clarify our position on one point. In the conclusions, there is discussion about how the  \cite{RETAL2016CD} scaling may not be in conflict with the $n=-1$ exponent. The paragraph that begins with ``[t]he $n=-1$ power law scaling is potentially in conflict with the scaling proposed by \cite{RETAL2016CD}," has been changed to ``[t]he $n=-1$ power law scaling is not necessarily in conflict with the scaling proposed by \cite{RETAL2016CD}." The wording was changed to more clearly convey what this paragraph actually concludes. Which is, that we do not observe a -5/3 slope of the kinetic energy spectrum near the effective resolution in our simulations. And so we argue that the \cite{RETAL2016CD} may be more appropriate for resolutions greater than 1/4 degree, at least as it pertains to our simulations. }} \newline
+
+{\color{red}{We feel our characterization in the introduction ``...only recently has the vertical velocity field in AGCMs and their sensitivity to resolution received attention (Donner et al. 2016; O’Brien et al. 2016), albeit with seemingly conflicting explanations (Rauscher et al. 2016; Herrington and Reed 2018)" is still accurate, since it is only later in the conclusions that we delve into why the two explanations are not in conflict with one another.}}
+
+\begin{figure}[t]
+\begin{center}
+\noindent\includegraphics[width=20pc,angle=0]{temp_dt-convergence.pdf}\\
+\end{center}
+\caption{\small {\color{red}{I-norms, $\sqrt{(\omega_{min} - \omega_{min,0})^2}$, where $\omega_{min,0}$ in the reference solution taken as the 1 s physics time-step simulation after \cite{WETAL2015JAMES}, in a moist bubble configuration \citep{HR2018JAMES} with Kessler microphysics. $\omega_{min}$ refers to the minimum vertical pressure velocity over the entirety of the 1 day simulations. Blue markers refers to a grid resolution with an average equatorial grid spacing of 111.2 km and the red markers, 27.8 km. Dashed lines are lines with slopes of 1 and 2, indicating first-order and second-order convergence, respectively.}}}
+\label{fig:dt-conv}
+\end{figure}
+
+\subsection*{\small Issues associated with figures}
+
+Figure 5: what do the colors represent? The colorbars should have labels. Based
+on the caption, it seems like they should represent precipitation rates. \newline
+
+{\color{red}{Yes, it should be precipitation rate (mm/day). We have added this title to the figure.}} \newline
+
+Relatedly, the associated text (pg 5, col 1, lines 56-57) state that “changes in M\_s
+with resolution are subtle, while the changes in f\_s with resolution are large (not
+shown).” Why show M\_s if the f\_s term dominates the resolution dependence?
+And if space is a concern, why not put the f\_s figures in supplementary material? \newline
+
+{\color{red}{Part of the reason we don't show f\_s is space, yes. We also thought it was more intuitive to see that larger magnitude precipitation rates are contributing to the global mean, by subsequently unmasking larger regions of M\_s that exceed a frequency tolerance. But we understand that readers may be curious about what f\_s looks like and so we have included it as a supplementary material as the reviewer suggests. We decided to plot both log(M\_s) and log(f\_s ) and extended the x-axis so that all the data are shown.}}
+
+\begin{figure}[t]
+\begin{center}
+\noindent\includegraphics[width=20pc,angle=0]{../figs/temp_pdecomp_supp.pdf}\\
+\end{center}
+\caption{\small}
+\label{fig:supp}
+\end{figure}
+
+\subsection*{\small Minor issues}
+
+• pg 1, col 1, line 55: ‘that allows’ $->$ ‘that allow’ \newline
+• pg 3, col 2, line 16: ‘is ran for’ $->$ ‘is run for’ \newline
+• pg 3, col 2, line 21: ‘are ran for’ $->$ ‘are run for’ \newline
+• pg 5, col 2, line 63: ‘irregardless’ $->$ ‘regardless’ or ‘irrespective’ (see
+https://www.businessinsider.com/irregardless-real-word-regardless-korystamper-
+education-dictionary-mean-girls-lexicon-merriam-webster-2017-
+6) \newline
+• pg 9, col 1, line 49: ‘is also no significant changes’ $->$ ‘are also no signficant
+changes’ \newline
+• pg 9, col 2, line 26: ‘the authors suggests’ $->$ ‘the authors suggest’ \newline
+
+{\color{red}{Thank you for pointing out these grammatical errors, they have been fixed. Irregardless flew right off my tongue and onto paper ... h/t for catching that. }} \newline
+
+• pg 9, col 1, line 58: ‘which often occurs with appreciable subsiding motion
+aloft’. . . is this statement justified? On my examination of Figure 11, it
+looks like just as many of the the ZM-active contours have large areas of
+green (omega ~ -0.1 Pa/s) directly above as have blue (positive omega)
+directly above. Take the region in Fig 11b, between 30W and 0, for example:
+there is very little subsidence above the ZM convection. In case my eyes
+are having a difficult time interpreting this graph, it might be useful to
+draw the contour of constant omega=0. \newline
+
+
+\section*{\large Reviewer 2}
+
+\subsection*{\small Minor comments}
+
+1. Examining positive or negative omega at the grid box level, rather than at the column level \newline
+
+The authors use <fx><omegax> to estimate column-mean omega for ascending or descending motions within a column. Therefore, my understanding is that there are many cases where a grid column has both <fd><omegad> and <fu><omegau> values. \newline
+
+With this in mind, it was hard to make sense of phrases such as ‘greater magnitude subsiding motion’ in the abstract (L35). I could not decide whether the phrase meant that free tropospheric subsidence rates (such as omega850) tend to be stronger or whether there are larger areas of subsidence, until I realized that this is not actually captured by the <fd><omegad> decomposition. This decomposition also led to a few points of confusion in the latter half of the study where comparisons of subsidence were made with columnar values, such as FREQZM and dilute-CAPE, or with temperature profiles, as in Fig. 9. In these cases, I assumed that the column mean omega was used, but it left me wondering why the separation between downward motions and upward motions at the grid cell level (as opposed to the column level) was necessary in the first place. \newline
+
+Given the additional level of complexity that is added by thinking in terms of the <fd><omegad> and <fu><omegau> of each column, would the authors please provide more text explaining the advantages of the decomposition and why this decomposition was chosen, rather than taking either the omega at a particular pressure level or the column mean omega <omega> to capture upward and downward motions? \newline
+
+{\color{red}{Working on this.}} \newline
+
+2. Importance of global mean precipitation rate (total condensation) on atmospheric stability \newline
+
+The abstract currently reads as if the increase in stabilization with resolution can wholly be attributed to the greater subsidence, but as Fig. 8 shows, ascending areas also exhibit a change in temperature that leads to lower dilute-CAPE. I noticed that the global mean precipitation rate increases with resolution across the simulations (except for the change from ne80 to ne120). Could the increased condensational heating from a greater precipitation rate explain the increase in stability and decrease in Dilute-CAPE that is unaccounted for by changes in the subsidence fraction? Over the deep Tropics, I expect the subsidence rates to adjust to the temperature profiles set up by the condensational heating and radiative cooling, rather than the subsidence rates setting the temperature profiles. The authors hint at this partitioning and importance of the mean state temperature profile on Page 7, second full paragraph of second column, where they note that the change in subsidence area explains about half of the decrease in the average dilute-CAPE, but its importance in reducing dilute-CAPE is not further discussed in the conclusions or mentioned in the abstract. \newline
+
+If the output is available, the condensational heating rates and their differences across the models might help distinguish the role of greater condensation on atmospheric temperature profiles. \newline
+
+Related to this point, perhaps the authors can explain why we would expect an increase in precipitation rate as a result of increases in resolved precipitation rate. In other words, do we expect resolved precipitation to be more efficient at removing water than parameterized convective precipitation? If so, this should be discussed. \newline
+
+{\color{red}{Working on this.}} \newline
+
+3. Comparison with previous studies that used other models \newline
+
+Would the authors comment on how general their study is to other climate models? For example, as the authors note, Pope and Stratton (2002) also see a shift of precipitation from convective precipitation to large-scale precipitation. Do results from Pope and Stratton (2002) also show changes in the circulation, temperature, and humidity that are consistent with the mechanism described in this study? \newline
+
+{\color{red}{See General Remarks.}}
+
+\subsection*{\small Specific comments/Typos}
+
+Page 3 ~L58 of first column: ‘macrophyiscs’ $->$ ‘macrophysics’ \newline
+
+{\color{red}{Fixed typo.}}
+
+\section*{\normalsize References}
+\setlength{\bibsep}{0pt}
+{\footnotesize
+\bibliography{bib}}
+
+
+\end{document}
