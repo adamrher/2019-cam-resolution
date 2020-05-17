@@ -96,6 +96,17 @@ begin
    res@tmXBLabelFontHeightF = 0.012
    res@tmYLLabelFontHeightF = 0.012
 
+   res0 = True
+   res0 = res
+   res0@cnLinesOn        = True
+   res0@cnFillOn         = False
+   res0@cnLineThicknessF = 2
+   res0@cnLineColor = "red"
+   res0@cnLevelSelectionMode = "ExplicitLevels"
+   res0@cnMaxLevelCount = 2
+   res0@gsnContourNegLineDashPattern = 2
+   res0@cnLevels = (/-1000.,0./)
+
    res1                 = True
    res1                 = res
    res1@cnFillOn          = False
@@ -114,7 +125,6 @@ begin
    res2@cnLineThicknesses = (/3,3,3/)
    res2@cnLineColor = "black";;"firebrick1"
    res2@cnLevels = (/-1.,0.0075/)
-
 
 ;************
 ;Main Loop
@@ -289,6 +299,10 @@ begin
   res@trYMaxF                = 1015.
 
   plot(n)  = gsn_csm_contour(wks,omgx,res)
+  dum0 = gsn_csm_contour(wks,omgx,res0)
+  overlay(plot(n),dum0)
+  delete(dum0)
+
   dum1 = gsn_csm_contour(wks,cmfx,res2)
   overlay(plot(n),dum1)
   delete(dum1)
