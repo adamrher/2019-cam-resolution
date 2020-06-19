@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  16 MAY 2020 18:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  28 MAY 2020 18:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -630,101 +630,105 @@ LaTeX Font Warning: Font shape `U/lasy/m/n' in size <5.24997> not available
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <3.75> not available
 (Font)              size <5> substituted on input line 56.
  [2] [3 <./figs/cam-history.pdf>]
-<figs/temp_2pdf.pdf, id=406, 544.19087pt x 252.92111pt>
+<figs/temp_2pdf.pdf, id=410, 544.19087pt x 252.92111pt>
 File: figs/temp_2pdf.pdf Graphic file (type pdf)
 <use figs/temp_2pdf.pdf>
 Package pdftex.def Info: figs/temp_2pdf.pdf  used on input line 112.
 (pdftex.def)             Requested size: 240.0pt x 111.54033pt.
-<figs/temp_diags_2panel.pdf, id=409, 542.03621pt x 249.0376pt>
+<figs/temp_diags_2panel.pdf, id=413, 542.03621pt x 249.0376pt>
 File: figs/temp_diags_2panel.pdf Graphic file (type pdf)
 <use figs/temp_diags_2panel.pdf>
 Package pdftex.def Info: figs/temp_diags_2panel.pdf  used on input line 120.
 (pdftex.def)             Requested size: 240.0pt x 110.26466pt.
  [4 <./figs/temp_2pdf.pdf> <./figs/temp_diags_2panel.pdf>]
-<figs/temp_mflux.pdf, id=460, 525.08678pt x 508.57634pt>
+<figs/temp_mflux.pdf, id=468, 525.08678pt x 508.57634pt>
 File: figs/temp_mflux.pdf Graphic file (type pdf)
 <use figs/temp_mflux.pdf>
 Package pdftex.def Info: figs/temp_mflux.pdf  used on input line 150.
 (pdftex.def)             Requested size: 240.0pt x 232.45023pt.
-<figs/temp_pdecomp.pdf, id=465, 202.03963pt x 542.98396pt>
+<figs/temp_pdecomp.pdf, id=473, 202.03963pt x 542.98396pt>
 File: figs/temp_pdecomp.pdf Graphic file (type pdf)
 <use figs/temp_pdecomp.pdf>
 Package pdftex.def Info: figs/temp_pdecomp.pdf  used on input line 188.
 (pdftex.def)             Requested size: 240.0pt x 645.02383pt.
-<figs/temp_diags_corr.pdf, id=470, 545.94148pt x 511.45538pt>
+<figs/temp_diags_corr.pdf, id=478, 545.94148pt x 511.45538pt>
 File: figs/temp_diags_corr.pdf Graphic file (type pdf)
 <use figs/temp_diags_corr.pdf>
 Package pdftex.def Info: figs/temp_diags_corr.pdf  used on input line 200.
 (pdftex.def)             Requested size: 240.0pt x 224.83815pt.
-<figs/temp_4zonal.pdf, id=472, 257.08987pt x 493.84941pt>
+<figs/temp_4zonal.pdf, id=480, 257.08987pt x 493.84941pt>
 File: figs/temp_4zonal.pdf Graphic file (type pdf)
 <use figs/temp_4zonal.pdf>
 Package pdftex.def Info: figs/temp_4zonal.pdf  used on input line 210.
 (pdftex.def)             Requested size: 168.0pt x 322.72394pt.
  [5 <./figs/temp_mflux.pdf>] [6 <./figs/temp_pdecomp.pdf> <./figs/temp_diags_co
 rr.pdf> <./figs/temp_4zonal.pdf>]
-<figs/temp_cape.pdf, id=533, 542.15494pt x 496.92119pt>
+<figs/temp_cape.pdf, id=541, 542.15494pt x 496.92119pt>
 File: figs/temp_cape.pdf Graphic file (type pdf)
 <use figs/temp_cape.pdf>
 Package pdftex.def Info: figs/temp_cape.pdf  used on input line 234.
 (pdftex.def)             Requested size: 240.0pt x 219.9805pt.
-<figs/temp_profiles.pdf, id=539, 550.62628pt x 265.03255pt>
+<figs/temp_profiles.pdf, id=547, 550.62628pt x 265.03255pt>
 File: figs/temp_profiles.pdf Graphic file (type pdf)
 <use figs/temp_profiles.pdf>
 Package pdftex.def Info: figs/temp_profiles.pdf  used on input line 244.
 (pdftex.def)             Requested size: 240.0pt x 115.51872pt.
  [7 <./figs/temp_cape.pdf> <./figs/temp_profiles.pdf>]
-<figs/temp_cape-subtropics.pdf, id=575, 541.59933pt x 269.53818pt>
+<figs/temp_dhgt_panel.pdf, id=580, 436.46991pt x 542.27545pt>
+File: figs/temp_dhgt_panel.pdf Graphic file (type pdf)
+<use figs/temp_dhgt_panel.pdf>
+Package pdftex.def Info: figs/temp_dhgt_panel.pdf  used on input line 258.
+(pdftex.def)             Requested size: 240.0pt x 298.17795pt.
+
+[8 <./figs/temp_dhgt_panel.pdf>]
+<figs/temp_cape-subtropics.pdf, id=612, 541.59933pt x 269.53818pt>
 File: figs/temp_cape-subtropics.pdf Graphic file (type pdf)
 <use figs/temp_cape-subtropics.pdf>
-Package pdftex.def Info: figs/temp_cape-subtropics.pdf  used on input line 262.
+Package pdftex.def Info: figs/temp_cape-subtropics.pdf  used on input line 278.
 
 (pdftex.def)             Requested size: 240.0pt x 119.44029pt.
-<figs/temp_trans.pdf, id=578, 539.93234pt x 369.14693pt>
+<figs/temp_trans.pdf, id=615, 537.51051pt x 370.07681pt>
 File: figs/temp_trans.pdf Graphic file (type pdf)
 <use figs/temp_trans.pdf>
-Package pdftex.def Info: figs/temp_trans.pdf  used on input line 272.
-(pdftex.def)             Requested size: 240.0pt x 164.08679pt.
-<figs/temp_2zonal.pdf, id=585, 478.92316pt x 501.10873pt>
+Package pdftex.def Info: figs/temp_trans.pdf  used on input line 288.
+(pdftex.def)             Requested size: 240.0pt x 165.23988pt.
+<figs/temp_2zonal.pdf, id=622, 478.92316pt x 501.10873pt>
 File: figs/temp_2zonal.pdf Graphic file (type pdf)
 <use figs/temp_2zonal.pdf>
-Package pdftex.def Info: figs/temp_2zonal.pdf  used on input line 282.
+Package pdftex.def Info: figs/temp_2zonal.pdf  used on input line 298.
 (pdftex.def)             Requested size: 168.0pt x 175.78064pt.
-
-[8 <./figs/temp_cape-subtropics.pdf> <./figs/temp_trans.pdf>]
-<figs/temp_kespectra.pdf, id=645, 540.06229pt x 291.30481pt>
+ [9 <./figs/temp_cape-subtropics.pdf> <./figs/temp_trans.pdf> <./figs/temp_2zon
+al.pdf>]
+<figs/temp_kespectra.pdf, id=689, 540.06229pt x 291.30481pt>
 File: figs/temp_kespectra.pdf Graphic file (type pdf)
 <use figs/temp_kespectra.pdf>
-Package pdftex.def Info: figs/temp_kespectra.pdf  used on input line 300.
+Package pdftex.def Info: figs/temp_kespectra.pdf  used on input line 316.
 (pdftex.def)             Requested size: 240.0pt x 129.45465pt.
- [9 <./figs/temp_2zonal.pdf> <./figs/temp_kespectra.pdf>] (./resolution-revised
-.bbl
+ [10 <./figs/temp_kespectra.pdf>]
+(./resolution-revised.bbl
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 13.
- [10] [11])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 325.
-
-[12
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 325.
+ [11])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 341.
+ [12]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 341.
  (./resolution-revised.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 325.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 325.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 341.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 341.
 Package rerunfilecheck Info: File `resolution-revised.out' has not changed.
 (rerunfilecheck)             Checksum: 060EFC8637CF7A440D3A84927297FD43;855.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.25pt have occurred.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 325.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 341.
  ) 
 Here is how much of TeX's memory you used:
- 8942 strings out of 492616
- 134199 string characters out of 6129482
- 265195 words of memory out of 5000000
- 12532 multiletter control sequences out of 15000+600000
+ 8953 strings out of 492616
+ 134459 string characters out of 6129482
+ 266104 words of memory out of 5000000
+ 12540 multiletter control sequences out of 15000+600000
  49523 words of font info for 117 fonts, out of 8000000 for 9000
  1171 hyphenation exceptions out of 8191
- 43i,14n,47p,2068b,558s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,14n,47p,2167b,493s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
 xlive/2019/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local
@@ -746,10 +750,10 @@ rw/helvetic/uhvro8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmbi8a
 .pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr
 /local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on resolution-revised.pdf (12 pages, 2453799 bytes).
+Output written on resolution-revised.pdf (12 pages, 3972156 bytes).
 PDF statistics:
- 814 PDF objects out of 1000 (max. 8388607)
- 722 compressed objects within 8 object streams
- 112 named destinations out of 1000 (max. 500000)
- 162 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 841 PDF objects out of 1000 (max. 8388607)
+ 747 compressed objects within 8 object streams
+ 114 named destinations out of 1000 (max. 500000)
+ 167 words of extra memory for PDF output out of 10000 (max. 10000000)
 

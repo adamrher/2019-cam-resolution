@@ -1,4 +1,4 @@
-\begin{thebibliography}{64}
+\begin{thebibliography}{65}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -306,6 +306,11 @@ Skamarock WC, Park SH, Klemp JB, Snyder C. 2014. Atmospheric kinetic energy
   of the Atmospheric Sciences} \textbf{71}(11): 4369--4381,
   \doi{10.1175/JAS-D-14-0114.1}.
 
+\bibitem[{Sobel \emph{et~al.}(2001)Sobel, Nilsson and Polvani}]{SNP2001JAS}
+Sobel AH, Nilsson J, Polvani LM. 2001. The weak temperature gradient
+  approximation and balanced tropical moisture waves. \emph{Journal of the
+  atmospheric sciences} \textbf{58}(23): 3650--3665.
+
 \bibitem[{Song and Zhang(2018)}]{SZ2018JCLIM}
 Song F, Zhang GJ. 2018. Understanding and improving the scale dependence of
   trigger functions for convective parameterization using cloud-resolving model
@@ -373,10 +378,9 @@ Williamson DL, Kiehl JT, Hack JJ. 1995. Climate sensitivity of the ncar
   community climate model (ccm2) to horizontal resolution. \emph{Climate
   Dynamics} \textbf{11}(7): 377–397, \doi{10.1007/s003820050082}.
 
-\bibitem[{Xie and Zhang(2000)}]{XZ2000JGR}
-Xie S, Zhang M. 2000. Impact of the convection triggering function on
-  single-column model simulations. \emph{Journal of Geophysical Research:
-  Atmospheres} \textbf{105}(D11): 14\,983--14\,996.
+\bibitem[{Williamson and Olson(2003)}]{WO2003QJR}
+Williamson DL, Olson JG. 2003. Dependence of aqua-planet simulations on time
+  step. \emph{Q. J. R. Meteorol. Soc.} \textbf{129}(591): 2049--2064.
 
 \bibitem[{Zarzycki \emph{et~al.}(2014)Zarzycki, Levy, Jablonowski, Overfelt,
   Taylor and Ullrich}]{ZetAl2014JCb}
